@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="flex items-center justify-between">
                     <div onClick={() => scrollToSection('hero')} className="cursor-pointer">
                         <img 
-                            src={scrolled ? 'public/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png' : 'public/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png'}
+                            src={scrolled ? '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png' : '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png'}
                             alt="Hub Digital Merida Logo" 
                             className="h-20 md:h-28 lg:h-32 w-auto transition-all duration-300"
                         />
