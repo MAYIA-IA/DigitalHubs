@@ -93,7 +93,7 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
                         {/* Icono principal - sale del recuadro */}
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-family">
                             <img 
-                                src="public/assets/images/familia.png" 
+                                src="/assets/images/familia.png" 
                                 alt="Parque Seguro" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -159,7 +159,7 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
                 {/* Video Area con línea de escaneo */}
                 <div className="relative rounded-2xl overflow-hidden w-full md:w-[200px] h-[200px] md:h-[350px] md:flex-shrink-0">
                     <video 
-                        src="public/assets/images/productos/ParqueSeguro.mp4" 
+                        src="/assets/images/productos/ParqueSeguro.mp4" 
                         autoPlay
                         loop
                         muted
@@ -287,7 +287,7 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2">
                                     <img 
-                                        src="public/assets/images/familia.png" 
+                                        src="/assets/images/familia.png" 
                                         alt="Parque Seguro" 
                                         className="w-full h-full object-contain"
                                         loading="lazy"

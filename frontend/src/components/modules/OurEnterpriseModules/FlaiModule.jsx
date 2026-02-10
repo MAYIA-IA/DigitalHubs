@@ -42,7 +42,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-2.5">
                         <img 
-                            src="public/assets/images/flai.png" 
+                            src="/assets/images/flai.png" 
                             alt="FLAI" 
                             className="w-7 h-7 object-contain"
                             loading="lazy"
@@ -108,7 +108,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-auto block"
                 >
-                    <source src="public/assets/images/productos/flaiMarcoVideo.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/flaiMarcoVideo.mp4" type="video/mp4" />
                 </video>
             </div>
 
@@ -131,7 +131,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
             {/* Logo Lenovo - SIN hover inline styles, solo CSS */}
             <div className="flex justify-center px-6 pb-6">
                 <img 
-                    src="public/assets/images/productos/lenovo.png" 
+                    src="/assets/images/productos/lenovo.png" 
                     alt="Lenovo Partner" 
                     className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300 cursor-pointer"
                     loading="lazy"
@@ -153,7 +153,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2">
                                     <img 
-                                        src="public/assets/images/flai.png" 
+                                        src="/assets/images/flai.png" 
                                         alt="FLAI" 
                                         className="w-full h-full object-contain"
                                         loading="lazy"

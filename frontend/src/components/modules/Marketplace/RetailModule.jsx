@@ -103,7 +103,7 @@ const RetailModule = ({ hoveredModule, moduleId }) => {
                 style={videoContainerStyle}
             >
                 <video autoPlay muted loop playsInline preload="metadata" className="w-full h-full object-cover">
-                    <source src="public/assets/images/productos/camara2.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/camara2.mp4" type="video/mp4" />
                 </video>
 
                 {/* Overlay de detección - Top */}

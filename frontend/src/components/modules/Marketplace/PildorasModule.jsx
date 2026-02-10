@@ -39,7 +39,7 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-robot">
                             <img 
-                                src="public/assets/images/robot.png" 
+                                src="/assets/images/robot.png" 
                                 alt="Píldoras IA Robot" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -102,7 +102,7 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
             {/* Image Area */}
             <div className="relative mx-6 mb-6 rounded-2xl overflow-hidden" style={{ height: '350px' }}>
                 <img 
-                    src="public/assets/images/productos/pildorasIA.png" 
+                    src="/assets/images/productos/pildorasIA.png" 
                     alt="Servicios" 
                     className="w-full h-full object-contain"
                     loading="lazy"

@@ -8,10 +8,10 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
     const calendlyUrl = "https://calendly.com/tu-usuario/cotizacion";
     
     const cameras = [
-        { id: 1, name: 'Cámara 1', video: 'public/assets/images/productos/camara1.mp4', location: 'Entrada Principal' },
-        { id: 2, name: 'Cámara 2', video: 'public/assets/images/productos/camara2.mp4', location: 'Pasillo Central' },
-        { id: 3, name: 'Cámara 3', video: 'public/assets/images/productos/camara3.mp4', location: 'Área de Servidores' },
-        { id: 4, name: 'Cámara 4', video: 'public/assets/images/productos/camara4.mp4', location: 'Sala de Control' }
+        { id: 1, name: 'Cámara 1', video: '/assets/images/productos/camara1.mp4', location: 'Entrada Principal' },
+        { id: 2, name: 'Cámara 2', video: '/assets/images/productos/camara2.mp4', location: 'Pasillo Central' },
+        { id: 3, name: 'Cámara 3', video: '/assets/images/productos/camara3.mp4', location: 'Área de Servidores' },
+        { id: 4, name: 'Cámara 4', video: '/assets/images/productos/camara4.mp4', location: 'Sala de Control' }
     ];
     
     const isHovered = useMemo(() => hoveredModule === moduleId, [hoveredModule, moduleId]);
@@ -53,7 +53,7 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-camera">
                             <img 
-                                src="public/assets/images/camaraSeg.png" 
+                                src="/assets/images/camaraSeg.png" 
                                 alt="Guard-IA Cámara" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{

@@ -41,7 +41,7 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
                         {/* Nube principal */}
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float">
                             <img 
-                                src="public/assets/images/nube.png" 
+                                src="/assets/images/nube.png" 
                                 alt="Cloud DRP" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -113,7 +113,7 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-full object-cover"
                 >
-                    <source src="public/assets/images/drpVideo.mp4" type="video/mp4" />
+                    <source src="/assets/images/drpVideo.mp4" type="video/mp4" />
                 </video>
                 
                 <div className="absolute inset-0 bg-black/30"></div>

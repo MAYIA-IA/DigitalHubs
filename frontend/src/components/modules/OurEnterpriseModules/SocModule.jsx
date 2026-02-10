@@ -66,7 +66,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-white flex items-center justify-center p-2.5">
                         <img 
-                            src="public/assets/images/productos/cyberpeaceLogo.png" 
+                            src="/assets/images/productos/cyberpeaceLogo.png" 
                             alt="CyberPeace SOC" 
                             className="w-7 h-7 object-contain"
                             loading="lazy"
@@ -136,7 +136,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-auto block"
                 >
-                    <source src="public/assets/images/productos/cyberpeaceVid.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/cyberpeaceVid.mp4" type="video/mp4" />
                 </video>
                 
                 {/* Features Overlay */}
@@ -205,7 +205,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2">
                                     <img 
-                                        src="public/assets/images/productos/cyberpeaceLogo.png" 
+                                        src="/assets/images/productos/cyberpeaceLogo.png" 
                                         alt="CyberPeace SOC" 
                                         className="w-full h-full object-contain"
                                         loading="lazy"

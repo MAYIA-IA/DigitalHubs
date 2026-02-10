@@ -9,12 +9,12 @@ const Events = () => {
 
     const images = [
         {
-            src: "public/assets/images/eventos/1.Invitación_general_Gobierno.jpg",
+            src: "/assets/images/eventos/1.Invitación_general_Gobierno.jpg",
             alt: "Invitación Gobierno",
             color: "#DC2626"
         },
         {
-            src: "public/assets/images/eventos/1.Invitación_general_HUB.jpg",
+            src: "/assets/images/eventos/1.Invitación_general_HUB.jpg",
             alt: "Invitación HUB",
             color: "#4881EB"
         }

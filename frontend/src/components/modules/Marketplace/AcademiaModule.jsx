@@ -76,7 +76,7 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float">
                             <img 
-                                src="public/assets/images/astronauta.png" 
+                                src="/assets/images/astronauta.png" 
                                 alt="Academia Astronauta" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -146,7 +146,7 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-full object-cover rounded-2xl"
                 >
-                    <source src="public/assets/images/productos/astronautaSaludo.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/astronautaSaludo.mp4" type="video/mp4" />
                 </video>
                 
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60 rounded-2xl"></div>

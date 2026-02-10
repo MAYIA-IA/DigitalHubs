@@ -39,7 +39,7 @@ const LUMELModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-lumel">
                             <img 
-                                src="public/assets/images/productos/LumelAvatar.png" 
+                                src="/assets/images/productos/LumelAvatar.png" 
                                 alt="LUMEL Avatar" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -110,7 +110,7 @@ const LUMELModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-full object-cover"
                 >
-                    <source src="public/assets/images/productos/LumelVideo1.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/LumelVideo1.mp4" type="video/mp4" />
                 </video>
                 
                 {/* Stats bars positioned on the right */}

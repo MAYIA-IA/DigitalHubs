@@ -49,7 +49,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
                         <img 
-                            src="public/assets/images/edgenetCircle.png" 
+                            src="/assets/images/edgenetCircle.png" 
                             alt="EdgeNet" 
                             className="w-7 h-7"
                             loading="lazy"
@@ -124,7 +124,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
                             className="w-full h-full object-cover"
                             preload="metadata"
                         >
-                            <source src="public/assets/images/productos/edgenetDatos.mp4" type="video/mp4" />
+                            <source src="/assets/images/productos/edgenetDatos.mp4" type="video/mp4" />
                         </video>
 
                         {/* Overlays - SIN animate-pulse para mejor performance */}
@@ -138,7 +138,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
                                 <div key={name} className="px-3 py-1.5 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-2 w-fit">
                                     <div className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></div>
                                     <img 
-                                        src={`public/assets/images/productos/${img}`}
+                                        src={`/assets/images/productos/${img}`}
                                         alt={name}
                                         className="h-4 w-auto flex-shrink-0"
                                         loading="lazy"
@@ -216,7 +216,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
                                     <img 
-                                        src="public/assets/images/edgenetCircle.png" 
+                                        src="/assets/images/edgenetCircle.png" 
                                         alt="EdgeNet" 
                                         className="w-7 h-7"
                                         loading="lazy"

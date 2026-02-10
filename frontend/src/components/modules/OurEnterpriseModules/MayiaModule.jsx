@@ -77,7 +77,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                             preload="metadata"
                             className="w-full h-full object-cover"
                         >
-                            <source src="public/assets/images/jaguar.mp4" type="video/mp4" />
+                            <source src="/assets/images/jaguar.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div>
@@ -141,7 +141,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-auto block"
                 >
-                    <source src="public/assets/images/productos/mabePanel.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/mabePanel.mp4" type="video/mp4" />
                 </video>
             </div>
 
@@ -200,7 +200,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                                         playsInline
                                         className="w-full h-full object-cover"
                                     >
-                                        <source src="public/assets/images/jaguar.mp4" type="video/mp4" />
+                                        <source src="/assets/images/jaguar.mp4" type="video/mp4" />
                                     </video>
                                 </div>
                                 <h2 className="text-2xl font-bold text-white">MAYIA</h2>

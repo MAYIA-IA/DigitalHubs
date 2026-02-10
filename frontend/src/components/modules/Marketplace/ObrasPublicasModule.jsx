@@ -39,7 +39,7 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-security">
                             <img 
-                                src="public/assets/images/holograma.png" 
+                                src="/assets/images/holograma.png" 
                                 alt="Obras Públicas" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -107,7 +107,7 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-full object-contain"
                 >
-                    <source src="public/assets/images/productos/obraspublicasVid.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/obraspublicasVid.mp4" type="video/mp4" />
                 </video>
             </div>
 

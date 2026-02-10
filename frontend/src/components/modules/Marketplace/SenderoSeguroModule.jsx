@@ -39,7 +39,7 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-security">
                             <img 
-                                src="public/assets/images/seguridad.png" 
+                                src="/assets/images/seguridad.png" 
                                 alt="Sendero Seguro" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
@@ -110,7 +110,7 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
                     preload="metadata"
                     className="w-full h-full object-cover"
                 >
-                    <source src="public/assets/images/productos/senderoSeguro.mp4" type="video/mp4" />
+                    <source src="/assets/images/productos/senderoSeguro.mp4" type="video/mp4" />
                 </video>
                 
                 {/* Overlay de cámara de seguridad */}

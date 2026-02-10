@@ -37,7 +37,7 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-2.5">
                         <img 
-                            src="public/assets/images/hechoEnMexico.svg" 
+                            src="/assets/images/hechoEnMexico.svg" 
                             alt="Hecho en México" 
                             className="w-7 h-7 object-contain" 
                             loading="lazy"
@@ -93,7 +93,7 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
             {/* Image Area */}
             <div className="relative mx-4 sm:mx-6 mb-4 rounded-2xl overflow-hidden flex items-center justify-center" style={{ height: '350px' }}>
                 <img 
-                    src="public/assets/images/productos/hechoEnMexico.png" 
+                    src="/assets/images/productos/hechoEnMexico.png" 
                     alt="Hecho en México" 
                     className="w-full h-full object-contain"
                     loading="lazy"
