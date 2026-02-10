@@ -39,7 +39,7 @@ const LUMELModule = ({ hoveredModule, moduleId }) => {
                     <div className="relative w-16 h-16">
                         <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-lumel">
                             <img 
-                                src="/assets/images/productos/LumelAvatar.png" 
+                                src="/assets/images/productos/LumelAvatar.PNG" 
                                 alt="LUMEL Avatar" 
                                 className="w-full h-full object-contain drop-shadow-2xl"
                                 style={{
