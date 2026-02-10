@@ -3,7 +3,7 @@
 const CONFIG = {
   // URLs del backend
   API: {
-    BASE_URL: 'http://localhost:3001',
+    BASE_URL: import.meta.env.VITE_API_URL || 'http://localhost:3001',
     ENDPOINTS: {
       CHAT: '/api/chat/message',
       DEPARTAMENTOS: '/api/departamentos',
