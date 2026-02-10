@@ -1,0 +1,15 @@
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ocultar scrollbar en Firefox */
+.scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Smooth scroll para el carrusel */
+.scrollbar-hide {
+    scroll-behavior: smooth;
+}
