@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react'
 import '../styles/carousel.css'
 
