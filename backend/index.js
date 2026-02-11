@@ -8,6 +8,7 @@ import chatRoutes from './routes/chatRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const HOST = '0.0.0.0'; 
 
 // Middleware
 app.use(
@@ -17,7 +18,10 @@ app.use(
       'http://localhost:8000', 
       'http://127.0.0.1:8000',
       'http://localhost:5500',
-      'http://127.0.0.1:5500'
+      'http://127.0.0.1:5500',
+      'https://digital-hubs.vercel.app',  
+      'https://hubdigital.com.mx',       
+      'https://www.hubdigital.com.mx'    
     ],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
@@ -49,10 +53,10 @@ async function startServer() {
     // Inicializar Gemini
     initGeminiClient();
     
-    app.listen(PORT, () => {
-      console.log(`\nServidor corriendo en http://localhost:${PORT}`);
-      console.log(`API disponible en http://localhost:${PORT}/api`);
-      console.log(`Health check: http://localhost:${PORT}/health`);
+    app.listen(PORT, HOST, () => {
+      console.log(`\nServidor corriendo en puerto ${PORT}`);
+      console.log(`API disponible en /api`);
+      console.log(`Health check: /health`);
     });
   } catch (error) {
     console.error('Error al iniciar el servidor:', error.message);
