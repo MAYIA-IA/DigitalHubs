@@ -30,6 +30,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
+        height: window.innerWidth < 768 ? '220px' : 'auto', // Más compacto en mobile
         borderColor: isHovered ? '#A4D955' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(164, 217, 85, 0.5), inset 0 0 20px rgba(164, 217, 85, 0.1)' : 'none'
     }), [isHovered]);
@@ -65,7 +66,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4">
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-[#060606] flex items-center justify-center overflow-hidden w-12 h-12">
                         <video 
@@ -129,7 +130,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
 
             {/* Video Area */}
             <div 
-                className="relative mx-6 mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-4 md:mx-6 mb-3 md:mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
                 style={videoContainerStyle}
             >
                 <video 
@@ -139,14 +140,14 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                     loop
                     playsInline
                     preload="metadata"
-                    className="w-full h-auto block"
+                    className="w-full h-full object-cover block"
                 >
                     <source src="/assets/images/productos/mabePanel.mp4" type="video/mp4" />
                 </video>
             </div>
 
             {/* Stats - 3 superiores */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 px-4 sm:px-6 mb-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 mb-2 md:mb-3">
                 {[
                     { title: 'FÁBRICA DE IA', subtitle: ['PRIVADA PARA', 'TU EMPRESA'] },
                     { title: 'CONSULTORÍA IA', subtitle: ['MODELO', 'STRATEGYOPS'] },
@@ -169,7 +170,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stat 4 - Horizontal completa */}
-            <div className="px-4 sm:px-6 pb-6">
+            <div className="px-3 sm:px-4 md:px-6 pb-3 md:pb-6">
                 <div className="bg-gradient-to-r from-[#4881EB]/20 via-[#A4D955]/20 to-[#4881EB]/20 rounded-xl p-3 sm:p-5 border-2 border-[#A4D955]/30 hover:border-[#A4D955]/70 transition-colors duration-300">
                     <p className="text-lg sm:text-2xl md:text-3xl font-bold text-white text-center mb-1 leading-tight">
                         PLATAFORMAS DE IA

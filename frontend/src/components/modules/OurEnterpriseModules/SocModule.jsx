@@ -52,6 +52,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
+        height: window.innerWidth < 768 ? '220px' : 'auto', // Más compacto en mobile
         borderColor: isHovered ? '#4881EB' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(72, 129, 235, 0.5), inset 0 0 20px rgba(72, 129, 235, 0.1)' : 'none'
     }), [isHovered]);
@@ -62,7 +63,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4 relative z-20">
+            <div className="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4 relative z-20">
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-white flex items-center justify-center p-2.5">
                         <img 
@@ -125,7 +126,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area con Features Overlay */}
             <div 
-                className="relative mx-6 mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-4 md:mx-6 mb-3 md:mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
                 style={videoContainerStyle}
             >
                 <video 
@@ -134,7 +135,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
                     muted
                     playsInline
                     preload="metadata"
-                    className="w-full h-auto block"
+                    className="w-full h-full object-cover block"
                 >
                     <source src="/assets/images/productos/cyberpeaceVid.mp4" type="video/mp4" />
                 </video>
@@ -155,7 +156,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats - Certificaciones principales */}
-            <div className="flex justify-around px-6 pb-6">
+            <div className="flex justify-around px-4 md:px-6 pb-3 md:pb-6">
                 <div className="text-center">
                     <p className="text-base font-bold text-white mb-1 hover:text-[#4881EB] transition-colors cursor-default">FIRST</p>
                     <p className="text-xs text-gray-400 hover:text-white transition-colors cursor-default">Miembro</p>
@@ -175,7 +176,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Certificaciones adicionales */}
-            <div className="px-6 pb-4">
+            <div className="px-4 md:px-6 pb-3 md:pb-4">
                 <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0F0F1E] rounded-xl p-4 border-2 border-[#4881EB]/30 hover:border-[#4881EB]/50 transition-colors duration-300">
                     <p className="text-sm font-bold text-[#7FD1FF] text-center mb-3 tracking-wide">Certificaciones Adicionales</p>
                     <div className="flex flex-wrap gap-2 justify-center">

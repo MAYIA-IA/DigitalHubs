@@ -28,6 +28,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const imageContainerStyle = useMemo(() => ({
+        height: window.innerWidth < 768 ? '220px' : 'auto', // Más compacto en mobile
         borderColor: isHovered ? '#DC2626' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(220, 38, 38, 0.5), inset 0 0 20px rgba(220, 38, 38, 0.1)' : 'none'
     }), [isHovered]);
@@ -38,7 +39,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4">
                 <div className="flex items-center gap-3">
                     <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-2.5">
                         <img 
@@ -97,7 +98,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div 
-                className="relative mx-6 mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-4 md:mx-6 mb-3 md:mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
                 style={imageContainerStyle}
             >
                 <video 
@@ -106,14 +107,14 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
                     muted
                     playsInline
                     preload="metadata"
-                    className="w-full h-auto block"
+                    className="w-full h-full object-cover block"
                 >
                     <source src="/assets/images/productos/flaiMarcoVideo.mp4" type="video/mp4" />
                 </video>
             </div>
 
             {/* Stats */}
-            <div className="flex justify-around px-6 pb-4">
+            <div className="flex justify-around px-4 md:px-6 pb-3 md:pb-4">
                 <div className="text-center">
                     <p className="text-base font-bold text-white mb-1 hover:text-[#006847] transition-colors cursor-default">100% México</p>
                     <p className="text-xs text-gray-400 hover:text-white transition-colors cursor-default">Datos en México</p>
@@ -129,7 +130,7 @@ const FlaiModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Logo Lenovo - SIN hover inline styles, solo CSS */}
-            <div className="flex justify-center px-6 pb-6">
+            <div className="flex justify-center px-4 md:px-6 pb-3 md:pb-6">
                 <img 
                     src="/assets/images/productos/lenovo.png" 
                     alt="Lenovo Partner" 

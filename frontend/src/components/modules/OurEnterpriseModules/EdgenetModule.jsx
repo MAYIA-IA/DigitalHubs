@@ -34,7 +34,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
-        height: '350px',
+        height: window.innerWidth < 768 ? '220px' : '350px', // Más compacto en mobile
         borderColor: isHovered ? '#4881EB' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(76, 175, 80, 0.5), inset 0 0 20px rgba(76, 175, 80, 0.1)' : 'none'
     }), [isHovered]);
@@ -45,7 +45,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4">
                 <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
                         <img 
@@ -111,7 +111,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
 
             {/* Video Area - OPTIMIZADO */}
             <div 
-                className="relative mx-6 mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-4 md:mx-6 mb-3 md:mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
                 style={videoContainerStyle}
             >
                 {videoEnabled ? (
@@ -185,7 +185,7 @@ const EdgenetModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 px-4 sm:px-6 pb-6">
+            <div className="grid grid-cols-3 gap-2 px-4 sm:px-6 pb-3 md:pb-6">
                 {[
                     ['Colocación', 'Conectividad'],
                     ['Interconexión', 'Gestión'],

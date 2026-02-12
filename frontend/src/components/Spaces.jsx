@@ -27,13 +27,14 @@ const Spaces = () => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     const moduleId = entry.target.dataset.moduleId;
-                    setHoveredModule(moduleId);
-                    setActiveModule(moduleId); // Activar automáticamente en mobile
+                    setHoveredModule(moduleId); // Activar efecto de color automáticamente
+                    setActiveModule(moduleId);
                 } else {
                     const moduleId = entry.target.dataset.moduleId;
                     // Desactivar cuando sale de la vista
                     if (activeModule === moduleId) {
                         setActiveModule(null);
+                        setHoveredModule(null); // Desactivar efecto de color también
                     }
                 }
             });
@@ -69,7 +70,7 @@ const Spaces = () => {
                     <div
                         ref={(el) => (moduleRefs.current['edgenet'] = el)}
                         data-module-id="edgenet"
-                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[65vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[400px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('edgenet')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -83,7 +84,7 @@ const Spaces = () => {
                     <div
                         ref={(el) => (moduleRefs.current['Flai'] = el)}
                         data-module-id="Flai"
-                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[65vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[400px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('Flai')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -99,7 +100,7 @@ const Spaces = () => {
                     <div
                         ref={(el) => (moduleRefs.current['mayia'] = el)}
                         data-module-id="mayia"
-                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[65vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[400px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('mayia')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -113,7 +114,7 @@ const Spaces = () => {
                     <div
                         ref={(el) => (moduleRefs.current['soc'] = el)}
                         data-module-id="soc"
-                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[65vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[400px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('soc')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
