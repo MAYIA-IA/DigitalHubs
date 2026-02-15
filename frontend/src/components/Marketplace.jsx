@@ -64,7 +64,7 @@ const Marketplace = () => {
                     </h2>
                 </div>
 
-                <div className="lg:flex lg:flex-wrap lg:justify-center lg:gap-8 lg:max-w-6xl lg:mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none flex gap-4 px-6 lg:px-0 scrollbar-hide pb-4">
+                <div className="lg:flex lg:flex-wrap lg:justify-center lg:gap-8 lg:max-w-6xl lg:mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none flex gap-3 px-4 lg:px-0 scrollbar-hide pb-4">
 
 
                     {/* VER QUE GRID QUEDARIA MEJOR SI 2X2 O MODIFICARLO  */}
@@ -76,7 +76,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['recuperacion'] = el)}
                         data-module-id="recuperacion"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('recuperacion')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -90,7 +90,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['academia'] = el)}
                         data-module-id="academia"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('academia')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -104,7 +104,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['pildoras'] = el)}
                         data-module-id="pildoras"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('pildoras')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -118,7 +118,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['lumel'] = el)}
                         data-module-id="lumel"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('lumel')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -133,7 +133,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['GuardIA'] = el)}
                         data-module-id="GuardIA"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('GuardIA')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -147,7 +147,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['senderoseguro'] = el)}
                         data-module-id="senderoseguro"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('senderoseguro')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -162,7 +162,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['parqueseguro'] = el)}
                         data-module-id="parqueseguro"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('parqueseguro')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -176,7 +176,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['obraspublicas'] = el)}
                         data-module-id="obraspublicas"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('obraspublicas')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -191,7 +191,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['hechoMexico'] = el)}
                         data-module-id="hechoMexico"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('hechoMexico')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -207,7 +207,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['retail'] = el)}
                         data-module-id="retail"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
+                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('retail')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >

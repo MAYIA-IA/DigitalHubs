@@ -33,19 +33,19 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
                 <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-2.5">
+                    <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-1.5 lg:p-2.5">
                         <img 
                             src="/assets/images/hechoEnMexico.svg" 
                             alt="Hecho en México" 
-                            className="w-7 h-7 object-contain" 
+                            className="w-5 h-5 lg:w-7 lg:h-7 object-contain" 
                             loading="lazy"
                         />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">Hecho en México</h3>
-                        <p className="text-sm text-gray-400">Hecho en México</p>
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Hecho en México</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Hecho en México</p>
                     </div>
                 </div>
                 
@@ -91,7 +91,7 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Image Area */}
-            <div className="relative mx-4 sm:mx-6 mb-4 rounded-2xl overflow-hidden flex items-center justify-center" style={{ height: '350px' }}>
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden flex items-center justify-center" className="h-[180px] lg:h-[350px]">
                 <img 
                     src="/assets/images/productos/hechoEnMexico.png" 
                     alt="Hecho en México" 
@@ -101,9 +101,9 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-4 sm:pb-6 gap-3 sm:gap-4">
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-0.5 sm:mb-1">
+            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-3 lg:pb-6 gap-3 sm:gap-4">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-base lg:text-2xl font-bold text-white mb-0.5 sm:mb-1">
                         100%
                     </p>
                     <p className="text-xs text-gray-400 break-words">
@@ -111,8 +111,8 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
                     </p>
                 </div>
 
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#DC2626] mb-0.5 sm:mb-1">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-base lg:text-2xl font-bold text-[#DC2626] mb-0.5 sm:mb-1">
                         3
                     </p>
                     <p className="text-xs text-gray-400 break-words">
@@ -120,8 +120,8 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
                     </p>
                 </div>
 
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#00BFA5] mb-0.5 sm:mb-1">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-base lg:text-2xl font-bold text-[#00BFA5] mb-0.5 sm:mb-1">
                         0
                     </p>
                     <p className="text-xs text-gray-400 break-words">

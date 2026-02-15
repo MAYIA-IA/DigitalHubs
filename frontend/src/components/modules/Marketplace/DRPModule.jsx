@@ -34,12 +34,12 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
-                <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
+                <div className="flex items-center gap-2 lg:gap-3">
                     {/* Contenedor de la nube con efecto 3D flotante */}
-                    <div className="relative w-16 h-16">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
                         {/* Nube principal */}
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float">
                             <img 
                                 src="/assets/images/nube.png" 
                                 alt="Cloud DRP" 
@@ -52,13 +52,13 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
                         </div>
                         
                         {/* Efecto de resplandor */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#b059b1]/40 to-[#1230C4]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#b059b1]/40 to-[#1230C4]/40 rounded-full blur-xl"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">DRP</h3>
-                        <p className="text-sm text-gray-400">Recuperación ante Desastres</p>
-                        <p className="text-xs text-[#b059b1] font-semibold">CLOUD</p>
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">DRP</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Recuperación ante Desastres</p>
+                        <p className="text-[9px] lg:text-xs text-[#b059b1] font-semibold">CLOUD</p>
                     </div>
                 </div>
                 
@@ -104,7 +104,7 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Video Area con información superpuesta */}
-            <div className="relative mx-6 mb-6 rounded-2xl overflow-hidden" style={{ height: '350px' }}>
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <video 
                     autoPlay
                     loop
@@ -120,36 +120,36 @@ const DRPModule = ({ hoveredModule, moduleId }) => {
                 
                 {/* Información centrada */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-11/12 sm:w-4/5 md:w-3/4 space-y-2">
-                        <div className="bg-gradient-to-r from-[#5B9BD5]/90 to-[#4472C4]/90 py-2 px-3 sm:px-4 transform -skew-x-12 shadow-lg">
-                            <p className="text-white font-bold text-xs sm:text-sm md:text-base text-center skew-x-12">Servicios Gestionados</p>
+                    <div className="w-11/12 space-y-1">
+                        <div className="bg-gradient-to-r from-[#5B9BD5]/90 to-[#4472C4]/90 py-1 lg:py-2 px-2 lg:px-4 transform -skew-x-12 shadow-lg">
+                            <p className="text-white font-bold text-[8px] lg:text-sm text-center skew-x-12">Servicios Gestionados</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-[#70AD47]/90 to-[#5B9732]/90 py-2 px-3 sm:px-4 transform -skew-x-12 shadow-lg">
-                            <p className="text-white font-semibold text-xs sm:text-sm text-center skew-x-12">Respaldo y Restauración<br/>desde la Nube</p>
+                        <div className="bg-gradient-to-r from-[#70AD47]/90 to-[#5B9732]/90 py-1 lg:py-2 px-2 lg:px-4 transform -skew-x-12 shadow-lg">
+                            <p className="text-white font-semibold text-[7px] lg:text-sm text-center skew-x-12">Respaldo desde Nube</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-[#4472C4]/90 to-[#2E5396]/90 py-2 px-3 sm:px-4 transform -skew-x-12 shadow-lg">
-                            <p className="text-white font-semibold text-xs sm:text-sm text-center skew-x-12">Respaldo y Restauración<br/>en la Nube</p>
+                        <div className="bg-gradient-to-r from-[#4472C4]/90 to-[#2E5396]/90 py-1 lg:py-2 px-2 lg:px-4 transform -skew-x-12 shadow-lg">
+                            <p className="text-white font-semibold text-[7px] lg:text-sm text-center skew-x-12">Respaldo en Nube</p>
                         </div>
                         
-                        <div className="bg-gradient-to-r from-[#5B9BD5]/90 to-[#4472C4]/90 py-2 px-3 sm:px-4 transform -skew-x-12 shadow-lg">
-                            <p className="text-white font-bold text-xs sm:text-sm md:text-base text-center skew-x-12">Replicar</p>
+                        <div className="bg-gradient-to-r from-[#5B9BD5]/90 to-[#4472C4]/90 py-1 lg:py-2 px-2 lg:px-4 transform -skew-x-12 shadow-lg">
+                            <p className="text-white font-bold text-[8px] lg:text-sm text-center skew-x-12">Replicar</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 px-4 sm:px-6 pb-6">
+            <div className="grid grid-cols-3 gap-1 lg:gap-2 px-3 lg:px-6 pb-3 lg:pb-6">
                 <div className="text-center min-w-0">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mb-1 leading-tight">Servidores Físicos+</p>
+                    <p className="text-[9px] lg:text-base font-bold text-white mb-0.5 lg:mb-1 leading-tight">Servidores Físicos+</p>
                 </div>
                 <div className="text-center min-w-0">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-[#4881EB] mb-1 leading-tight">Servidores Virtuales</p>
+                    <p className="text-[9px] lg:text-base font-bold text-[#4881EB] mb-0.5 lg:mb-1 leading-tight">Servidores Virtuales</p>
                 </div>
                 <div className="text-center min-w-0">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-[#00BFA5] mb-1 leading-tight">Soporte 24/7</p>
+                    <p className="text-[9px] lg:text-base font-bold text-[#00BFA5] mb-0.5 lg:mb-1 leading-tight">Soporte 24/7</p>
                 </div>
             </div>
 

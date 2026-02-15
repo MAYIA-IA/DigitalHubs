@@ -33,11 +33,11 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
                 <div className="flex items-center gap-3">
                     {/* Contenedor del icono de holograma con efecto 3D flotante */}
-                    <div className="relative w-16 h-16">
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-security">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float-security">
                             <img 
                                 src="/assets/images/holograma.png" 
                                 alt="Obras Públicas" 
@@ -49,10 +49,10 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
                             />
                         </div>
                         
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#b059b1]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#b059b1]/40 rounded-full blur-xl"></div>
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">Obras Públicas</h3>
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Obras Públicas</h3>
                     </div>
                 </div>
                 
@@ -98,7 +98,7 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Image Area */}
-            <div className="relative mx-4 sm:mx-6 mb-4 rounded-2xl overflow-hidden" style={{ height: '350px' }}>
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden" className="h-[180px] lg:h-[350px]">
                 <video 
                     autoPlay
                     loop
@@ -112,14 +112,14 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-4 sm:pb-6 gap-3 sm:gap-4">
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-0.5 sm:mb-1">32</p>
+            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-3 lg:pb-6 gap-3 sm:gap-4">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-base lg:text-2xl font-bold text-white mb-0.5 sm:mb-1">32</p>
                     <p className="text-xs text-gray-400 break-words">Eventos</p>
                 </div>
                 
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-base sm:text-lg lg:text-2xl font-bold text-[#14B8A6] mb-0.5 sm:mb-1 break-words">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-xs lg:text-lg font-bold text-[#14B8A6] mb-0.5 sm:mb-1 break-words">
                         Monitoreo
                     </p>
                     <p className="text-xs text-gray-400 break-words">
@@ -127,8 +127,8 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
                     </p>
                 </div>
                 
-                <div className="text-center flex-1 min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
-                    <p className="text-base sm:text-lg lg:text-2xl font-bold text-[#0891B2] mb-0.5 sm:mb-1 break-words">
+                <div className="text-center flex-1 min-w-[60px] lg:min-w-[80px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
+                    <p className="text-xs lg:text-lg font-bold text-[#0891B2] mb-0.5 sm:mb-1 break-words">
                         Análisis
                     </p>
                     <p className="text-xs text-gray-400 break-words">

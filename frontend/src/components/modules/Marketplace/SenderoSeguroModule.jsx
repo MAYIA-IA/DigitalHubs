@@ -3,6 +3,7 @@ import { useState, useMemo, useCallback } from 'react'
 const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [statsExpanded, setStatsExpanded] = useState(false);
     
     const calendlyUrl = "https://calendly.com/tu-usuario/cotizacion";
     
@@ -34,10 +35,10 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
                 <div className="flex items-center gap-3">
-                    <div className="relative w-16 h-16">
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-security">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float-security">
                             <img 
                                 src="/assets/images/seguridad.png" 
                                 alt="Sendero Seguro" 
@@ -49,12 +50,12 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
                             />
                         </div>
                         
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#b059b1]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#b059b1]/40 rounded-full blur-xl"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">Sendero Seguro</h3>
-                        <p className="text-sm text-gray-400">Inteligencia en seguridad</p>
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Sendero Seguro</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Inteligencia en seguridad</p>
                         <p className="text-xs text-[#b059b1] font-semibold">de género</p>
                     </div>
                 </div>
@@ -101,7 +102,7 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Content Area - SIN GSAP, solo CSS */}
-            <div className="relative mx-6 mb-6 rounded-2xl overflow-hidden" style={{ height: '350px' }}>
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <video 
                     autoPlay
                     loop
@@ -115,16 +116,16 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
                 
                 {/* Overlay de cámara de seguridad */}
                 <div className="absolute inset-0 pointer-events-none">
-                    {/* Indicador de grabación */}
-                    <div className="absolute top-3 left-3 flex items-center gap-2 bg-black/60 px-3 py-1.5 rounded backdrop-blur-sm">
-                        <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse-slow"></div>
-                        <span className="text-white text-xs font-mono">REC</span>
-                        <span className="text-white text-xs font-mono">CAM-01</span>
+                    {/* Indicador de grabación - DENTRO DEL VIDEO */}
+                    <div className="absolute top-2 left-2 lg:top-3 lg:left-3 flex items-center gap-1.5 lg:gap-2 bg-black/70 px-2 lg:px-3 py-1 lg:py-1.5 rounded backdrop-blur-sm">
+                        <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-red-600 animate-pulse-slow"></div>
+                        <span className="text-white text-[8px] lg:text-xs font-mono">REC</span>
+                        <span className="text-white text-[8px] lg:text-xs font-mono">CAM-01</span>
                     </div>
                     
-                    {/* Timestamp */}
-                    <div className="absolute top-3 right-3 bg-black/60 px-3 py-1.5 rounded backdrop-blur-sm">
-                        <span className="text-white text-xs font-mono">18:45:23</span>
+                    {/* Timestamp - DENTRO DEL VIDEO */}
+                    <div className="absolute top-2 right-2 lg:top-3 lg:right-3 bg-black/70 px-2 lg:px-3 py-1 lg:py-1.5 rounded backdrop-blur-sm">
+                        <span className="text-white text-[8px] lg:text-xs font-mono">18:45:23</span>
                     </div>
 
                     {/* Detección Mujer */}
@@ -198,23 +199,59 @@ const SenderoSeguroModule = ({ hoveredModule, moduleId }) => {
                 </div>
             </div>
 
-            {/* Stats */}
-            <div className="flex flex-wrap justify-between items-stretch px-4 sm:px-6 pb-4 sm:pb-6 gap-3 sm:gap-4">
-                <div className="text-center flex-1 min-w-[100px] bg-[#1A1A2E]/30 rounded-xl p-3">
-                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">32+</p>
-                    <p className="text-xs sm:text-sm text-gray-400 break-words">Eventos Detectados</p>
+            {/* Stats - Versión compacta con botón expandible */}
+            <div className="px-3 lg:px-6 pb-3 lg:pb-6">
+                {/* Stats principales siempre visibles */}
+                <div className="grid grid-cols-2 gap-2 mb-2">
+                    <div className="text-center bg-[#1A1A2E]/30 rounded-xl p-2 lg:p-3">
+                        <p className="text-lg lg:text-2xl font-bold text-white mb-0.5">32+</p>
+                        <p className="text-[8px] lg:text-xs text-gray-400 leading-tight">Eventos</p>
+                    </div>
+                    <div className="text-center bg-[#1A1A2E]/30 rounded-xl p-2 lg:p-3">
+                        <p className="text-[9px] lg:text-sm font-bold text-[#4881EB] leading-tight">MONITOREO</p>
+                        <p className="text-[8px] lg:text-xs text-gray-400 leading-tight">FLAI Nube</p>
+                    </div>
                 </div>
 
-                <div className="text-center flex-1 min-w-[100px] bg-[#1A1A2E]/30 rounded-xl p-3">
-                    <p className="text-base sm:text-xl font-bold text-[#4881EB] mb-0.5 leading-tight break-words">ANALÍTICA</p>
-                    <p className="text-base sm:text-l font-bold text-[#4881EB] mb-1 leading-tight break-words">INTELIGENTE</p>
-                    <p className="text-xs sm:text-xs text-gray-400 mt-1 leading-tight break-words">Mismas cámaras</p>
-                </div>
+                {/* Botón "Ver más" - Solo en mobile */}
+                <button
+                    onClick={() => setStatsExpanded(!statsExpanded)}
+                    className="lg:hidden w-full bg-[#1A1A2E]/50 hover:bg-[#1A1A2E]/70 rounded-lg py-2 px-3 flex items-center justify-between transition-colors"
+                >
+                    <span className="text-[9px] text-gray-400">Más información</span>
+                    <svg 
+                        className={`w-4 h-4 text-gray-400 transition-transform ${statsExpanded ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
 
-                <div className="text-center flex-1 min-w-[100px] bg-[#1A1A2E]/30 rounded-xl p-3">
-                    <p className="text-base sm:text-lg font-bold text-white mb-0.5 leading-tight break-words">MONITOREO</p>
-                    <p className="text-xs sm:text-sm text-gray-400 leading-tight break-words">FLAI Nube Soberana</p>
-                    <p className="text-xs sm:text-xs text-[#b059b1] mt-1 font-semibold leading-tight break-words">Alerta Autoridades</p>
+                {/* Stats expandidas - Solo mobile */}
+                {statsExpanded && (
+                    <div className="lg:hidden mt-2 bg-[#1A1A2E]/50 rounded-xl p-3 space-y-2">
+                        <div className="text-center">
+                            <p className="text-xs font-bold text-[#4881EB] leading-tight">ANALÍTICA INTELIGENTE</p>
+                            <p className="text-[8px] text-gray-400 leading-tight">Mismas cámaras</p>
+                        </div>
+                        <div className="text-center pt-2 border-t border-gray-700">
+                            <p className="text-[8px] text-[#b059b1] font-semibold">Alerta Autoridades</p>
+                        </div>
+                    </div>
+                )}
+
+                {/* Stats completas - Solo desktop */}
+                <div className="hidden lg:flex flex-wrap justify-between items-stretch gap-4 mt-2">
+                    <div className="text-center flex-1 min-w-[100px] bg-[#1A1A2E]/30 rounded-xl p-3">
+                        <p className="text-base font-bold text-[#4881EB] mb-0.5 leading-tight">ANALÍTICA</p>
+                        <p className="text-base font-bold text-[#4881EB] mb-1 leading-tight">INTELIGENTE</p>
+                        <p className="text-xs text-gray-400 mt-1 leading-tight">Mismas cámaras</p>
+                    </div>
+                    <div className="text-center flex-1 min-w-[100px] bg-[#1A1A2E]/30 rounded-xl p-3">
+                        <p className="text-xs text-[#b059b1] font-semibold leading-tight">Alerta Autoridades</p>
+                    </div>
                 </div>
             </div>
 

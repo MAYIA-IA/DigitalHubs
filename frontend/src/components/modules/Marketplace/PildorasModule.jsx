@@ -34,10 +34,10 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="relative w-16 h-16">
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-robot">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
+                <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float-robot">
                             <img 
                                 src="/assets/images/robot.png" 
                                 alt="Píldoras IA Robot" 
@@ -49,12 +49,12 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
                             />
                         </div>
                         
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#00913f]/40 to-[#0891B2]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#00913f]/40 to-[#0891B2]/40 rounded-full blur-xl"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">Píldoras IA</h3>
-                        <p className="text-sm text-gray-400">Soluciones PYME</p>
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Píldoras IA</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Soluciones PYME</p>
                     </div>
                 </div>
                 
@@ -100,7 +100,7 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Image Area */}
-            <div className="relative mx-6 mb-6 rounded-2xl overflow-hidden" style={{ height: '350px' }}>
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <img 
                     src="/assets/images/productos/pildorasIA.png" 
                     alt="Servicios" 
@@ -110,7 +110,7 @@ const PildorasModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-1 sm:gap-2 md:gap-3 px-3 sm:px-6 pb-6 items-center">
+            <div className="grid grid-cols-3 gap-1 lg:gap-3 px-3 lg:px-6 pb-3 lg:pb-6 items-center">
                 <div className="text-center min-w-0 px-0.5">
                     <p className="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-bold text-white mb-0.5 leading-tight">SUSCRIPCIÓN</p>
                     <p className="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-bold text-white leading-tight">MENSUAL</p>

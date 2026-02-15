@@ -37,7 +37,6 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
-        height: '350px',
         borderColor: isHovered ? '#4881EB' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(72, 129, 235, 0.5), inset 0 0 20px rgba(72, 129, 235, 0.1)' : 'none'
     }), [isHovered]);
@@ -48,10 +47,10 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="relative w-16 h-16">
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-camera">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
+                <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float-camera">
                             <img 
                                 src="/assets/images/camaraSeg.png" 
                                 alt="Guard-IA Cámara" 
@@ -63,15 +62,15 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
                             />
                         </div>
                         
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#1230C4]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#4881EB]/40 to-[#1230C4]/40 rounded-full blur-xl"></div>
                         <div className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse-slow"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">
                             SW Guard-<span className="text-[#00BFA5]">IA</span>
                         </h3>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">
                             <span className="text-[#00BFA5]">IA</span> en tus mismas cámaras
                         </p>
                     </div>
@@ -120,7 +119,7 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
 
             {/* Video Area */}
             <div 
-                className="relative mx-6 mb-6 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden border-2 h-[180px] lg:h-[350px] transition-[border-color,box-shadow] duration-300" 
                 style={videoContainerStyle}
             >
                 {expandedCamera ? (
@@ -199,18 +198,18 @@ const GuardIAModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-4 sm:pb-6 gap-3 sm:gap-4">
+            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-3 lg:pb-6 gap-3 sm:gap-4">
                 <div className="text-center flex-1 min-w-[100px]">
                     <p className="text-xl sm:text-2xl font-bold text-white mb-1">200+</p>
-                    <p className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">Eventos</p>
+                    <p className="text-xs sm:text-[9px] lg:text-sm text-gray-400 leading-tight whitespace-nowrap">Eventos</p>
                 </div>
                 <div className="text-center flex-1 min-w-[100px]">
                     <p className="text-lg sm:text-xl font-bold text-[#4881EB] mb-1 leading-tight break-words">1000 Cámaras</p>
-                    <p className="text-xs sm:text-sm text-gray-400 leading-tight whitespace-nowrap">Un Solo Operador</p>
+                    <p className="text-xs sm:text-[9px] lg:text-sm text-gray-400 leading-tight leading-tight whitespace-nowrap">Un Solo Operador</p>
                 </div>
                 <div className="text-center flex-1 min-w-[100px]">
-                    <p className="text-lg sm:text-xl font-bold text-white mb-1 leading-tight break-words">Analítica Avanzada</p>
-                    <p className="text-xs sm:text-sm text-gray-400 leading-tight">Forensia Con <span className="text-[#00BFA5] font-bold">IA</span></p>
+                    <p className="text-lg sm:text-sm lg:text-xl font-bold text-white leading-tight mb-1 leading-tight break-words">Analítica Avanzada</p>
+                    <p className="text-xs sm:text-[9px] lg:text-sm text-gray-400 leading-tight leading-tight">Forensia Con <span className="text-[#00BFA5] font-bold">IA</span></p>
                 </div>
             </div>
 

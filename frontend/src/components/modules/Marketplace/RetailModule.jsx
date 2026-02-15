@@ -3,6 +3,7 @@ import { useState, useMemo, useCallback } from 'react'
 const RetailModule = ({ hoveredModule, moduleId }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [alertsExpanded, setAlertsExpanded] = useState(false);
     
     // Estado para alerta (siempre activo para demostración)
     const alertActive = true;
@@ -32,7 +33,6 @@ const RetailModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
-        height: '350px',
         borderColor: isHovered ? '#DC2626' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(220, 38, 38, 0.5), inset 0 0 20px rgba(220, 38, 38, 0.1)' : 'none'
     }), [isHovered]);
@@ -43,16 +43,16 @@ const RetailModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
                 <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-2.5">
-                        <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="rounded-xl bg-gradient-to-br from-[#DC2626] to-[#991B1B] flex items-center justify-center p-1.5 lg:p-2.5">
+                        <svg className="w-5 h-5 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">Retail Inteligente</h3>
-                        <p className="text-sm text-gray-400">Detección de Intrusos con IA</p>
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Retail Inteligente</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Detección de Intrusos con IA</p>
                     </div>
                 </div>
                 
@@ -99,84 +99,108 @@ const RetailModule = ({ hoveredModule, moduleId }) => {
 
             {/* Video Area */}
             <div 
-                className="relative mx-4 sm:mx-6 mb-4 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300" 
+                className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden border-2 transition-[border-color,box-shadow] duration-300 h-[180px] lg:h-[350px]" 
                 style={videoContainerStyle}
             >
                 <video autoPlay muted loop playsInline preload="metadata" className="w-full h-full object-cover">
                     <source src="/assets/images/productos/camara2.mp4" type="video/mp4" />
                 </video>
 
-                {/* Overlay de detección - Top */}
-                <div className="absolute top-3 left-2 sm:left-3 flex flex-col gap-1.5 sm:gap-2">
-                    <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 max-w-[90%] sm:max-w-full">
-                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                        </svg>
-                        <div className="min-w-0">
-                            <p className="text-white font-semibold text-[10px] sm:text-xs truncate">Cámara 2 - Supermercado</p>
-                            <p className="text-gray-300 text-[9px] sm:text-[10px] truncate">Pasillo Central</p>
+                {/* Overlays - Ocultos en mobile por defecto, siempre visibles en desktop */}
+                <div className={`${alertsExpanded ? 'block' : 'hidden'} lg:block`}>
+                    {/* Overlay de detección - Top */}
+                    <div className="absolute top-3 left-2 sm:left-3 flex flex-col gap-1.5 sm:gap-2">
+                        <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 max-w-[90%] sm:max-w-full">
+                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                            </svg>
+                            <div className="min-w-0">
+                                <p className="text-white font-semibold text-[8px] lg:text-xs truncate">Cámara 2 - Supermercado</p>
+                                <p className="text-gray-300 text-[7px] lg:text-[10px] truncate">Pasillo Central</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Alerta de intrusos - Top Right */}
-                <div className="absolute top-3 right-2 sm:right-3 flex flex-col gap-1.5 sm:gap-2 items-end">
-                    {alertActive && (
-                        <>
-                            <div className="px-2 sm:px-4 py-1.5 sm:py-2 bg-red-600/95 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 border border-red-400 max-w-[90%] sm:max-w-full">
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
-                                </svg>
-                                <div className="min-w-0">
-                                    <p className="text-white font-bold text-[10px] sm:text-sm truncate">⚠️ ALERTA CRÍTICA</p>
-                                    <p className="text-red-100 text-[9px] sm:text-xs truncate">{detectedIntruders} Intrusos Detectados</p>
+                    {/* Alerta de intrusos - Top Right */}
+                    <div className="absolute top-3 right-2 sm:right-3 flex flex-col gap-1.5 sm:gap-2 items-end">
+                        {alertActive && (
+                            <>
+                                <div className="px-2 sm:px-4 py-1.5 sm:py-2 bg-red-600/95 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 border border-red-400 max-w-[90%] sm:max-w-full">
+                                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
+                                    </svg>
+                                    <div className="min-w-0">
+                                        <p className="text-white font-bold text-[10px] sm:text-sm truncate">⚠️ ALERTA CRÍTICA</p>
+                                        <p className="text-red-100 text-[9px] sm:text-xs truncate">{detectedIntruders} Intrusos Detectados</p>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-green-600/90 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 max-w-[80%] sm:max-w-full">
-                                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
-                                <span className="text-[10px] sm:text-xs text-white font-semibold truncate">Autoridades Notificadas</span>
-                            </div>
-                        </>
-                    )}
-                </div>
+                                
+                                <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-green-600/90 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 max-w-[80%] sm:max-w-full">
+                                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                    <span className="text-[8px] lg:text-xs text-white font-semibold truncate">Autoridades Notificadas</span>
+                                </div>
+                            </>
+                        )}
+                    </div>
 
-                {/* Indicadores - Bottom */}
-                <div className="absolute bottom-3 left-2 sm:left-3 right-2 sm:right-3 flex flex-col sm:flex-row justify-between items-stretch sm:items-end gap-2 sm:gap-0">
-                    <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 min-w-0">
-                        <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg min-w-0">
-                            <p className="text-[9px] sm:text-[10px] text-gray-400 truncate">Última actualización</p>
-                            <p className="text-[10px] sm:text-xs text-white font-mono truncate">
-                                {new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-                            </p>
+                    {/* Indicadores - Bottom */}
+                    <div className="absolute bottom-3 left-2 sm:left-3 right-2 sm:right-3 flex flex-col sm:flex-row justify-between items-stretch sm:items-end gap-2 sm:gap-0">
+                        <div className="flex flex-col gap-1.5 sm:gap-2 flex-1 min-w-0">
+                            <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg min-w-0">
+                                <p className="text-[7px] lg:text-[10px] text-gray-400 truncate">Última actualización</p>
+                                <p className="text-[8px] lg:text-xs text-white font-mono truncate">
+                                    {new Date().toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start min-w-0">
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-red-500 animate-pulse-slow flex-shrink-0"></div>
+                            <span className="text-[8px] lg:text-xs text-white font-bold truncate">GRABANDO</span>
                         </div>
                     </div>
-
-                    <div className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/70 backdrop-blur-sm rounded-lg flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start min-w-0">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-red-500 animate-pulse-slow flex-shrink-0"></div>
-                        <span className="text-[10px] sm:text-xs text-white font-bold truncate">GRABANDO</span>
-                    </div>
                 </div>
+
+                {/* Botón para ver alertas - Solo mobile */}
+                <button
+                    onClick={() => setAlertsExpanded(!alertsExpanded)}
+                    className="lg:hidden absolute bottom-2 left-1/2 -translate-x-1/2 bg-red-600/90 hover:bg-red-700/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 transition-colors border border-red-400/50 shadow-lg"
+                >
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
+                    </svg>
+                    <span className="text-white font-bold text-[10px]">
+                        {alertsExpanded ? 'Ocultar Alertas' : 'Ver Alertas'}
+                    </span>
+                    <svg 
+                        className={`w-3 h-3 text-white transition-transform ${alertsExpanded ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-4 sm:pb-6 gap-3 sm:gap-4">
-                <div className="text-center flex-1 min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
+            <div className="flex flex-wrap justify-between items-center px-4 sm:px-6 pb-3 lg:pb-6 gap-3 sm:gap-4">
+                <div className="text-center flex-1 min-w-[55px] lg:min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
                     <p className="text-base sm:text-lg font-bold text-red-500 mb-0.5 sm:mb-1 hover:text-white transition-colors cursor-default truncate">
                         {alertActive ? '⚠️ Activa' : '✓ Normal'}
                     </p>
                     <p className="text-xs text-gray-400 hover:text-white transition-colors cursor-default truncate">Estado</p>
                 </div>
 
-                <div className="text-center flex-1 min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
+                <div className="text-center flex-1 min-w-[55px] lg:min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
                     <p className="text-base sm:text-lg font-bold text-[#9333EA] mb-0.5 sm:mb-1 hover:text-white transition-colors cursor-default truncate">IA Activa</p>
                     <p className="text-xs text-gray-400 hover:text-white transition-colors cursor-default truncate">Detección</p>
                 </div>
 
-                <div className="text-center flex-1 min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-2 sm:p-3">
+                <div className="text-center flex-1 min-w-[55px] lg:min-w-[70px] bg-[#1A1A2E]/30 rounded-xl p-1.5 lg:p-3">
                     <p className="text-base sm:text-lg font-bold text-[#00BFA5] mb-0.5 sm:mb-1 hover:text-white transition-colors cursor-default truncate">Tiempo Real</p>
                     <p className="text-xs text-gray-400 hover:text-white transition-colors cursor-default truncate">Respuesta</p>
                 </div>

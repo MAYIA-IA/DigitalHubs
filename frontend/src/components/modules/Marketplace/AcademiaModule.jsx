@@ -36,33 +36,6 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
         { titulo: "Comunicación Efectiva en Equipo", nivel: "INTERMEDIO", horas: "10 HORAS", desc: "Fortalece comunicación en reuniones y transmisión de información" },
         { titulo: "Priorización y Delegación", nivel: "INTERMEDIO", horas: "10 HORAS", desc: "Estrategias para priorizar y delegar efectivamente" },
         { titulo: "IA para Gerentes", nivel: "AVANZADO", horas: "30 HORAS", desc: "Acelera adopción de IA: fundamentos, ROI y gobernanza" },
-        { titulo: "Gestión del Cambio", nivel: "AVANZADO", horas: "15 HORAS", desc: "Reduce resistencia y fomenta innovación en procesos" },
-        { titulo: "Toma de Decisiones Estratégicas", nivel: "AVANZADO", horas: "6 HORAS", desc: "Decisiones basadas en datos alineadas al negocio" },
-        { titulo: "Optimización de Procesos", nivel: "AVANZADO", horas: "12 HORAS", desc: "Mejora desempeño y eficiencia de equipos" },
-        { titulo: "Desarrollo de Talento Humano", nivel: "AVANZADO", horas: "15 HORAS", desc: "Gestión de talento, cultura y contratación" },
-        { titulo: "Programación Asistida por IA", nivel: "INTERMEDIO", horas: "20 HORAS", desc: "Código, pruebas y optimización con agentes de IA" },
-        { titulo: "Django REST Framework", nivel: "AVANZADO", horas: "40 HORAS", desc: "Diseña APIs robustas con autenticación" },
-        { titulo: "Python Fundamentos", nivel: "PRINCIPIANTE", horas: "30 HORAS", desc: "Sintaxis, bucles, funciones y proyectos reales" },
-        { titulo: "Django Web Development", nivel: "INTERMEDIO", horas: "20 HORAS", desc: "Aplicaciones dinámicas y lógica de negocios" },
-        { titulo: "Docker para Python", nivel: "INTERMEDIO", horas: "10 HORAS", desc: "Contenerización y orquestación con Docker" },
-        { titulo: "Fundamentos de LLMs", nivel: "AVANZADO", horas: "30 HORAS", desc: "Prompting, RAG y LLMs de código abierto" },
-        { titulo: "Flask Web Apps", nivel: "INTERMEDIO", horas: "16 HORAS", desc: "Framework Flask y construcción de API REST" },
-        { titulo: "SQL Básico", nivel: "PRINCIPIANTE", horas: "30 HORAS", desc: "Gestión de bases de datos y consultas" },
-        { titulo: "SQL Avanzado", nivel: "AVANZADO", horas: "30 HORAS", desc: "Análisis complejo y métricas de negocio" },
-        { titulo: "Machine Learning Fundamentos", nivel: "INTERMEDIO", horas: "40 HORAS", desc: "Modelos predictivos con Scikit-learn" },
-        { titulo: "Computer Vision", nivel: "AVANZADO", horas: "40 HORAS", desc: "Clasificación de imágenes con redes neuronales" },
-        { titulo: "Tableau Visualización", nivel: "INTERMEDIO", horas: "25 HORAS", desc: "Dashboards e informes interactivos" },
-        { titulo: "Data Wrangling", nivel: "INTERMEDIO", horas: "25 HORAS", desc: "Limpieza y transformación de datos" },
-        { titulo: "Álgebra Lineal", nivel: "AVANZADO", horas: "40 HORAS", desc: "Fundamentos para ciencia de datos" },
-        { titulo: "ML para Textos", nivel: "AVANZADO", horas: "40 HORAS", desc: "Análisis de sentimientos y BERT" },
-        { titulo: "ML para Negocios", nivel: "AVANZADO", horas: "40 HORAS", desc: "Aplicación de ML a problemas empresariales" },
-        { titulo: "Métodos Numéricos en ML", nivel: "AVANZADO", horas: "30 HORAS", desc: "Descenso por gradiente y boosting" },
-        { titulo: "Habilidades Blandas", nivel: "PRINCIPIANTE", horas: "2.5 HORAS", desc: "Pensamiento crítico y comunicación" },
-        { titulo: "Análisis Estadístico", nivel: "INTERMEDIO", horas: "40 HORAS", desc: "Métodos estadísticos y prueba de hipótesis" },
-        { titulo: "Aprendizaje Supervisado", nivel: "AVANZADO", horas: "40 HORAS", desc: "Optimización de hiperparámetros y métricas" },
-        { titulo: "Python para Análisis", nivel: "PRINCIPIANTE", horas: "32 HORAS", desc: "Variables, bucles, Pandas y preprocesamiento" },
-        { titulo: "Series Temporales", nivel: "AVANZADO", horas: "30 HORAS", desc: "Tendencias, estacionalidad y pronósticos" },
-        { titulo: "Aprendizaje No Supervisado", nivel: "AVANZADO", horas: "30 HORAS", desc: "K-means y detección de anomalías" }
     ];
     
     return (
@@ -71,10 +44,10 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
             style={containerStyle}
         >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="relative w-16 h-16">
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4">
+                <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float">
                             <img 
                                 src="/assets/images/astronauta.png" 
                                 alt="Academia Astronauta" 
@@ -86,12 +59,12 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                             />
                         </div>
                         
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#00913f]/40 to-[#0891B2]/40 rounded-full blur-xl"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#00913f]/40 to-[#14B8A6]/40 rounded-full blur-xl"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">Academia</h3>
-                        <p className="text-sm text-gray-400">Acelera Adopción de IA</p>
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Academia</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Capacitación IA</p>
                     </div>
                 </div>
                 
@@ -101,7 +74,7 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                         className="text-gray-400 hover:text-white transition-colors"
                         aria-label="Abrir menú"
                     >
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 20 20">
                             <circle cx="10" cy="5" r="1.5"/>
                             <circle cx="10" cy="10" r="1.5"/>
                             <circle cx="10" cy="15" r="1.5"/>
@@ -136,88 +109,61 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                 </div>
             </div>
 
-            {/* Video y Contenido */}
-            <div className="relative mx-6 mb-6 rounded-2xl overflow-visible" style={{ height: '350px' }}>
+            {/* Content Area - Mobile optimized */}
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <video 
-                    autoPlay
-                    loop
-                    muted
+                    autoPlay 
+                    loop 
+                    muted 
                     playsInline
                     preload="metadata"
-                    className="w-full h-full object-cover rounded-2xl"
+                    className="w-full h-full object-cover"
                 >
                     <source src="/assets/images/productos/astronautaSaludo.mp4" type="video/mp4" />
                 </video>
                 
-                <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/60 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 
-                {/* Contenido en la derecha */}
-                <div className="absolute top-0 right-0 h-full w-full md:w-7/12 lg:w-1/2 p-3 sm:p-4 flex flex-col justify-center space-y-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    <p className="text-[#7FFF00] font-bold text-sm sm:text-base md:text-lg text-right leading-tight drop-shadow-[0_2px_10px_rgba(127,255,0,0.8)] pr-2">
-                        Lideramos en conocimiento<br/>para formación en IA
-                    </p>
-                    
-                    <div className="space-y-1">
-                        {['FORMACIÓN EN IA PARA\nEMPRESAS', 'FORMACIÓN EN IA PARA\nINDIVIDUOS', 'ALIANZAS CON ACADEMIA\nY GOBIERNOS'].map((text, idx) => (
-                            <div key={idx} className="bg-gradient-to-r from-[#ADFF2F] to-[#7FFF00] py-1 px-2 rounded-md shadow-lg flex items-center justify-between">
-                                <p className="text-black font-bold text-[9px] sm:text-[10px] leading-tight whitespace-pre-line">{text}</p>
-                                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full flex-shrink-0"></div>
+                {/* Botón para ver cursos - Solo mobile */}
+                <button
+                    onClick={toggleCursos}
+                    className="lg:hidden absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#00913f] hover:bg-[#00a649] text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg transition-colors flex items-center gap-2"
+                >
+                    <span>Ver Cursos</span>
+                    <svg className={`w-4 h-4 transition-transform ${cursosOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
+
+            {/* Cursos expandibles - Solo mobile */}
+            {cursosOpen && (
+                <div className="lg:hidden mx-4 mb-4 bg-[#1A1A2E]/95 backdrop-blur-sm rounded-xl p-3 max-h-[200px] overflow-y-auto">
+                    <div className="space-y-2">
+                        {cursos.map((curso, idx) => (
+                            <div key={idx} className="bg-[#0A0A14]/80 rounded-lg p-2 border border-[#00913f]/20">
+                                <h4 className="text-white font-bold text-[10px] mb-0.5">{curso.titulo}</h4>
+                                <div className="flex gap-2 mb-1">
+                                    <span className="text-[8px] text-[#00913f] font-semibold">{curso.nivel}</span>
+                                    <span className="text-[8px] text-gray-400">{curso.horas}</span>
+                                </div>
+                                <p className="text-[9px] text-gray-400 leading-tight">{curso.desc}</p>
                             </div>
                         ))}
                     </div>
-                    
-                    {/* Botón de cursos */}
-                    <div className="relative">
-                        <button 
-                            onClick={toggleCursos}
-                            className="w-full bg-gradient-to-r from-[#00913f] to-[#0891B2] text-white py-1 px-2 rounded-md shadow-xl text-[10px] sm:text-xs font-bold hover:scale-105 transition-transform will-change-transform"
-                        >
-                            VER 32 CURSOS IA
-                        </button>
-                        
-                        {cursosOpen && (
-                            <div className="absolute right-0 top-full mt-2 w-full sm:w-80 max-h-72 sm:max-h-96 overflow-y-auto bg-[#1A1A2E] rounded-lg shadow-2xl border border-[#00913f]/30 z-50"
-                                style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                                <div className="p-3 sm:p-4 border-b border-[#00913f]/20 sticky top-0 bg-[#1A1A2E]">
-                                    <h4 className="text-white font-bold text-xs sm:text-sm mb-1">Academia Mayia</h4>
-                                    <p className="text-gray-400 text-[10px] sm:text-xs">32 cursos de IA para empresas y equipos técnicos</p>
-                                </div>
-                                
-                                <div className="p-2 space-y-2">
-                                    {cursos.map((curso, index) => (
-                                        <div key={index} className="bg-[#0A0A14] p-2 sm:p-3 rounded-lg border border-[#00913f]/20 hover:border-[#00913f]/50 transition-colors cursor-pointer">
-                                            <div className="flex items-start justify-between mb-1">
-                                                <h5 className="text-white font-semibold text-[10px] sm:text-xs">{curso.titulo}</h5>
-                                                <span className={`text-[8px] px-1.5 py-0.5 rounded flex-shrink-0 ml-1 ${
-                                                    curso.nivel === 'PRINCIPIANTE' ? 'bg-green-500/20 text-green-400' :
-                                                    curso.nivel === 'INTERMEDIO' ? 'bg-yellow-500/20 text-yellow-400' :
-                                                    'bg-red-500/20 text-red-400'
-                                                }`}>{curso.nivel}</span>
-                                            </div>
-                                            <p className="text-[9px] sm:text-[10px] text-gray-400 mb-1 leading-tight">{curso.desc}</p>
-                                            <p className="text-[9px] sm:text-[10px] text-[#00913f] font-semibold">{curso.horas}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-2 px-4 sm:px-6 pb-6 items-center">
+            <div className="grid grid-cols-3 gap-1 lg:gap-2 px-3 lg:px-6 pb-3 lg:pb-6">
                 <div className="text-center min-w-0">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mb-0.5 leading-tight">IA PARA</p>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">NEGOCIOS</p>
+                    <p className="text-[9px] lg:text-sm font-bold text-white mb-0.5 lg:mb-1 leading-tight">+30 CURSOS</p>
                 </div>
                 <div className="text-center min-w-0">
-                    <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#14B8A6] mb-1">32</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400 uppercase tracking-wide">Cursos</p>
+                    <p className="text-[9px] lg:text-sm font-bold text-[#14B8A6] mb-0.5 lg:mb-1 leading-tight">100% ONLINE</p>
                 </div>
                 <div className="text-center min-w-0">
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white mb-0.5 leading-tight">IA PARA</p>
-                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white leading-tight">EQUIPOS TECH</p>
+                    <p className="text-[9px] lg:text-sm font-bold text-[#00913f] mb-0.5 lg:mb-1 leading-tight">CERTIFICACIÓN</p>
                 </div>
             </div>
 
@@ -225,8 +171,8 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
             {showInfoModal && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4" onClick={closeModal}>
                     <div className="bg-[#1A1A2E] rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto border-2 border-[#00913f]/30 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-                        <div className="sticky top-0 bg-gradient-to-r from-[#00913f] to-[#0891B2] p-6 flex items-center justify-between z-10">
-                            <h2 className="text-2xl font-bold text-white">Academia Mayia</h2>
+                        <div className="sticky top-0 bg-gradient-to-r from-[#00913f] to-[#14B8A6] p-6 flex items-center justify-between z-10">
+                            <h2 className="text-2xl font-bold text-white">Academia IA</h2>
                             <button onClick={closeModal} className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors" aria-label="Cerrar">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -234,10 +180,10 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                             </button>
                         </div>
                         <div className="p-6 space-y-4">
-                            <p className="text-gray-300">32 cursos especializados en Inteligencia Artificial para empresas y equipos técnicos.</p>
+                            <p className="text-gray-300">Capacitación especializada en IA con más de 30 cursos certificados.</p>
                             <button 
                                 onClick={() => { closeModal(); handleAgendarCita(); }}
-                                className="w-full bg-gradient-to-r from-[#00913f] to-[#0891B2] text-white font-semibold py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 will-change-transform"
+                                className="w-full bg-gradient-to-r from-[#00913f] to-[#14B8A6] text-white font-semibold py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 will-change-transform"
                             >
                                 Agendar Cotización
                             </button>
@@ -248,12 +194,11 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
 
             <style jsx>{`
                 @keyframes float {
-                    0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
-                    50% { transform: translateY(-10px) scale(1.05) rotate(2deg); }
+                    0%, 100% { transform: translateY(0px) scale(1); }
+                    50% { transform: translateY(-10px) scale(1.05); }
                 }
-
                 .animate-float {
-                    animation: float 4s ease-in-out infinite;
+                    animation: float 3s ease-in-out infinite;
                 }
             `}</style>
         </div>

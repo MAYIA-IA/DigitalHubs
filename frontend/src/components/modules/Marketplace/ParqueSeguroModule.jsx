@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [detectionsExpanded, setDetectionsExpanded] = useState(false);
     const alertsRef = useRef([]);
     const scanLineRef = useRef(null);
     
@@ -86,12 +87,12 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
                 overflow: 'visible'
             }}>
             {/* Header con botones actualizados */}
-            <div className="flex items-center justify-between p-6 pb-4 relative z-20">
+            <div className="flex items-center justify-between p-3 lg:p-6 pb-2 lg:pb-4 relative z-20">
                 <div className="flex items-center gap-3">
                     {/* Contenedor del icono familia con efecto 3D flotante */}
-                    <div className="relative w-16 h-16">
+                    <div className="relative w-10 h-10 lg:w-16 lg:h-16">
                         {/* Icono principal - sale del recuadro */}
-                        <div className="absolute -top-2 -left-2 w-20 h-20 animate-float-family">
+                        <div className="absolute -top-2 -left-2 w-14 h-14 lg:w-20 lg:h-20 animate-float-family">
                             <img 
                                 src="/assets/images/familia.png" 
                                 alt="Parque Seguro" 
@@ -103,12 +104,12 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
                         </div>
                         
                         {/* Efecto de resplandor detrás del icono */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-[#14B8A6]/40 to-[#0891B2]/40 rounded-full blur-xl animate-pulse"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#14B8A6]/40 to-[#0891B2]/40 rounded-full blur-xl animate-pulse"></div>
                     </div>
                     
-                    <div className="ml-6">
-                        <h3 className="text-xl font-bold text-white">Parque Seguro</h3>
-                        <p className="text-sm text-gray-400">Monitoreo Inteligente</p>
+                    <div className="ml-2 lg:ml-6">
+                        <h3 className="text-sm lg:text-xl font-bold text-white leading-tight">Parque Seguro</h3>
+                        <p className="text-[9px] lg:text-sm text-gray-400 leading-tight">Monitoreo Inteligente</p>
                     </div>
                 </div>
                 
@@ -181,95 +182,112 @@ const ParqueSeguroModule = ({ hoveredModule, moduleId }) => {
 
                 {/* Info Panel - Estilo Neón como la imagen */}
                 <div className="flex-1 flex flex-col justify-center gap-1.5 sm:gap-2 bg-black/40 rounded-2xl p-2 sm:p-3">
-                    {/* AGLOMERACIÓN - Verde neón */}
-                    <div 
-                        ref={el => alertsRef.current[0] = el}
-                        className="neon-box neon-green"
-                    >
-                        <p className="neon-text-green">AGLOMERACIÓN</p>
-                    </div>
-
-                    {/* ALERTA MERODEOS - Rojo neón */}
-                    <div 
-                        ref={el => alertsRef.current[1] = el}
-                        className="neon-box neon-red"
-                    >
-                        <div className="flex items-center justify-center gap-1.5">
-                            <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                            <p className="neon-text-red">ALERTA MERODEOS</p>
-                        </div>
-                    </div>
-
-                    {/* Contador de personas - Tarjetas neón */}
-                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 my-0.5 sm:my-1">
-                        {/* MUJERES - Rosa neón */}
+                    {/* Detecciones - Ocultas en mobile hasta expandir, siempre visibles en desktop */}
+                    <div className={`space-y-1.5 sm:space-y-2 ${detectionsExpanded ? 'block' : 'hidden'} lg:block`}>
+                        {/* AGLOMERACIÓN - Verde neón */}
                         <div 
-                            ref={el => alertsRef.current[2] = el}
-                            className="neon-card neon-pink"
+                            ref={el => alertsRef.current[0] = el}
+                            className="neon-box neon-green"
                         >
-                            <p className="neon-label-pink">MUJERES</p>
-                            <p className="neon-number-pink">1</p>
+                            <p className="neon-text-green">AGLOMERACIÓN</p>
                         </div>
 
-                        {/* HOMBRES - Azul neón */}
+                        {/* ALERTA MERODEOS - Rojo neón */}
                         <div 
-                            ref={el => alertsRef.current[3] = el}
-                            className="neon-card neon-blue"
+                            ref={el => alertsRef.current[1] = el}
+                            className="neon-box neon-red"
                         >
-                            <p className="neon-label-blue">HOMBRES</p>
-                            <p className="neon-number-blue">6</p>
+                            <div className="flex items-center justify-center gap-1.5">
+                                <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <p className="neon-text-red">ALERTA MERODEOS</p>
+                            </div>
                         </div>
 
-                        {/* NIÑOS - Verde neón */}
+                        {/* Contador de personas - Tarjetas neón */}
+                        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 my-0.5 sm:my-1">
+                            {/* MUJERES - Rosa neón */}
+                            <div 
+                                ref={el => alertsRef.current[2] = el}
+                                className="neon-card neon-pink"
+                            >
+                                <p className="neon-label-pink">MUJERES</p>
+                                <p className="neon-number-pink">1</p>
+                            </div>
+
+                            {/* HOMBRES - Azul neón */}
+                            <div 
+                                ref={el => alertsRef.current[3] = el}
+                                className="neon-card neon-blue"
+                            >
+                                <p className="neon-label-blue">HOMBRES</p>
+                                <p className="neon-number-blue">6</p>
+                            </div>
+
+                            {/* NIÑOS - Verde neón */}
+                            <div 
+                                ref={el => alertsRef.current[4] = el}
+                                className="neon-card neon-green-card"
+                            >
+                                <p className="neon-label-green">NIÑOS</p>
+                                <p className="neon-number-green">1</p>
+                            </div>
+                        </div>
+
+                        {/* OBJETOS OLVIDADOS - Rojo neón */}
                         <div 
-                            ref={el => alertsRef.current[4] = el}
-                            className="neon-card neon-green-card"
+                            ref={el => alertsRef.current[5] = el}
+                            className="neon-box neon-red"
                         >
-                            <p className="neon-label-green">NIÑOS</p>
-                            <p className="neon-number-green">1</p>
+                            <div className="flex items-center justify-center gap-1.5">
+                                <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                                <p className="neon-text-red">OBJETOS OLVIDADOS</p>
+                            </div>
+                        </div>
+
+                        {/* Info adicional */}
+                        <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-[8px] sm:text-[10px] mt-0.5 sm:mt-1">
+                            <div className="text-gray-400 bg-gray-800/30 rounded px-1.5 py-1 sm:px-2 sm:py-1.5 border border-gray-700/30">
+                                <p className="font-semibold text-gray-300 leading-tight">POSTE</p>
+                                <p className="text-gray-400 leading-tight">GUARDIA</p>
+                                <p className="text-gray-400 leading-tight">INTELIGENTE</p>
+                            </div>
+                            <div className="text-gray-400 bg-gray-800/30 rounded px-1.5 py-1 sm:px-2 sm:py-1.5 border border-gray-700/30">
+                                <p className="font-semibold text-gray-300 leading-tight">Monitoreo</p>
+                                <p className="text-gray-400 leading-tight">En FLAI la nube</p>
+                                <p className="text-gray-400 leading-tight">soberana</p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* OBJETOS OLVIDADOS - Rojo neón */}
-                    <div 
-                        ref={el => alertsRef.current[5] = el}
-                        className="neon-box neon-red"
+                    {/* Botón "Ver Detecciones" - Solo en mobile */}
+                    <button
+                        onClick={() => setDetectionsExpanded(!detectionsExpanded)}
+                        className="lg:hidden w-full bg-[#14B8A6]/20 hover:bg-[#14B8A6]/30 rounded-lg py-2 px-3 flex items-center justify-between transition-colors border border-[#14B8A6]/30"
                     >
-                        <div className="flex items-center justify-center gap-1.5">
-                            <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                            <p className="neon-text-red">OBJETOS OLVIDADOS</p>
-                        </div>
-                    </div>
-
-                    {/* Info adicional */}
-                    <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-[8px] sm:text-[10px] mt-0.5 sm:mt-1">
-                        <div className="text-gray-400 bg-gray-800/30 rounded px-1.5 py-1 sm:px-2 sm:py-1.5 border border-gray-700/30">
-                            <p className="font-semibold text-gray-300 leading-tight">POSTE</p>
-                            <p className="text-gray-400 leading-tight">GUARDIA</p>
-                            <p className="text-gray-400 leading-tight">INTELIGENTE</p>
-                        </div>
-                        <div className="text-gray-400 bg-gray-800/30 rounded px-1.5 py-1 sm:px-2 sm:py-1.5 border border-gray-700/30">
-                            <p className="font-semibold text-gray-300 leading-tight">Monitoreo</p>
-                            <p className="text-gray-400 leading-tight">En FLAI la nube</p>
-                            <p className="text-gray-400 leading-tight">soberana</p>
-                        </div>
-                    </div>
+                        <span className="text-[9px] text-[#14B8A6] font-semibold">
+                            {detectionsExpanded ? 'Ocultar Detecciones' : 'Ver Detecciones'}
+                        </span>
+                        <svg 
+                            className={`w-4 h-4 text-[#14B8A6] transition-transform ${detectionsExpanded ? 'rotate-180' : ''}`} 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
                 </div>
             </div>
 
-            {/* Stats - Bottom section */}
-            <div className="grid grid-cols-3 gap-2 px-4 sm:px-6 pb-6">
-                <div className="text-center min-w-0">
-                    <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">32+</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400">Eventos detectados</p>
+            {/* Stats - Bottom section - Simplificados */}
+            <div className="grid grid-cols-2 gap-2 px-3 lg:px-6 pb-3 lg:pb-6">
+                <div className="text-center min-w-0 bg-[#1A1A2E]/30 rounded-xl p-2 lg:p-3">
+                    <p className="text-lg lg:text-3xl font-bold text-white mb-0.5">32+</p>
+                    <p className="text-[8px] lg:text-xs text-gray-400">Eventos detectados</p>
                 </div>
-                <div className="text-center min-w-0">
-                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-[#14B8A6] mb-1">Analítica</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400">Inteligente en tiempo real</p>
-                </div>
-                <div className="text-center min-w-0">
-                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-[#0891B2] mb-1">Alerta</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400">Automática a autoridades</p>
+                <div className="text-center min-w-0 bg-[#1A1A2E]/30 rounded-xl p-2 lg:p-3">
+                    <p className="text-[9px] lg:text-lg font-bold text-[#14B8A6] mb-0.5">Analítica Inteligente</p>
+                    <p className="text-[8px] lg:text-xs text-gray-400">Tiempo real</p>
                 </div>
             </div>
 
