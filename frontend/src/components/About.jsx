@@ -5,6 +5,8 @@ const About = () => {
     const [hasAnimated, setHasAnimated] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const sectionRef = useRef(null);
+    const backgroundVideoRef = useRef(null);
+    const modalVideoRef = useRef(null);
     
     // Array de imágenes para el carrusel
     const images = [
@@ -48,35 +50,72 @@ const About = () => {
             setCurrentImageIndex((prevIndex) => 
                 prevIndex === images.length - 1 ? 0 : prevIndex + 1
             );
-        }, 2000); // Cambia cada 2 segundos
+        }, 2000);
 
         return () => clearInterval(interval);
     }, [hasAnimated, images.length]);
 
-    // Efecto para cerrar modal con tecla ESC
+    // Efecto para cerrar modal con tecla ESC y manejar videos
     useEffect(() => {
+        if (!isVideoModalOpen) return;
+
         const handleEscape = (e) => {
-            if (e.key === 'Escape' && isVideoModalOpen) {
-                closeVideoModal();
+            if (e.key === 'Escape') {
+                console.log('Cerrando con ESC...');
+                setIsVideoModalOpen(false);
             }
         };
 
-        if (isVideoModalOpen) {
-            window.addEventListener('keydown', handleEscape);
-            document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', handleEscape);
+        document.body.style.overflow = 'hidden';
+        
+        // Pausar video de fondo cuando se abre el modal
+        if (backgroundVideoRef.current) {
+            backgroundVideoRef.current.pause();
         }
+        
+        // Reproducir video del modal después de un pequeño delay
+        const timeoutId = setTimeout(() => {
+            if (modalVideoRef.current) {
+                modalVideoRef.current.play().catch(err => {
+                    console.log('Error playing modal video:', err);
+                });
+            }
+        }, 300);
 
         return () => {
             window.removeEventListener('keydown', handleEscape);
             document.body.style.overflow = 'auto';
+            clearTimeout(timeoutId);
+            
+            // Reanudar video de fondo cuando se cierra el modal
+            if (backgroundVideoRef.current) {
+                backgroundVideoRef.current.play().catch(err => {
+                    console.log('Error playing background video:', err);
+                });
+            }
+            
+            // Limpiar video del modal
+            if (modalVideoRef.current) {
+                modalVideoRef.current.pause();
+                modalVideoRef.current.currentTime = 0;
+            }
         };
     }, [isVideoModalOpen]);
 
-    const openVideoModal = () => {
+    const openVideoModal = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Abriendo modal...');
         setIsVideoModalOpen(true);
     };
 
-    const closeVideoModal = () => {
+    const closeVideoModal = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        console.log('Cerrando modal...');
         setIsVideoModalOpen(false);
     };
 
@@ -177,6 +216,7 @@ const About = () => {
                             }`}
                             style={{ transitionDelay: '300ms' }}>
                                 <video 
+                                    ref={backgroundVideoRef}
                                     src="/assets/images/videoHubYucatan.mp4"
                                     className="w-full h-full object-cover"
                                     autoPlay
@@ -192,6 +232,7 @@ const About = () => {
                                 <div className="absolute bottom-8 left-8 z-10">
                                     <button 
                                         onClick={openVideoModal}
+                                        type="button"
                                         className="group/btn relative px-8 py-4 bg-gradient-to-r from-[#4881EB] to-[#7FD1FF] rounded-full font-bold text-white text-lg tracking-wider uppercase overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#4881EB]/50"
                                     >
                                         <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-pulse"></div>
@@ -226,49 +267,56 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Modal de Video */}
-            {isVideoModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn">
-                    <div 
-                        className="absolute inset-0 bg-black/90 backdrop-blur-md"
-                        onClick={closeVideoModal}
-                    ></div>
+            {/* Modal de Video - SIEMPRE RENDERIZADO */}
+            <div 
+                className={`fixed inset-0 flex items-center justify-center p-4 transition-all duration-300 ${
+                    isVideoModalOpen ? 'z-[9999] opacity-100 visible' : 'z-[-1] opacity-0 invisible'
+                }`}
+                style={{ backgroundColor: isVideoModalOpen ? 'rgba(0, 0, 0, 0.9)' : 'transparent' }}
+            >
+                {/* Backdrop */}
+                <div 
+                    className="absolute inset-0 backdrop-blur-md"
+                    onClick={closeVideoModal}
+                ></div>
+                
+                {/* Contenedor del Video */}
+                <div className={`relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[#4881EB]/30 z-10 transition-transform duration-300 ${
+                    isVideoModalOpen ? 'scale-100' : 'scale-75'
+                }`}>
+                    <video 
+                        ref={modalVideoRef}
+                        src="/assets/images/videoHubYucatan.mp4"
+                        className="w-full h-full object-cover"
+                        controls
+                        playsInline
+                        preload="auto"
+                    />
                     
-                    <div className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[#4881EB]/30 animate-scaleIn">
-                        <video 
-                            src="/assets/images/videoHubYucatan.mp4"
-                            className="w-full h-full object-cover"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            controls
-                        />
-                        
-                        <button 
-                            onClick={closeVideoModal}
-                            className="absolute top-4 right-4 z-20 p-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50"
-                            aria-label="Cerrar"
+                    <button 
+                        onClick={closeVideoModal}
+                        type="button"
+                        className="absolute top-4 right-4 z-20 p-3 bg-gradient-to-br from-red-500 to-red-600 rounded-full hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/50"
+                        aria-label="Cerrar"
+                    >
+                        <svg 
+                            className="w-6 h-6 text-white" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
                         >
-                            <svg 
-                                className="w-6 h-6 text-white" 
-                                fill="none" 
-                                stroke="currentColor" 
-                                viewBox="0 0 24 24"
-                            >
-                                <path 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    strokeWidth={2} 
-                                    d="M6 18L18 6M6 6l12 12" 
-                                />
-                            </svg>
-                        </button>
+                            <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth={2} 
+                                d="M6 18L18 6M6 6l12 12" 
+                            />
+                        </svg>
+                    </button>
 
-                        <div className="absolute inset-0 border-4 border-[#4881EB]/30 rounded-2xl pointer-events-none animate-pulse"></div>
-                    </div>
+                    <div className="absolute inset-0 border-4 border-[#4881EB]/30 rounded-2xl pointer-events-none animate-pulse"></div>
                 </div>
-            )}
+            </div>
 
             <style jsx>{`
                 @keyframes fadeIn {
