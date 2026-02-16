@@ -30,7 +30,7 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
     }), [isHovered]);
     
     const videoContainerStyle = useMemo(() => ({
-        height: window.innerWidth < 768 ? '220px' : 'auto', // Más compacto en mobile
+        height: window.innerWidth < 768 ? '220px' : 'auto',
         borderColor: isHovered ? '#A4D955' : 'transparent',
         boxShadow: isHovered ? '0 0 20px rgba(164, 217, 85, 0.5), inset 0 0 20px rgba(164, 217, 85, 0.1)' : 'none'
     }), [isHovered]);
@@ -46,14 +46,12 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                     await jaguarVideoRef.current.play();
                 }
             } catch (error) {
-                // Silenciar error de autoplay - es esperado en algunos navegadores
                 console.log("Autoplay requiere interacción del usuario");
             }
         };
         
         playVideos();
         
-        // Cleanup
         return () => {
             if (videoRef.current) videoRef.current.pause();
             if (jaguarVideoRef.current) jaguarVideoRef.current.pause();
@@ -146,36 +144,52 @@ const MayiaModule = ({ hoveredModule, moduleId }) => {
                 </video>
             </div>
 
-            {/* Stats - 3 superiores */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 mb-2 md:mb-3">
-                {[
-                    { title: 'FÁBRICA DE IA', subtitle: ['PRIVADA PARA', 'TU EMPRESA'] },
-                    { title: 'CONSULTORÍA IA', subtitle: ['MODELO', 'STRATEGYOPS'] },
-                    { title: 'LABORATORIO IA', subtitle: ['PRUEBAS', 'DE CONCEPTO'] }
-                ].map((stat, idx) => (
-                    <div 
-                        key={idx}
-                        className="bg-gradient-to-br from-[#1A1A2E] to-[#0A0A14] rounded-xl p-2 sm:p-4 border border-[#4881EB]/20 hover:border-[#A4D955]/50 transition-colors duration-300 min-w-0"
-                    >
-                        <p className="text-xs sm:text-sm font-bold text-[#A4D955] mb-1 sm:mb-2 text-center leading-tight">
-                            {stat.title}
-                        </p>
-                        {stat.subtitle.map((line, i) => (
-                            <p key={i} className="text-[10px] sm:text-xs text-gray-300 text-center leading-snug">
-                                {line}
-                            </p>
-                        ))}
-                    </div>
-                ))}
+            {/* Stats - 3 superiores - OPTIMIZADO Y CORREGIDO */}
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3 px-3 sm:px-4 md:px-6 mb-2 md:mb-3">
+                <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0A0A14] rounded-xl p-2 sm:p-3 md:p-4 border border-[#4881EB]/20 hover:border-[#A4D955]/50 transition-colors duration-300 min-w-0">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs font-bold text-[#A4D955] mb-0.5 sm:mb-1 text-center leading-tight">
+                        FÁBRICA IA
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        Privada para
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        tu empresa
+                    </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0A0A14] rounded-xl p-2 sm:p-3 md:p-4 border border-[#4881EB]/20 hover:border-[#A4D955]/50 transition-colors duration-300 min-w-0">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs font-bold text-[#A4D955] mb-0.5 sm:mb-1 text-center leading-tight">
+                        CONSULTORÍA
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        Modelo
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        StrategyOps
+                    </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0A0A14] rounded-xl p-2 sm:p-3 md:p-4 border border-[#4881EB]/20 hover:border-[#A4D955]/50 transition-colors duration-300 min-w-0">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs font-bold text-[#A4D955] mb-0.5 sm:mb-1 text-center leading-tight">
+                        LABORATORIO
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        Pruebas de
+                    </p>
+                    <p className="text-[7px] sm:text-[8px] md:text-[10px] text-gray-300 text-center leading-tight">
+                        concepto
+                    </p>
+                </div>
             </div>
 
             {/* Stat 4 - Horizontal completa */}
             <div className="px-3 sm:px-4 md:px-6 pb-3 md:pb-6">
-                <div className="bg-gradient-to-r from-[#4881EB]/20 via-[#A4D955]/20 to-[#4881EB]/20 rounded-xl p-3 sm:p-5 border-2 border-[#A4D955]/30 hover:border-[#A4D955]/70 transition-colors duration-300">
-                    <p className="text-lg sm:text-2xl md:text-3xl font-bold text-white text-center mb-1 leading-tight">
+                <div className="bg-gradient-to-r from-[#4881EB]/20 via-[#A4D955]/20 to-[#4881EB]/20 rounded-xl p-3 sm:p-4 md:p-5 border-2 border-[#A4D955]/30 hover:border-[#A4D955]/70 transition-colors duration-300">
+                    <p className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-white text-center mb-0.5 sm:mb-1 leading-tight">
                         PLATAFORMAS DE IA
                     </p>
-                    <p className="text-xs sm:text-sm text-gray-300 text-center font-medium">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-300 text-center font-medium leading-tight">
                         PERSONALIZADAS
                     </p>
                 </div>
