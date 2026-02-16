@@ -4,6 +4,7 @@ const About = () => {
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isVideoPreloaded, setIsVideoPreloaded] = useState(false);
     const sectionRef = useRef(null);
     const backgroundVideoRef = useRef(null);
     const modalVideoRef = useRef(null);
@@ -42,6 +43,27 @@ const About = () => {
         };
     }, [hasAnimated]);
 
+    // Precargar el video del modal cuando la sección sea visible
+    useEffect(() => {
+        if (hasAnimated && modalVideoRef.current && !isVideoPreloaded) {
+            // Precargar el video en segundo plano
+            modalVideoRef.current.load();
+            
+            const handleCanPlay = () => {
+                setIsVideoPreloaded(true);
+                console.log('Video precargado y listo');
+            };
+            
+            modalVideoRef.current.addEventListener('canplaythrough', handleCanPlay);
+            
+            return () => {
+                if (modalVideoRef.current) {
+                    modalVideoRef.current.removeEventListener('canplaythrough', handleCanPlay);
+                }
+            };
+        }
+    }, [hasAnimated, isVideoPreloaded]);
+
     // Efecto para el carrusel automático de imágenes
     useEffect(() => {
         if (!hasAnimated) return;
@@ -74,19 +96,17 @@ const About = () => {
             backgroundVideoRef.current.pause();
         }
         
-        // Reproducir video del modal después de un pequeño delay
-        const timeoutId = setTimeout(() => {
-            if (modalVideoRef.current) {
-                modalVideoRef.current.play().catch(err => {
-                    console.log('Error playing modal video:', err);
-                });
-            }
-        }, 300);
+        // Reproducir video del modal
+        if (modalVideoRef.current) {
+            // Si ya está precargado, reproducir inmediatamente
+            modalVideoRef.current.play().catch(err => {
+                console.log('Error playing modal video:', err);
+            });
+        }
 
         return () => {
             window.removeEventListener('keydown', handleEscape);
             document.body.style.overflow = 'auto';
-            clearTimeout(timeoutId);
             
             // Reanudar video de fondo cuando se cierra el modal
             if (backgroundVideoRef.current) {
@@ -95,10 +115,9 @@ const About = () => {
                 });
             }
             
-            // Limpiar video del modal
+            // Pausar video del modal pero NO resetear para mantener el buffer
             if (modalVideoRef.current) {
                 modalVideoRef.current.pause();
-                modalVideoRef.current.currentTime = 0;
             }
         };
     }, [isVideoModalOpen]);
@@ -106,7 +125,7 @@ const About = () => {
     const openVideoModal = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Abriendo modal...');
+        console.log('Abriendo modal...', isVideoPreloaded ? '(Video precargado)' : '(Cargando video...)');
         setIsVideoModalOpen(true);
     };
 
@@ -284,6 +303,16 @@ const About = () => {
                 <div className={`relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[#4881EB]/30 z-10 transition-transform duration-300 ${
                     isVideoModalOpen ? 'scale-100' : 'scale-75'
                 }`}>
+                    {/* Indicador de carga */}
+                    {!isVideoPreloaded && isVideoModalOpen && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
+                            <div className="text-center">
+                                <div className="w-16 h-16 border-4 border-[#4881EB] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                                <p className="text-white text-lg">Cargando video...</p>
+                            </div>
+                        </div>
+                    )}
+                    
                     <video 
                         ref={modalVideoRef}
                         src="/assets/images/videoHubYucatan.mp4"
