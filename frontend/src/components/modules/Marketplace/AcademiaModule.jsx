@@ -4,6 +4,7 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [cursosOpen, setCursosOpen] = useState(false);
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
     
     const calendlyUrl = "https://calendly.com/tu-usuario/cotizacion";
     
@@ -72,6 +73,24 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
         
         // Habilidades Blandas
         { titulo: "Habilidades Blandas", nivel: "PRINCIPIANTE", horas: "15h", categoria: "Soft Skills" },
+    ];
+
+    const opciones = [
+        { 
+            id: 1, 
+            titulo: "FORMACIÓN EN IA PARA EMPRESAS",
+            descripcion: "Capacitación especializada para equipos corporativos"
+        },
+        { 
+            id: 2, 
+            titulo: "FORMACIÓN EN IA PARA INDIVIDUOS",
+            descripcion: "Cursos personalizados para profesionales"
+        },
+        { 
+            id: 3, 
+            titulo: "ALIANZAS CON ACADEMIA Y GOBIERNOS",
+            descripcion: "Colaboraciones institucionales y programas especiales"
+        }
     ];
 
     const getNivelColor = (nivel) => {
@@ -154,7 +173,7 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                 </div>
             </div>
 
-            {/* Content Area */}
+            {/* Content Area - Video con botones superpuestos */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <video 
                     autoPlay 
@@ -169,19 +188,49 @@ const AcademiaModule = ({ hoveredModule, moduleId }) => {
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 
-                {/* Botón para ver cursos - Responsive */}
+                {/* Botón para ver cursos */}
                 <button
                     onClick={toggleCursos}
-                    className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#00913f] to-[#14B8A6] hover:from-[#00a649] hover:to-[#16CCBB] text-white px-6 py-2.5 lg:px-8 lg:py-3 rounded-full text-xs lg:text-sm font-bold shadow-lg transition-all duration-300 flex items-center gap-2 hover:scale-105"
+                    className="absolute bottom-3 left-3 lg:left-1/2 lg:-translate-x-1/2 bg-gradient-to-r from-[#00913f] to-[#14B8A6] hover:from-[#00a649] hover:to-[#16CCBB] text-white px-4 py-2 lg:px-8 lg:py-3 rounded-full text-[10px] lg:text-sm font-bold shadow-lg transition-all duration-300 flex items-center gap-1.5 lg:gap-2 hover:scale-105 z-10"
                 >
-                    <svg className="w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
-                    <span>{cursosOpen ? 'Ocultar' : 'Ver'} 32 Cursos</span>
-                    <svg className={`w-4 h-4 lg:w-5 lg:h-5 transition-transform duration-300 ${cursosOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="whitespace-nowrap">{cursosOpen ? 'Ocultar' : 'Ver'} 32 Cursos</span>
+                    <svg className={`w-3.5 h-3.5 lg:w-5 lg:h-5 transition-transform duration-300 ${cursosOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
+
+                {/* Options Section - Superpuestos al video - RESPONSIVE */}
+                <div className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 w-[140px] lg:w-[260px] z-10 flex flex-col gap-1.5 lg:gap-2">
+                    {opciones.map((opcion) => (
+                        <button
+                            key={opcion.id}
+                            onClick={() => setSelectedOption(opcion.id)}
+                            className={`relative bg-gradient-to-r from-[#b4ff6f] to-[#d4ff9f] hover:from-[#a0ff4f] hover:to-[#c0ff8f] rounded-lg lg:rounded-xl p-2 lg:p-3 transition-all duration-300 group overflow-hidden shadow-lg ${
+                                selectedOption === opcion.id ? 'ring-1 lg:ring-2 ring-white scale-[1.02]' : ''
+                            }`}
+                        >
+                            {/* Círculo decorativo */}
+                            <div className="absolute top-1/2 -translate-y-1/2 right-1.5 lg:right-3 w-5 h-5 lg:w-8 lg:h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                <svg className="w-2.5 h-2.5 lg:w-4 lg:h-4 text-[#00913f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                            
+                            <div className="pr-6 lg:pr-10">
+                                <h4 className="text-black font-bold text-[8px] lg:text-[11px] leading-tight text-left">
+                                    {opcion.titulo}
+                                </h4>
+                                {/* Descripción solo visible en desktop */}
+                                <p className="hidden lg:block text-black/70 text-[9px] text-left leading-tight mt-1">
+                                    {opcion.descripcion}
+                                </p>
+                            </div>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Lista de Cursos - Responsive */}
