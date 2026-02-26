@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import '../styles/carousel.css'
 
 const Events = () => {
+    // =========================================================
+    // CONTENIDO POSPUESTO TEMPORALMENTE - descomentar cuando esté listo
+    // =========================================================
+    /*
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const imageRefs = useRef([]);
@@ -31,7 +35,6 @@ const Events = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Actualizar posiciones del carrusel 3D - SIN GSAP, con CSS
     useEffect(() => {
         updateCarouselPositions();
     }, [currentSlide, isMobile]);
@@ -78,7 +81,6 @@ const Events = () => {
         goToSlide(prev);
     };
 
-    // Touch handlers
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
 
@@ -103,11 +105,21 @@ const Events = () => {
         setTouchStart(0);
         setTouchEnd(0);
     };
+    */
+    // =========================================================
+    // FIN CONTENIDO POSPUESTO
+    // =========================================================
 
     return (
         <section id="events" className="py-24 bg-gradient-to-b from-[#0A0A14] to-[#000000] relative overflow-hidden">
-            <div className="container mx-auto px-6">
+            {/* Glow de fondo decorativo */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#4881EB] opacity-10 blur-[160px] rounded-full" />
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
+                    {/* Header igual al original */}
                     <div className="text-center mb-20">
                         <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-4">
                             <span className="text-[#7FD1FF] font-mono text-sm">Eventos</span>
@@ -117,86 +129,39 @@ const Events = () => {
                         </h2>
                     </div>
 
-                    <div className="relative">
-                        {/* Contenedor 3D con perspectiva */}
-                        <div 
-                            className={`relative flex items-center justify-center ${
-                                isMobile ? 'h-[500px]' : 'h-[600px]'
-                            }`}
-                            style={{ 
-                                perspective: isMobile ? '1500px' : '2000px',
-                                perspectiveOrigin: 'center center'
-                            }}
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                        >
-                            {images.map((image, index) => (
-                                <div
-                                    key={index}
-                                    ref={el => imageRefs.current[index] = el}
-                                    onClick={() => goToSlide(index)}
-                                    className="absolute cursor-pointer transition-all duration-400 ease-out"
-                                    style={{
-                                        transformStyle: 'preserve-3d',
-                                        width: isMobile ? '320px' : '450px',
-                                        willChange: 'transform, opacity'
-                                    }}
+                    {/* Placeholder "Próximamente" */}
+                    <div className="flex flex-col items-center justify-center text-center py-16 px-4">
+                        {/* Ícono / decoración */}
+                        <div className="relative mb-8">
+                            <div className="w-24 h-24 rounded-full bg-[#4881EB]/10 border border-[#4881EB]/20 flex items-center justify-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-10 h-10 text-[#7FD1FF]"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={1.5}
                                 >
-                                    {/* Glow effect dinámico */}
-                                    <div className="absolute inset-0 pointer-events-none -z-10">
-                                        <div 
-                                            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-700 blur-[120px] rounded-full ${
-                                                index === currentSlide 
-                                                    ? 'opacity-70 w-[500px] h-[500px]' 
-                                                    : 'opacity-20 w-[400px] h-[400px]'
-                                            }`}
-                                            style={{ backgroundColor: image.color }}
-                                        ></div>
-                                    </div>
-                                    
-                                    <div className={`relative glass-effect p-3 rounded-2xl overflow-hidden border-2 transition-all duration-700 ${
-                                        index === currentSlide 
-                                            ? 'border-white/20 shadow-2xl' 
-                                            : 'border-white/5'
-                                    }`}>
-                                        <div className="relative overflow-hidden rounded-xl">
-                                            <img
-                                                src={image.src}
-                                                alt={image.alt}
-                                                className="w-full h-auto object-cover"
-                                                loading="lazy"
-                                            />
-                                            
-                                            {/* Overlay para tarjetas no activas */}
-                                            {index !== currentSlide && (
-                                                <div className="absolute inset-0 bg-black/30 transition-opacity duration-500" />
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Indicador de swipe */}
-                        <div className="flex justify-center items-center gap-6 mt-16">
-                            <div className="text-white/30 text-sm font-light tracking-[0.3em] uppercase select-none">
-                                Deslice horizontalmente
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                                </svg>
                             </div>
+                            {/* Pulso animado */}
+                            <div className="absolute inset-0 w-24 h-24 rounded-full border border-[#4881EB]/30 animate-ping opacity-30" />
                         </div>
 
-                        {/* Indicadores de puntos */}
-                        <div className="flex justify-center gap-3 mt-8">
-                            {images.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => goToSlide(index)}
-                                    className={`h-2 rounded-full transition-all duration-300 ${
-                                        index === currentSlide
-                                            ? 'bg-[#4881EB] w-12 shadow-lg shadow-[#4881EB]/50'
-                                            : 'bg-gray-600/50 w-2 hover:bg-gray-500/70 hover:w-6'
-                                    }`}
-                                    aria-label={`Ir a slide ${index + 1}`}
+                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                            Eventos <span className="gradient-text">Próximamente</span>
+                        </h3>
+                        <p className="text-white/50 text-base md:text-lg font-light tracking-wide max-w-md">
+                            Estamos preparando algo increíble. ¡Estate atento!
+                        </p>
+
+                        {/* Puntos decorativos (guiño al estilo del carrusel original) */}
+                        <div className="flex justify-center gap-3 mt-12">
+                            {[0, 1].map((_, i) => (
+                                <div
+                                    key={i}
+                                    className={`h-2 rounded-full bg-[#4881EB]/30 ${i === 0 ? 'w-12' : 'w-2'}`}
                                 />
                             ))}
                         </div>
