@@ -52,11 +52,11 @@ const Spaces = () => {
     }, [activeModule]);
 
     return (
-        <section id="spaces" className="py-24 bg-[#0A0A14] relative overflow-hidden">
+        <section id="spaces" className="py-24 bg-[var(--fondo-secundario)] relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                    <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-4">
-                        <span className="text-[#7FD1FF] font-mono text-sm">Servicios Digitales</span>
+                    <div className="inline-block px-4 py-2 bg-[var(--secundario)] bg-opacity-10 rounded-full mb-4">
+                        <span className="text-[var(--acento)] font-mono text-sm">Servicios Digitales</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
                         Descubre el Servicio<br/>
@@ -75,7 +75,7 @@ const Spaces = () => {
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
                         <div className="fixed inset-0 pointer-events-none -z-50">
-                            <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] transition-opacity duration-700 blur-[100px] bg-[#4881EB] rounded-full ${activeModule === 'edgenet' || hoveredModule === 'edgenet' ? 'opacity-70' : 'opacity-0'}`}></div>
+                            <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] transition-opacity duration-700 blur-[100px] bg-[var(--secundario)] rounded-full ${activeModule === 'edgenet' || hoveredModule === 'edgenet' ? 'opacity-70' : 'opacity-0'}`}></div>
                         </div>
                         <EdgenetModule hoveredModule={hoveredModule} moduleId="edgenet" />
                     </div>
@@ -119,7 +119,7 @@ const Spaces = () => {
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
                         <div className="fixed inset-0 pointer-events-none -z-50">
-                            <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] transition-opacity duration-700 blur-[100px] bg-[#4881EB] rounded-full ${activeModule === 'soc' || hoveredModule === 'soc' ? 'opacity-70' : 'opacity-0'}`}></div>
+                            <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] transition-opacity duration-700 blur-[100px] bg-[var(--secundario)] rounded-full ${activeModule === 'soc' || hoveredModule === 'soc' ? 'opacity-70' : 'opacity-0'}`}></div>
                         </div>
                         <SocModule hoveredModule={hoveredModule} moduleId="soc" />
                     </div>
