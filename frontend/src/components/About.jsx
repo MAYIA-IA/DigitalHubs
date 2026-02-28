@@ -143,7 +143,7 @@ const About = () => {
             <section 
                 id="about" 
                 ref={sectionRef}
-                className="py-24 bg-gradient-to-b from-[#0A0A14] to-[#000000]"
+                className="py-24 bg-gradient-to-b from-[var(--fondo-secundario)] to-[var(--fondo-principal)]"
             >
                 <div className="container mx-auto px-6">
                     <div className="max-w-6xl mx-auto">
@@ -152,21 +152,21 @@ const About = () => {
                         <div className={`text-center mb-16 transition-all duration-1000 ${
                             hasAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}>
-                            <div className="inline-block px-6 py-2 bg-[#4881EB]/30 rounded-full mb-6 border-2 border-[#7FD1FF]/50">
-                                <span className="text-[#7FD1FF] font-mono text-sm font-bold tracking-wide uppercase">
-                                    ¿Por qué HUB DIGITAL MERIDA?
+                            <div className="inline-block px-6 py-2 bg-[var(--secundario)]/30 rounded-full mb-6 border-2 border-[var(--acento)]/50">
+                                <span className="text-[var(--acento)] font-mono text-sm font-bold tracking-wide uppercase">
+                                    ¿Por qué HUB DIGITAL COAHUILA?
                                 </span>
                             </div>
                             
                             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
                                 Ubicado en el Corazón <br/>
-                                <span className="bg-gradient-to-r from-[#4881EB] via-[#7FD1FF] to-[#4881EB] bg-clip-text text-transparent">
-                                    de YUCATÁN
+                                <span className="bg-gradient-to-r from-[var(--secundario)] via-[var(--acento)] to-[var(--secundario)] bg-clip-text text-transparent">
+                                    de Coahuila
                                 </span>
                             </h2>
                             
                             <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-normal">
-                                Centro de Datos Tier III, Infraestructura de Alto Nivel para los datos de Yucatán.
+                                Centro de Datos Tier III, Infraestructura de Alto Nivel para los datos de Coahuila.
                             </p>
                         </div>
 
@@ -219,7 +219,7 @@ const About = () => {
                                                 onClick={() => setCurrentImageIndex(index)}
                                                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                                                     index === currentImageIndex
-                                                        ? 'bg-[#7FD1FF] scale-125'
+                                                        ? 'bg-[var(--acento)] scale-125'
                                                         : 'bg-white/50 hover:bg-white/80'
                                                 }`}
                                                 aria-label={`Ver imagen ${index + 1}`}
@@ -252,7 +252,7 @@ const About = () => {
                                     <button 
                                         onClick={openVideoModal}
                                         type="button"
-                                        className="group/btn relative px-8 py-4 bg-gradient-to-r from-[#4881EB] to-[#7FD1FF] rounded-full font-bold text-white text-lg tracking-wider uppercase overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#4881EB]/50"
+                                        className="group/btn relative px-8 py-4 bg-gradient-to-r from-[var(--secundario)] to-[var(--acento)] rounded-full font-bold text-white text-lg tracking-wider uppercase overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[var(--secundario)]/50"
                                     >
                                         <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-pulse"></div>
                                         
@@ -300,14 +300,14 @@ const About = () => {
                 ></div>
                 
                 {/* Contenedor del Video */}
-                <div className={`relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[#4881EB]/30 z-10 transition-transform duration-300 ${
+                <div className={`relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[var(--secundario)]/30 z-10 transition-transform duration-300 ${
                     isVideoModalOpen ? 'scale-100' : 'scale-75'
                 }`}>
                     {/* Indicador de carga */}
                     {!isVideoPreloaded && isVideoModalOpen && (
                         <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
                             <div className="text-center">
-                                <div className="w-16 h-16 border-4 border-[#4881EB] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                                <div className="w-16 h-16 border-4 border-[var(--secundario)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                                 <p className="text-white text-lg">Cargando video...</p>
                             </div>
                         </div>
@@ -343,7 +343,7 @@ const About = () => {
                         </svg>
                     </button>
 
-                    <div className="absolute inset-0 border-4 border-[#4881EB]/30 rounded-2xl pointer-events-none animate-pulse"></div>
+                    <div className="absolute inset-0 border-4 border-[var(--secundario)]/30 rounded-2xl pointer-events-none animate-pulse"></div>
                 </div>
             </div>
 
