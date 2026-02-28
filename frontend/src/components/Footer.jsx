@@ -163,8 +163,8 @@ const Footer = () => {
 
                                     {/* Contact - Destacado */}
                                     <div ref={addToSectionRefs} className="col-span-2 md:col-span-1">
-                                        <div className="bg-gradient-to-br from-[#4881EB]/10 to-[#7FD1FF]/5 border border-[#4881EB]/30 rounded-lg p-4 hover:border-[#4881EB]/50 transition-all duration-300">
-                                            <h3 className="text-[#7FD1FF] font-bold mb-3 text-sm tracking-wider uppercase flex items-center gap-2">
+                                        <div className="bg-gradient-to-br from-[var(--secundario)]/10 to-[var(--acento)]/5 border border-[var(--secundario)]/30 rounded-lg p-4 hover:border-[var(--secundario)]/50 transition-all duration-300">
+                                            <h3 className="text-[var(--acento)] font-bold mb-3 text-sm tracking-wider uppercase flex items-center gap-2">
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
@@ -175,13 +175,13 @@ const Footer = () => {
                                                 <div className="space-y-1">
                                                     <a 
                                                         href="mailto:anasser@edgenet.mx" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium break-all"
+                                                        className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium break-all"
                                                     >
                                                         anasser@edgenet.mx
                                                     </a>
                                                     <a 
                                                         href="tel:+529991151263" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium flex items-center gap-1"
+                                                        className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium flex items-center gap-1"
                                                     >
                                                         <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -193,13 +193,13 @@ const Footer = () => {
                                                 <div className="space-y-1">
                                                     <a 
                                                         href="mailto:soporte@monarch.com.mx" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium break-all"
+                                                        className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium break-all"
                                                     >
                                                         soporte@monarch.com.mx
                                                     </a>
                                                     <a 
                                                         href="tel:+529997573891" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium flex items-center gap-1"
+                                                        className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium flex items-center gap-1"
                                                     >
                                                         <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -255,7 +255,7 @@ const Footer = () => {
                                                             
                                                             return `M ${x1} ${y1} A ${outerRadius} ${outerRadius} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${innerRadius} ${innerRadius} 0 0 0 ${x4} ${y4} Z`;
                                                         })()}
-                                                        className="fill-[#0D1B2A]/40 stroke-[#4881EB]/30 hover:fill-[#1B263B]/50 hover:stroke-[#4881EB]/50 transition-all duration-300 cursor-pointer"
+                                                        className="fill-[#0D1B2A]/40 stroke-[var(--secundario)]/30 hover:fill-[#1B263B]/50 hover:stroke-[var(--secundario)]/50 transition-all duration-300 cursor-pointer"
                                                         strokeWidth="2"
                                                         onClick={() => {
                                                             setSelectedIndex(null);
@@ -295,7 +295,7 @@ const Footer = () => {
                                                 >
                                                     <div className="relative group">
                                                         {/* Glow effect */}
-                                                        <div className="absolute inset-0 bg-[#7FD1FF] rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                                        <div className="absolute inset-0 bg-[var(--acento)] rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
                                                         
                                                         {/* Logo sin tarjeta - responsive */}
                                                         <img 
@@ -348,7 +348,7 @@ const Footer = () => {
                                                     >
                                                         <path
                                                             d={`M ${x1} ${y1} A ${outerRadius} ${outerRadius} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${innerRadius} ${innerRadius} 0 0 0 ${x4} ${y4} Z`}
-                                                            className="fill-[#0D1B2A]/40 stroke-[#4881EB]/30 hover:fill-[#1B263B]/50 hover:stroke-[#4881EB]/50 transition-all duration-300 cursor-pointer"
+                                                            className="fill-[#0D1B2A]/40 stroke-[var(--secundario)]/30 hover:fill-[#1B263B]/50 hover:stroke-[var(--secundario)]/50 transition-all duration-300 cursor-pointer"
                                                             strokeWidth="2"
                                                             onClick={() => handleSectionClick(index)}
                                                             style={{ pointerEvents: 'all' }}
@@ -365,7 +365,7 @@ const Footer = () => {
                                                     >
                                                         <div className="relative group">
                                                             {/* Glow effect */}
-                                                            <div className="absolute inset-0 bg-[#7FD1FF] rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
+                                                            <div className="absolute inset-0 bg-[var(--acento)] rounded-full blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
                                                             
                                                             {/* Logo sin tarjeta - responsive */}
                                                             <img 
@@ -396,15 +396,15 @@ const Footer = () => {
                                     >
                                         <div className="relative">
                                             {/* Glow effect central - MÁS INTENSO */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#4881EB] via-[#5B95F5] to-[#7FD1FF] rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
+                                            <div className="absolute inset-0 bg-gradient-to-br from-[var(--secundario)] via-[#5B95F5] to-[var(--acento)] rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
                                             
                                             {/* Anillo exterior brillante */}
-                                            <div className="absolute inset-0 rounded-full border-2 border-[#7FD1FF]/30 blur-sm"></div>
+                                            <div className="absolute inset-0 rounded-full border-2 border-[var(--acento)]/30 blur-sm"></div>
                                             
                                             {/* Círculo contenedor central - responsive */}
-                                            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 bg-gradient-to-br from-[#0D1B2A] via-[#1B263B] to-[#0D1B2A] rounded-full border-4 border-[#4881EB]/70 group-hover:border-[#7FD1FF] shadow-[0_0_50px_rgba(72,129,235,0.5)] group-hover:shadow-[0_0_70px_rgba(127,209,255,0.7)] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-105">
+                                            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 bg-gradient-to-br from-[#0D1B2A] via-[#1B263B] to-[#0D1B2A] rounded-full border-4 border-[var(--secundario)]/70 group-hover:border-[var(--acento)] shadow-[0_0_50px_rgba(72,129,235,0.5)] group-hover:shadow-[0_0_70px_rgba(127,209,255,0.7)] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-105">
                                                 {/* Brillo interno */}
-                                                <div className="absolute inset-0 bg-gradient-to-br from-[#4881EB]/10 to-transparent"></div>
+                                                <div className="absolute inset-0 bg-gradient-to-br from-[var(--secundario)]/10 to-transparent"></div>
                                                 
                                                 <img 
                                                     src={
@@ -424,9 +424,9 @@ const Footer = () => {
                                     </div>
 
                                     {/* Anillos decorativos de fondo */}
-                                    <div className="absolute inset-0 rounded-full border-2 border-[#4881EB]/10 opacity-30 pointer-events-none"></div>
-                                    <div className="absolute inset-12 rounded-full border border-[#7FD1FF]/10 opacity-20 pointer-events-none"></div>
-                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#4881EB]/5 to-transparent opacity-50 pointer-events-none"></div>
+                                    <div className="absolute inset-0 rounded-full border-2 border-[var(--secundario)]/10 opacity-30 pointer-events-none"></div>
+                                    <div className="absolute inset-12 rounded-full border border-[var(--acento)]/10 opacity-20 pointer-events-none"></div>
+                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[var(--secundario)]/5 to-transparent opacity-50 pointer-events-none"></div>
                                 </div>
 
                                 {/* Texto descriptivo - responsive */}
@@ -434,7 +434,7 @@ const Footer = () => {
                                     <p className="text-white font-bold text-lg sm:text-xl md:text-2xl mb-1 sm:mb-2">
                                         {selectedIndex !== null ? partners[selectedIndex].name : hubLogo.name}
                                     </p>
-                                    <p className="text-[#7FD1FF] font-semibold text-xs sm:text-sm md:text-base tracking-wider uppercase opacity-90">
+                                    <p className="text-[var(--acento)] font-semibold text-xs sm:text-sm md:text-base tracking-wider uppercase opacity-90">
                                         {selectedIndex !== null ? 'Aliado Estratégico' : 'Ecosistema Tecnológico'}
                                     </p>
                                     {selectedIndex !== null && (

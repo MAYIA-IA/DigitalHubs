@@ -52,13 +52,13 @@ const Contact = () => {
                     hasAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`}>
                     <div className="glass-effect p-12 rounded-3xl text-center">
-                        <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-6">
-                            <span className="text-[#7FD1FF] font-mono text-sm">Newsletter</span>
+                        <div className="inline-block px-4 py-2 bg-[var(--secundario)] bg-opacity-10 rounded-full mb-6">
+                            <span className="text-[var(--acento)] font-mono text-sm">Newsletter</span>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold mb-4">
                             Suscríbete a Nuestro <span className="gradient-text">Newsletter</span>
                         </h2>
-                        <p className="text-[#B8C5D3] mb-8">Entérate de nuestros eventos y mucho más</p>
+                        <p className="text-[var(--texto-medio)] mb-8">Entérate de nuestros eventos y mucho más</p>
                         
                         {!submitted ? (
                             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
@@ -68,11 +68,11 @@ const Contact = () => {
                                     onChange={(e) => setEmail(e.target.value)} 
                                     placeholder="Ingresa tu email" 
                                     required 
-                                    className="flex-1 px-6 py-4 bg-[#000000] border border-[#4881EB] border-opacity-20 rounded-lg text-white placeholder-[#8A9AA8] focus:outline-none focus:border-[#4881EB] transition-colors"
+                                    className="flex-1 px-6 py-4 bg-[var(--fondo-principal)] border border-[var(--secundario)] border-opacity-20 rounded-lg text-white placeholder-[var(--texto-oscuro)] focus:outline-none focus:border-[var(--secundario)] transition-colors"
                                 />
                                 <button 
                                     type="submit" 
-                                    className="bg-[#4881EB] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#7FD1FF] transition-all hover:scale-105 will-change-transform"
+                                    className="bg-[var(--secundario)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[var(--acento)] transition-all hover:scale-105 will-change-transform"
                                 >
                                     Suscribirse
                                 </button>

@@ -10,44 +10,44 @@
 }
 
 :root {
-    /* Colores HUB DIGITAL - Paleta Azul */
+    /* Colores HUB DIGITAL - Paleta Verde */
     --primario: #000000;           /* Negro puro */
-    --secundario: #4881EB;         /* Azul medio principal */
-    --acento: #7FD1FF;             /* Azul claro brillante */
-    --azul-oscuro: #1230C4;        /* Azul oscuro */
+    --secundario: #22C55E;         /* Verde principal */
+    --acento: #86EFAC;             /* Verde claro brillante */
+    --azul-oscuro: #15803D;        /* Verde oscuro */
     
     /* Colores de estado */
     --peligro: #EF4444;
     --advertencia: #F59E0B;
     --exito: #10B981;
-    --info: #4881EB;
+    --info: #22C55E;
     
     /* Fondos - Oscuros con tonos azules */
     --fondo-principal: #000000;
-    --fondo-secundario: #0A0A14;
-    --fondo-terciario: #0F0F1E;
-    --fondo-tarjeta: rgba(10, 10, 20, 0.8);
-    --fondo-glass: rgba(72, 129, 235, 0.1);
+    --fondo-secundario: #0A140A;
+    --fondo-terciario: #0F1E0F;
+    --fondo-tarjeta: rgba(10, 20, 10, 0.8);
+    --fondo-glass: rgba(34, 197, 94, 0.1);
     
     /* Textos */
     --texto-claro: #F2F2F2;
-    --texto-medio: #B8C5D3;
-    --texto-oscuro: #8A9AA8;
+    --texto-medio: #B8D3BF;
+    --texto-oscuro: #8AA892;
     
     /* Bordes con toque azul */
-    --borde: rgba(72, 129, 235, 0.15);
-    --borde-hover: rgba(72, 129, 235, 0.3);
+    --borde: rgba(34, 197, 94, 0.15);
+    --borde-hover: rgba(34, 197, 94, 0.3);
     
     /* Gradientes */
-    --gradiente-primario: linear-gradient(135deg, #000000 0%, #1230C4 100%);
-    --gradiente-secundario: linear-gradient(135deg, #4881EB 0%, #7FD1FF 100%);
-    --gradiente-acento: linear-gradient(135deg, #4881EB 0%, #7FD1FF 100%);
+    --gradiente-primario: linear-gradient(135deg, #000000 0%, #15803D 100%);
+    --gradiente-secundario: linear-gradient(135deg, #22C55E 0%, #86EFAC 100%);
+    --gradiente-acento: linear-gradient(135deg, #22C55E 0%, #86EFAC 100%);
     
     /* Sombras */
     --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --sombra-md: 0 4px 16px rgba(0, 0, 0, 0.15);
     --sombra-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
-    --sombra-xl: 0 20px 40px rgba(72, 129, 235, 0.15);
+    --sombra-xl: 0 20px 40px rgba(34, 197, 94, 0.15);
     
     /* Transiciones */
     --transition-fast: 0.2s ease;
@@ -138,7 +138,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #7FD1FF;
+    background: #86EFAC;
 }
 
 /* Selection */
