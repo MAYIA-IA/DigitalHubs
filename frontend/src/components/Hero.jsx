@@ -26,7 +26,7 @@ const Hero = () => {
                                 backgroundColor: 'var(--fondo-glass)', 
                                 border: '1px solid var(--borde-hover)' 
                             }}>
-                                <span className="font-mono text-sm" style={{ color: 'var(--acento)' }}>Leon • Transformación Digital</span>
+                                <span className="font-mono text-sm" style={{ color: 'var(--acento)' }}>León • Transformación Digital</span>
                             </div>
                             {/* Logos móvil */}
                             <div className="flex items-center gap-4 lg:hidden">
@@ -50,7 +50,7 @@ const Hero = () => {
                         </div>
                         
                         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fadeInUp animation-delay-200">
-                            El Hub de <br/><span className="gradient-text">Digitalización Acelerada</span><br/>de Leon
+                            El Hub de <br/><span className="gradient-text">Digitalización Acelerada</span><br/>de León
                         </h1>
                         
                         <p className="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed animate-fadeInUp animation-delay-400" style={{ color: 'var(--texto-medio)' }}>
