@@ -20,7 +20,7 @@ const Events = () => {
         {
             src: "/assets/images/eventos/1.Invitación_general_HUB.jpg",
             alt: "Invitación HUB",
-            color: "#4881EB"
+            color: "var(--secundario)"
         }
     ];
 
@@ -111,18 +111,18 @@ const Events = () => {
     // =========================================================
 
     return (
-        <section id="events" className="py-24 bg-gradient-to-b from-[#0A0A14] to-[#000000] relative overflow-hidden">
+        <section id="events" className="py-24 bg-gradient-to-b from-[var(--fondo-secundario)] to-[var(--fondo-principal)] relative overflow-hidden">
             {/* Glow de fondo decorativo */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#4881EB] opacity-10 blur-[160px] rounded-full" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--secundario)] opacity-10 blur-[160px] rounded-full" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-7xl mx-auto">
                     {/* Header igual al original */}
                     <div className="text-center mb-20">
-                        <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-4">
-                            <span className="text-[#7FD1FF] font-mono text-sm">Eventos</span>
+                        <div className="inline-block px-4 py-2 bg-[var(--secundario)] bg-opacity-10 rounded-full mb-4">
+                            <span className="text-[var(--acento)] font-mono text-sm">Eventos</span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             Próximos <span className="gradient-text">Eventos</span>
@@ -133,10 +133,10 @@ const Events = () => {
                     <div className="flex flex-col items-center justify-center text-center py-16 px-4">
                         {/* Ícono / decoración */}
                         <div className="relative mb-8">
-                            <div className="w-24 h-24 rounded-full bg-[#4881EB]/10 border border-[#4881EB]/20 flex items-center justify-center">
+                            <div className="w-24 h-24 rounded-full bg-[var(--secundario)]/10 border border-[var(--secundario)]/20 flex items-center justify-center">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="w-10 h-10 text-[#7FD1FF]"
+                                    className="w-10 h-10 text-[var(--acento)]"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -146,7 +146,7 @@ const Events = () => {
                                 </svg>
                             </div>
                             {/* Pulso animado */}
-                            <div className="absolute inset-0 w-24 h-24 rounded-full border border-[#4881EB]/30 animate-ping opacity-30" />
+                            <div className="absolute inset-0 w-24 h-24 rounded-full border border-[var(--secundario)]/30 animate-ping opacity-30" />
                         </div>
 
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -161,7 +161,7 @@ const Events = () => {
                             {[0, 1].map((_, i) => (
                                 <div
                                     key={i}
-                                    className={`h-2 rounded-full bg-[#4881EB]/30 ${i === 0 ? 'w-12' : 'w-2'}`}
+                                    className={`h-2 rounded-full bg-[var(--secundario)]/30 ${i === 0 ? 'w-12' : 'w-2'}`}
                                 />
                             ))}
                         </div>
