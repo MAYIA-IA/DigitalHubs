@@ -13,7 +13,7 @@ const Footer = () => {
     const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     
     // Hub siempre en el centro
-    const hubLogo = { name: 'Hub Digital Yucatán', logo: '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png', isHub: true };
+    const hubLogo = { name: 'Hub Digital Nuevo León', logo: '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png', isHub: true };
     
     // 4 aliados estratégicos alrededor (cada uno ocupa 1/4 del círculo)
     const partners = [
@@ -111,12 +111,12 @@ const Footer = () => {
                                     <div className="mb-4 lg:mb-6 flex justify-center lg:justify-start">
                                         <img 
                                             src="/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png" 
-                                            alt="Hub Digital Yucatán" 
+                                            alt="Hub Digital Nuevo León" 
                                             className="h-16 md:h-20 lg:h-24 w-auto"
                                         />
                                     </div>
                                     <p className="text-gray-400 text-sm leading-relaxed mb-4 lg:mb-6 max-w-xl mx-auto lg:mx-0">
-                                        El ecosistema tecnológico más innovador de Yucatán. Impulsando la transformación digital 
+                                        El ecosistema tecnológico más innovador de Nuevo León. Impulsando la transformación digital 
                                         con espacios inteligentes, infraestructura de vanguardia y una comunidad vibrante.
                                     </p>
                                     <button 
@@ -466,7 +466,7 @@ const Footer = () => {
                                         className="h-10 w-auto opacity-70"
                                     />
                                     <p className="text-gray-500 text-xs">
-                                        © 2026 Hub Digital Yucatán
+                                        © 2026 Hub Digital Nuevo León
                                     </p>
                                 </div>
                                 
