@@ -130,7 +130,7 @@ const Marketplace = () => {
 
 
                     {/* GuardIA - Azul */}
-                    <div
+                    {/* <div
                         ref={(el) => (moduleRefs.current['GuardIA'] = el)}
                         data-module-id="GuardIA"
                         className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
@@ -141,10 +141,11 @@ const Marketplace = () => {
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-0 group-hover:opacity-70 transition-opacity duration-700 blur-[100px] bg-[#4881EB] rounded-full"></div>
                         </div>
                         <GuardIAModule hoveredModule={hoveredModule} moduleId="GuardIA" />
-                    </div>
+                    </div> */}
                     
+
                       {/* Sendero Seguro - Morado (Teal) */}
-                    <div
+                    {/* <div
                         ref={(el) => (moduleRefs.current['senderoseguro'] = el)}
                         data-module-id="senderoseguro"
                         className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
@@ -155,11 +156,11 @@ const Marketplace = () => {
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-0 group-hover:opacity-70 transition-opacity duration-700 blur-[100px] bg-[#b059b1] rounded-full"></div>
                         </div>
                         <SenderoSeguroModule hoveredModule={hoveredModule} moduleId="senderoseguro" />
-                    </div>
+                    </div> */}
 
 
                     {/* Parque Seguro  - Verde-Azul (Teal) */}
-                    <div
+                    {/* <div
                         ref={(el) => (moduleRefs.current['parqueseguro'] = el)}
                         data-module-id="parqueseguro"
                         className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
@@ -170,7 +171,7 @@ const Marketplace = () => {
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-0 group-hover:opacity-70 transition-opacity duration-700 blur-[100px] bg-[#14B8A6] rounded-full"></div>
                         </div>
                         <ParqueSeguroModule hoveredModule={hoveredModule} moduleId="parqueseguro" />
-                    </div>
+                    </div> */}
 
                     {/* Obras Publicas - verde (Teal) */}
                     <div
@@ -204,7 +205,7 @@ const Marketplace = () => {
 
 
                     {/* RetailModule - Azul */}
-                    <div
+                    {/* <div
                         ref={(el) => (moduleRefs.current['retail'] = el)}
                         data-module-id="retail"
                         className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[280px] w-[280px] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-center"
@@ -215,7 +216,7 @@ const Marketplace = () => {
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] opacity-0 group-hover:opacity-70 transition-opacity duration-700 blur-[100px] bg-[#E25905] rounded-full"></div>
                         </div>
                         <RetailModule hoveredModule={hoveredModule} moduleId="retail" />
-                    </div>
+                    </div> */}
 
 
                 </div>
