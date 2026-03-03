@@ -75,8 +75,8 @@ const Marketplace = () => {
     }, []);
 
     // El módulo activo: en desktop es hoveredModule, en mobile es activeModule
-    const currentModule = hoveredModule || activeModule;
-    const blobColor = MODULE_COLORS[currentModule] || null;
+    const currentModule = hoveredModule ?? activeModule;
+    const blobColor = currentModule ? (MODULE_COLORS[currentModule] ?? null) : null;
 
     const cardClass = "module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start";
 
@@ -109,7 +109,7 @@ const Marketplace = () => {
                         background: blobColor || 'transparent',
                         opacity: blobColor ? 0.55 : 0,
                         filter: 'blur(100px)',
-                        transition: 'opacity 700ms ease, background 400ms ease',
+                        transition: 'opacity 700ms ease, background 500ms ease',
                         willChange: 'opacity',
                         // transform ya está en el className, no agregar más transforms aquí
                     }}
@@ -117,11 +117,11 @@ const Marketplace = () => {
             </div>
 
             <div className="container mx-auto lg:px-6" style={{ position: 'relative', zIndex: 1 }}>
-                <div className="text-center mb-16 px-6">
-                    <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-4">
-                        <span className="text-[#7FD1FF] font-mono text-sm">Marketplace</span>
+                <div className="text-center mb-8 md:mb-16 px-6">
+                    <div className="inline-block px-3 py-1 md:px-4 md:py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-3 md:mb-4">
+                        <span className="text-[#7FD1FF] font-mono text-xs md:text-sm">Marketplace</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-6 text-white">
                         Descubre nuestros Servicios<br/>
                         <span className="gradient-text">Personalizados para tus necesidades</span>
                     </h2>
@@ -138,7 +138,7 @@ const Marketplace = () => {
                         data-module-id="recuperacion"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('recuperacion')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <DRPModule hoveredModule={hoveredModule} moduleId="recuperacion" />
                     </div>
@@ -149,7 +149,7 @@ const Marketplace = () => {
                         data-module-id="academia"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('academia')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <AcademiaModule hoveredModule={hoveredModule} moduleId="academia" />
                     </div>
@@ -160,7 +160,7 @@ const Marketplace = () => {
                         data-module-id="pildoras"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('pildoras')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <PildorasModule hoveredModule={hoveredModule} moduleId="pildoras" />
                     </div>
@@ -171,7 +171,7 @@ const Marketplace = () => {
                         data-module-id="lumel"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('lumel')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <LUMELModule hoveredModule={hoveredModule} moduleId="lumel" />
                     </div>
@@ -215,7 +215,7 @@ const Marketplace = () => {
                         data-module-id="obraspublicas"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('obraspublicas')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <ObrasPublicasModule hoveredModule={hoveredModule} moduleId="obraspublicas" />
                     </div>
@@ -226,7 +226,7 @@ const Marketplace = () => {
                         data-module-id="hechoMexico"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('hechoMexico')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <HechoMexicoModule hoveredModule={hoveredModule} moduleId="hechoMexico" />
                     </div>
@@ -248,7 +248,7 @@ const Marketplace = () => {
                         data-module-id="faqswhatsapp"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('faqswhatsapp')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <FAQsWhatsAppModule hoveredModule={hoveredModule} moduleId="faqswhatsapp" />
                     </div>
@@ -259,7 +259,7 @@ const Marketplace = () => {
                         data-module-id="biexpress"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('biexpress')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <BIExpressModule hoveredModule={hoveredModule} moduleId="biexpress" />
                     </div>
@@ -270,7 +270,7 @@ const Marketplace = () => {
                         data-module-id="etldatalake"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('etldatalake')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <ETLDataLakeModule hoveredModule={hoveredModule} moduleId="etldatalake" />
                     </div>
@@ -281,7 +281,7 @@ const Marketplace = () => {
                         data-module-id="conciliacion"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('conciliacion')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <ConciliacionModule hoveredModule={hoveredModule} moduleId="conciliacion" />
                     </div>
@@ -292,7 +292,7 @@ const Marketplace = () => {
                         data-module-id="prediccionventas"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('prediccionventas')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <PrediccionVentasModule hoveredModule={hoveredModule} moduleId="prediccionventas" />
                     </div>
@@ -303,7 +303,7 @@ const Marketplace = () => {
                         data-module-id="inventariointeligente"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('inventariointeligente')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <InventarioInteligentModule hoveredModule={hoveredModule} moduleId="inventariointeligente" />
                     </div>
@@ -314,7 +314,7 @@ const Marketplace = () => {
                         data-module-id="deteccionanomalias"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('deteccionanomalias')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <DeteccionAnomalíasModule hoveredModule={hoveredModule} moduleId="deteccionanomalias" />
                     </div>
@@ -325,7 +325,7 @@ const Marketplace = () => {
                         data-module-id="portaldocumentos"
                         className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('portaldocumentos')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
                     >
                         <PortalDocumentosModule hoveredModule={hoveredModule} moduleId="portaldocumentos" />
                     </div>
