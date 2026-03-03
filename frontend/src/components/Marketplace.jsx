@@ -21,47 +21,102 @@ import InventarioInteligentModule from './modules/Marketplace/InventarioIntelige
 import DeteccionAnomalíasModule from './modules/Marketplace/DeteccionAnomalíasModule.jsx';
 import PortalDocumentosModule from './modules/Marketplace/PortalDocumentosModule.jsx';
 
-
+// Color de blob por módulo — igual que en Spaces.jsx
+const MODULE_COLORS = {
+    recuperacion:          '#b059b1',
+    academia:              '#00913f',
+    pildoras:              '#00913f',
+    lumel:                 '#9C27B0',
+    obraspublicas:         '#00913f',
+    hechoMexico:           '#DC2626',
+    faqswhatsapp:          '#25D366',
+    biexpress:             '#F59E0B',
+    etldatalake:           '#06B6D4',
+    conciliacion:          '#8B5CF6',
+    prediccionventas:      '#10B981',
+    inventariointeligente: '#F97316',
+    deteccionanomalias:    '#EF4444',
+    portaldocumentos:      '#6366F1',
+};
 
 const Marketplace = () => {
     const [hoveredModule, setHoveredModule] = useState(null);
+    const [activeModule, setActiveModule] = useState(null);
     const moduleRefs = useRef({});
+    const sectionRef = useRef(null);
 
+    // ── IntersectionObserver para mobile ──────────────────────────────────
     useEffect(() => {
         const isMobile = window.innerWidth < 1024;
         if (!isMobile) return;
 
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.5
+            rootMargin: '-25% 0px -25% 0px',
+            threshold: 0.1,
         };
 
         const observerCallback = (entries) => {
             entries.forEach((entry) => {
+                const moduleId = entry.target.dataset.moduleId;
                 if (entry.isIntersecting) {
-                    const moduleId = entry.target.dataset.moduleId;
                     setHoveredModule(moduleId);
+                    setActiveModule(moduleId);
+                } else {
+                    setActiveModule((prev) => prev === moduleId ? null : prev);
+                    setHoveredModule((prev) => prev === moduleId ? null : prev);
                 }
             });
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        Object.values(moduleRefs.current).forEach((ref) => {
-            if (ref) observer.observe(ref);
-        });
-
-        return () => {
-            observer.disconnect();
-        };
+        Object.values(moduleRefs.current).forEach((ref) => { if (ref) observer.observe(ref); });
+        return () => observer.disconnect();
     }, []);
 
+    // El módulo activo: en desktop es hoveredModule, en mobile es activeModule
+    const currentModule = hoveredModule || activeModule;
+    const blobColor = MODULE_COLORS[currentModule] || null;
+
+    const cardClass = "module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start";
+
     return (
-        // FIX 1: inline style backgroundColor para iOS Safari (bg-[] de Tailwind se interpreta raro)
-        // FIX 2: eliminado overflow-hidden que cortaba las tarjetas en mobile
-        <section id="marketplace" className="py-24 relative" style={{ backgroundColor: '#0A0A14' }}>
-            <div className="container mx-auto lg:px-6">
+        <section
+            id="marketplace"
+            ref={sectionRef}
+            className="py-24 relative"
+            style={{ backgroundColor: '#0A0A14' }}
+        >
+            {/*
+              ── BLOB GLOW ────────────────────────────────────────────────────────
+              Mismo patrón que Spaces.jsx PERO:
+              - position: absolute (no fixed) → compatible con transform:scale en iOS Safari
+              - overflow: hidden en la sección contiene el blob sin clipear las tarjetas
+              - willChange: opacity → GPU layer, sin recalcular layout
+              - pointer-events: none → no interfiere con clicks ni scroll
+              ───────────────────────────────────────────────────────────────────
+            */}
+            <div
+                className="absolute inset-0 pointer-events-none overflow-hidden"
+                style={{ zIndex: 0 }}
+                aria-hidden="true"
+            >
+                <div
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full"
+                    style={{
+                        // blur via boxShadow spread — NO filter:blur (rompe stacking context iOS)
+                        // Usamos background + opacity transition, idéntico a Spaces.jsx
+                        background: blobColor || 'transparent',
+                        opacity: blobColor ? 0.55 : 0,
+                        filter: 'blur(100px)',
+                        transition: 'opacity 700ms ease, background 400ms ease',
+                        willChange: 'opacity',
+                        // transform ya está en el className, no agregar más transforms aquí
+                    }}
+                />
+            </div>
+
+            <div className="container mx-auto lg:px-6" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="text-center mb-16 px-6">
                     <div className="inline-block px-4 py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-4">
                         <span className="text-[#7FD1FF] font-mono text-sm">Marketplace</span>
@@ -72,22 +127,16 @@ const Marketplace = () => {
                     </h2>
                 </div>
 
-                {/* FIX 3: padding lateral con vw para el efecto peek en mobile */}
-                {/* FIX 4: WebkitOverflowScrolling para scroll suave en iOS */}
                 <div
                     className="lg:flex lg:flex-wrap lg:justify-center lg:gap-8 lg:max-w-6xl lg:mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none flex gap-4 lg:px-0 scrollbar-hide pb-6"
                     style={{ paddingLeft: '5vw', paddingRight: '5vw', WebkitOverflowScrolling: 'touch' }}
                 >
 
-                    {/* MARKETPLACE */}
-
                     {/* DRP - Morado */}
-                    {/* FIX 5: w-[82vw] en lugar de w-[280px] fijo — se adapta a cualquier pantalla */}
-                    {/* FIX 6: eliminados los divs "fixed inset-0" — en iOS Safari con transform:scale rompen el layout y generan el tinte morado */}
                     <div
                         ref={(el) => (moduleRefs.current['recuperacion'] = el)}
                         data-module-id="recuperacion"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('recuperacion')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -98,7 +147,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['academia'] = el)}
                         data-module-id="academia"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('academia')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -109,7 +158,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['pildoras'] = el)}
                         data-module-id="pildoras"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('pildoras')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -120,19 +169,18 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['lumel'] = el)}
                         data-module-id="lumel"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('lumel')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
                         <LUMELModule hoveredModule={hoveredModule} moduleId="lumel" />
                     </div>
 
-
-                    {/* GuardIA - Azul */}
+                    {/* GuardIA */}
                     {/* <div
                         ref={(el) => (moduleRefs.current['GuardIA'] = el)}
                         data-module-id="GuardIA"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('GuardIA')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -143,7 +191,7 @@ const Marketplace = () => {
                     {/* <div
                         ref={(el) => (moduleRefs.current['senderoseguro'] = el)}
                         data-module-id="senderoseguro"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('senderoseguro')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -154,7 +202,7 @@ const Marketplace = () => {
                     {/* <div
                         ref={(el) => (moduleRefs.current['parqueseguro'] = el)}
                         data-module-id="parqueseguro"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('parqueseguro')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -165,7 +213,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['obraspublicas'] = el)}
                         data-module-id="obraspublicas"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('obraspublicas')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -176,29 +224,29 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['hechoMexico'] = el)}
                         data-module-id="hechoMexico"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('hechoMexico')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
                         <HechoMexicoModule hoveredModule={hoveredModule} moduleId="hechoMexico" />
                     </div>
 
-                    {/* RetailModule - Azul */}
+                    {/* RetailModule */}
                     {/* <div
                         ref={(el) => (moduleRefs.current['retail'] = el)}
                         data-module-id="retail"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('retail')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
                         <RetailModule hoveredModule={hoveredModule} moduleId="retail" />
                     </div> */}
 
-                    {/* FAQs WhatsApp - Verde WhatsApp */}
+                    {/* FAQs WhatsApp - Verde */}
                     <div
                         ref={(el) => (moduleRefs.current['faqswhatsapp'] = el)}
                         data-module-id="faqswhatsapp"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('faqswhatsapp')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -209,7 +257,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['biexpress'] = el)}
                         data-module-id="biexpress"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('biexpress')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -220,7 +268,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['etldatalake'] = el)}
                         data-module-id="etldatalake"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('etldatalake')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -231,7 +279,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['conciliacion'] = el)}
                         data-module-id="conciliacion"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('conciliacion')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -242,7 +290,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['prediccionventas'] = el)}
                         data-module-id="prediccionventas"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('prediccionventas')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -253,7 +301,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['inventariointeligente'] = el)}
                         data-module-id="inventariointeligente"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('inventariointeligente')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -264,7 +312,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['deteccionanomalias'] = el)}
                         data-module-id="deteccionanomalias"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('deteccionanomalias')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
@@ -275,7 +323,7 @@ const Marketplace = () => {
                     <div
                         ref={(el) => (moduleRefs.current['portaldocumentos'] = el)}
                         data-module-id="portaldocumentos"
-                        className="module-card group relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[82vw] w-[82vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[500px] snap-start"
+                        className={cardClass}
                         onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('portaldocumentos')}
                         onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
                     >
