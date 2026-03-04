@@ -18,6 +18,18 @@ const Spaces = () => {
     const [hoveredModule, setHoveredModule] = useState(null);
     const [activeModule, setActiveModule] = useState(null);
     const moduleRefs = useRef({});
+    const hoverTimeoutRef = useRef(null);
+
+    const handleMouseEnter = (id) => {
+        if (window.innerWidth < 1024) return;
+        if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+        setHoveredModule(id);
+    };
+
+    const handleMouseLeave = () => {
+        if (window.innerWidth < 1024) return;
+        hoverTimeoutRef.current = setTimeout(() => setHoveredModule(null), 150);
+    };
 
     // ── IntersectionObserver para mobile (mismo patrón que Marketplace) ──
     useEffect(() => {
@@ -129,8 +141,8 @@ const Spaces = () => {
                         ref={(el) => (moduleRefs.current['edgenet'] = el)}
                         data-module-id="edgenet"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('edgenet')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('edgenet')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <EdgenetModule hoveredModule={hoveredModule} moduleId="edgenet" />
                     </div>
@@ -140,8 +152,8 @@ const Spaces = () => {
                         ref={(el) => (moduleRefs.current['Flai'] = el)}
                         data-module-id="Flai"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('Flai')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('Flai')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <FlaiModule hoveredModule={hoveredModule} moduleId="Flai" />
                     </div>
@@ -151,8 +163,8 @@ const Spaces = () => {
                         ref={(el) => (moduleRefs.current['mayia'] = el)}
                         data-module-id="mayia"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('mayia')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('mayia')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <MayiaModule hoveredModule={hoveredModule} moduleId="mayia" />
                     </div>
@@ -162,8 +174,8 @@ const Spaces = () => {
                         ref={(el) => (moduleRefs.current['soc'] = el)}
                         data-module-id="soc"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('soc')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('soc')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <SocModule hoveredModule={hoveredModule} moduleId="soc" />
                     </div>

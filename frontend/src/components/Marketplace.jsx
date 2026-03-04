@@ -42,8 +42,32 @@ const MODULE_COLORS = {
 const Marketplace = () => {
     const [hoveredModule, setHoveredModule] = useState(null);
     const [activeModule, setActiveModule] = useState(null);
+    const [blobPos, setBlobPos] = useState({ x: 50, y: 50 }); // % relativo a la sección
     const moduleRefs = useRef({});
     const sectionRef = useRef(null);
+    const hoverTimeoutRef = useRef(null);
+
+    const handleMouseEnter = (id) => {
+        if (window.innerWidth < 1024) return;
+        if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+        setHoveredModule(id);
+
+        // Calcular posición del centro de la tarjeta relativo a la sección
+        const cardEl = moduleRefs.current[id];
+        const sectionEl = sectionRef.current;
+        if (cardEl && sectionEl) {
+            const cardRect = cardEl.getBoundingClientRect();
+            const sectionRect = sectionEl.getBoundingClientRect();
+            const x = ((cardRect.left - sectionRect.left + cardRect.width / 2) / sectionRect.width) * 100;
+            const y = ((cardRect.top - sectionRect.top + cardRect.height / 2) / sectionRect.height) * 100;
+            setBlobPos({ x, y });
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (window.innerWidth < 1024) return;
+        hoverTimeoutRef.current = setTimeout(() => setHoveredModule(null), 150);
+    };
 
     // ── IntersectionObserver para mobile ──────────────────────────────────
     useEffect(() => {
@@ -102,16 +126,15 @@ const Marketplace = () => {
                 aria-hidden="true"
             >
                 <div
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full"
+                    className="absolute w-[700px] h-[700px] rounded-full -translate-x-1/2 -translate-y-1/2"
                     style={{
-                        // blur via boxShadow spread — NO filter:blur (rompe stacking context iOS)
-                        // Usamos background + opacity transition, idéntico a Spaces.jsx
+                        left: `${blobPos.x}%`,
+                        top: `${blobPos.y}%`,
                         background: blobColor || 'transparent',
                         opacity: blobColor ? 0.55 : 0,
                         filter: 'blur(100px)',
-                        transition: 'opacity 700ms ease, background 500ms ease',
-                        willChange: 'opacity',
-                        // transform ya está en el className, no agregar más transforms aquí
+                        transition: 'opacity 700ms ease, background 500ms ease, left 400ms ease, top 400ms ease',
+                        willChange: 'opacity, left, top',
                     }}
                 />
             </div>
@@ -137,8 +160,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['recuperacion'] = el)}
                         data-module-id="recuperacion"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('recuperacion')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('recuperacion')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <DRPModule hoveredModule={hoveredModule} moduleId="recuperacion" />
                     </div>
@@ -148,8 +171,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['academia'] = el)}
                         data-module-id="academia"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('academia')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('academia')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <AcademiaModule hoveredModule={hoveredModule} moduleId="academia" />
                     </div>
@@ -159,8 +182,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['pildoras'] = el)}
                         data-module-id="pildoras"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('pildoras')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('pildoras')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <PildorasModule hoveredModule={hoveredModule} moduleId="pildoras" />
                     </div>
@@ -170,8 +193,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['lumel'] = el)}
                         data-module-id="lumel"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('lumel')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('lumel')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <LUMELModule hoveredModule={hoveredModule} moduleId="lumel" />
                     </div>
@@ -181,8 +204,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['GuardIA'] = el)}
                         data-module-id="GuardIA"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('GuardIA')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseEnter={() => handleMouseEnter('GuardIA')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <GuardIAModule hoveredModule={hoveredModule} moduleId="GuardIA" />
                     </div> */}
@@ -192,8 +215,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['senderoseguro'] = el)}
                         data-module-id="senderoseguro"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('senderoseguro')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseEnter={() => handleMouseEnter('senderoseguro')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <SenderoSeguroModule hoveredModule={hoveredModule} moduleId="senderoseguro" />
                     </div> */}
@@ -203,8 +226,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['parqueseguro'] = el)}
                         data-module-id="parqueseguro"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('parqueseguro')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseEnter={() => handleMouseEnter('parqueseguro')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <ParqueSeguroModule hoveredModule={hoveredModule} moduleId="parqueseguro" />
                     </div> */}
@@ -214,8 +237,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['obraspublicas'] = el)}
                         data-module-id="obraspublicas"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('obraspublicas')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('obraspublicas')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <ObrasPublicasModule hoveredModule={hoveredModule} moduleId="obraspublicas" />
                     </div>
@@ -225,8 +248,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['hechoMexico'] = el)}
                         data-module-id="hechoMexico"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('hechoMexico')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('hechoMexico')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <HechoMexicoModule hoveredModule={hoveredModule} moduleId="hechoMexico" />
                     </div>
@@ -236,8 +259,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['retail'] = el)}
                         data-module-id="retail"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('retail')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setHoveredModule(null)}
+                        onMouseEnter={() => handleMouseEnter('retail')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <RetailModule hoveredModule={hoveredModule} moduleId="retail" />
                     </div> */}
@@ -247,8 +270,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['faqswhatsapp'] = el)}
                         data-module-id="faqswhatsapp"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('faqswhatsapp')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('faqswhatsapp')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <FAQsWhatsAppModule hoveredModule={hoveredModule} moduleId="faqswhatsapp" />
                     </div>
@@ -258,8 +281,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['biexpress'] = el)}
                         data-module-id="biexpress"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('biexpress')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('biexpress')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <BIExpressModule hoveredModule={hoveredModule} moduleId="biexpress" />
                     </div>
@@ -269,8 +292,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['etldatalake'] = el)}
                         data-module-id="etldatalake"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('etldatalake')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('etldatalake')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <ETLDataLakeModule hoveredModule={hoveredModule} moduleId="etldatalake" />
                     </div>
@@ -280,8 +303,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['conciliacion'] = el)}
                         data-module-id="conciliacion"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('conciliacion')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('conciliacion')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <ConciliacionModule hoveredModule={hoveredModule} moduleId="conciliacion" />
                     </div>
@@ -291,8 +314,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['prediccionventas'] = el)}
                         data-module-id="prediccionventas"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('prediccionventas')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('prediccionventas')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <PrediccionVentasModule hoveredModule={hoveredModule} moduleId="prediccionventas" />
                     </div>
@@ -302,8 +325,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['inventariointeligente'] = el)}
                         data-module-id="inventariointeligente"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('inventariointeligente')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('inventariointeligente')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <InventarioInteligentModule hoveredModule={hoveredModule} moduleId="inventariointeligente" />
                     </div>
@@ -313,8 +336,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['deteccionanomalias'] = el)}
                         data-module-id="deteccionanomalias"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('deteccionanomalias')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('deteccionanomalias')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <DeteccionAnomalíasModule hoveredModule={hoveredModule} moduleId="deteccionanomalias" />
                     </div>
@@ -324,8 +347,8 @@ const Marketplace = () => {
                         ref={(el) => (moduleRefs.current['portaldocumentos'] = el)}
                         data-module-id="portaldocumentos"
                         className={cardClass}
-                        onMouseEnter={() => window.innerWidth >= 1024 && setHoveredModule('portaldocumentos')}
-                        onMouseLeave={() => window.innerWidth >= 1024 && setTimeout(() => setHoveredModule(null), 100)}
+                        onMouseEnter={() => handleMouseEnter('portaldocumentos')}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <PortalDocumentosModule hoveredModule={hoveredModule} moduleId="portaldocumentos" />
                     </div>
