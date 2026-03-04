@@ -45,6 +45,7 @@ const SocModule = ({ hoveredModule, moduleId }) => {
     }, []);
     
     const closeModal = useCallback(() => setShowInfoModal(false), []);
+    const [showCerts, setShowCerts] = useState(false);
     
     const containerStyle = useMemo(() => ({
         borderColor: isHovered ? '#4881EB' : 'rgba(72, 129, 235, 0.1)',
@@ -177,17 +178,34 @@ const SocModule = ({ hoveredModule, moduleId }) => {
 
             {/* Certificaciones adicionales */}
             <div className="px-4 md:px-6 pb-3 md:pb-4">
-                <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0F0F1E] rounded-xl p-4 border-2 border-[#4881EB]/30 hover:border-[#4881EB]/50 transition-colors duration-300">
-                    <p className="text-sm font-bold text-[#7FD1FF] text-center mb-3 tracking-wide">Certificaciones Adicionales</p>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                        {['ISO 27034', 'ISO 27017', 'ISO 9001', 'ISO 37001', 'ISO 27018'].map((cert) => (
-                            <span 
-                                key={cert}
-                                className="text-xs font-semibold px-3 py-1.5 bg-gradient-to-r from-[#4881EB]/30 to-[#7FD1FF]/20 text-white rounded-full border border-[#4881EB]/50 hover:scale-105 hover:border-[#7FD1FF] transition-all duration-200 cursor-default will-change-transform"
-                            >
-                                {cert}
-                            </span>
-                        ))}
+                {/* Botón toggle — solo visible en mobile */}
+                <button
+                    className="md:hidden w-full flex items-center justify-between px-4 py-2.5 mb-2 rounded-xl border border-[#4881EB]/40 bg-[#1A1A2E] text-[#7FD1FF] text-sm font-semibold transition-colors hover:border-[#4881EB]/70"
+                    onClick={() => setShowCerts(prev => !prev)}
+                >
+                    <span>Certificaciones Adicionales</span>
+                    <svg
+                        className={`w-4 h-4 transition-transform duration-300 ${showCerts ? 'rotate-180' : ''}`}
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                {/* Panel: siempre visible en desktop, colapsable en mobile */}
+                <div className={`md:block overflow-hidden transition-all duration-300 ${showCerts ? 'max-h-40' : 'max-h-0 md:max-h-none'}`}>
+                    <div className="bg-gradient-to-br from-[#1A1A2E] to-[#0F0F1E] rounded-xl p-4 border-2 border-[#4881EB]/30 hover:border-[#4881EB]/50 transition-colors duration-300">
+                        <p className="hidden md:block text-sm font-bold text-[#7FD1FF] text-center mb-3 tracking-wide">Certificaciones Adicionales</p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                            {['ISO 27034', 'ISO 27017', 'ISO 9001', 'ISO 37001', 'ISO 27018'].map((cert) => (
+                                <span
+                                    key={cert}
+                                    className="text-xs font-semibold px-3 py-1.5 bg-gradient-to-r from-[#4881EB]/30 to-[#7FD1FF]/20 text-white rounded-full border border-[#4881EB]/50 hover:scale-105 hover:border-[#7FD1FF] transition-all duration-200 cursor-default will-change-transform"
+                                >
+                                    {cert}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
