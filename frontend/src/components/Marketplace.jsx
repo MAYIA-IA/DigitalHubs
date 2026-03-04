@@ -85,7 +85,7 @@ const Marketplace = () => {
             id="marketplace"
             ref={sectionRef}
             className="py-24 relative"
-            style={{ backgroundColor: '#0A0A14' }}
+            style={{ backgroundColor: 'var(--fondo-secundario)' }}
         >
             {/*
               ── BLOB GLOW ────────────────────────────────────────────────────────
@@ -118,10 +118,10 @@ const Marketplace = () => {
 
             <div className="container mx-auto lg:px-6" style={{ position: 'relative', zIndex: 1 }}>
                 <div className="text-center mb-8 md:mb-16 px-6">
-                    <div className="inline-block px-3 py-1 md:px-4 md:py-2 bg-[#4881EB] bg-opacity-10 rounded-full mb-3 md:mb-4">
-                        <span className="text-[#7FD1FF] font-mono text-xs md:text-sm">Marketplace</span>
+                    <div className="inline-block px-3 py-1 md:px-4 md:py-2 rounded-full mb-3 md:mb-4" style={{ backgroundColor: 'var(--fondo-glass)', border: '1px solid var(--borde)' }}>
+                        <span className="font-mono text-xs md:text-sm" style={{ color: 'var(--azul-oscuro)' }}>Marketplace</span>
                     </div>
-                    <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-6 text-white">
+                    <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-6" style={{ color: 'var(--texto-claro)' }}>
                         Descubre nuestros Servicios<br/>
                         <span className="gradient-text">Personalizados para tus necesidades</span>
                     </h2>

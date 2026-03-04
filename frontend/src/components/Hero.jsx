@@ -40,8 +40,8 @@ const Hero = () => {
                                 </div>
                                 <div className="w-16 h-16 flex items-center justify-center">
                                     <img 
-                                        src="/assets/images/LogoMonarchBlanco.png" 
-                                        alt="Monarch" 
+                                        src="/assets/images/xcienLogoN.png" 
+                                        alt="Xcien" 
                                         className="max-w-full max-h-full w-auto h-auto object-contain"
                                         loading="eager"
                                     />
@@ -95,8 +95,16 @@ const Hero = () => {
                         </div>
                         <div className="w-56 h-28 flex items-center justify-center">
                             <img 
-                                src="/assets/images/LogoMonarchBlanco.png" 
-                                alt="Monarch" 
+                                src="/assets/images/xcienLogoN.png" 
+                                alt="Xcien" 
+                                className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float animation-delay-1000"
+                                loading="eager"
+                            />
+                        </div>
+                         <div className="w-56 h-28 flex items-center justify-center">
+                            <img 
+                                src="/assets/images/rebrightsLogo.jpeg" 
+                                alt="rebrights" 
                                 className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float animation-delay-1000"
                                 loading="eager"
                             />
