@@ -13,7 +13,7 @@ const Footer = () => {
     const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     
     // Hub siempre en el centro
-    const hubLogo = { name: 'Hub Digital Jalisco', logo: '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png', isHub: true };
+    const hubLogo = { name: 'Hub Digital Jalisco', logo: '/assets/images/hubJalisco.png', isHub: true };
     
     // 4 aliados estratégicos alrededor (cada uno ocupa 1/4 del círculo)
     const partners = [
@@ -110,7 +110,7 @@ const Footer = () => {
                                 <div ref={addToSectionRefs} className="text-center lg:text-left">
                                     <div className="mb-4 lg:mb-6 flex justify-center lg:justify-start">
                                         <img 
-                                            src="/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png" 
+                                            src="/assets/images/hubJalisco.png" 
                                             alt="Hub Digital Jalisco" 
                                             className="h-16 md:h-20 lg:h-24 w-auto"
                                         />
