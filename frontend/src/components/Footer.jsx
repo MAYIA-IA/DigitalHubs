@@ -13,13 +13,12 @@ const Footer = () => {
     const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     
     // Hub siempre en el centro
-    const hubLogo = { name: 'Hub Digital Nuevo León', logo: '/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png', isHub: true };
+    const hubLogo = { name: 'Hub Digital Monterrey', logo: '/assets/images/hubMtyLogo.png', isHub: true };
     
     // 4 aliados estratégicos alrededor (cada uno ocupa 1/4 del círculo)
     const partners = [
         { name: 'EdgeNet', logo: '/assets/images/edgeNetLogoBlanco.png', isHub: false },
         { name: 'FLAI', logo: '/assets/images/flai.png', isHub: false },
-        { name: 'Xcien', logo: '/assets/images/xcienLogoN.png', isHub: false },
         { name: 'rebrights', logo: '/assets/images/rebrightsLogo.jpeg', isHub: false },
         { name: 'Mayia', logo: '/assets/images/mayiaLogoBlanco.png', isHub: false },
     ];
@@ -111,13 +110,13 @@ const Footer = () => {
                                 <div ref={addToSectionRefs} className="text-center lg:text-left">
                                     <div className="mb-4 lg:mb-6 flex justify-center lg:justify-start">
                                         <img 
-                                            src="/assets/images/HUB-LOGO-BLANCO-DEGRADADO-COMPRESS.png" 
-                                            alt="Hub Digital Nuevo León" 
+                                            src="/assets/images/hubMtyLogo.png" 
+                                            alt="Hub Digital Monterrey" 
                                             className="h-16 md:h-20 lg:h-24 w-auto"
                                         />
                                     </div>
                                     <p className="text-gray-400 text-sm leading-relaxed mb-4 lg:mb-6 max-w-xl mx-auto lg:mx-0">
-                                        El ecosistema tecnológico más innovador de Nuevo León. Impulsando la transformación digital 
+                                        El ecosistema tecnológico más innovador de Monterrey. Impulsando la transformación digital 
                                         con espacios inteligentes, infraestructura de vanguardia y una comunidad vibrante.
                                     </p>
                                     <button 
@@ -467,7 +466,7 @@ const Footer = () => {
                                         className="h-10 w-auto opacity-70"
                                     />
                                     <p className="text-gray-500 text-xs">
-                                        © 2026 Hub Digital Nuevo León
+                                        © 2026 Hub Digital Monterrey
                                     </p>
                                 </div>
                                 

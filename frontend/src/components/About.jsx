@@ -154,19 +154,19 @@ const About = () => {
                         }`}>
                             <div className="inline-block px-6 py-2 bg-[var(--secundario)]/30 rounded-full mb-6 border-2 border-[var(--acento)]/50">
                                 <span className="text-[var(--acento)] font-mono text-sm font-bold tracking-wide uppercase">
-                                    ¿Por qué HUB DIGITAL NUEVO LEÓN?
+                                    ¿Por qué HUB DIGITAL MONTERREY?
                                 </span>
                             </div>
                             
                             <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
                                 Ubicado en el Corazón <br/>
                                 <span className="bg-gradient-to-r from-[var(--secundario)] via-[var(--acento)] to-[var(--secundario)] bg-clip-text text-transparent">
-                                    de NUEVO LEÓN
+                                    de MONTERREY
                                 </span>
                             </h2>
                             
                             <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-normal">
-                                Centro de Datos Tier III, Infraestructura de Alto Nivel para los datos de Nuevo León.
+                                Centro de Datos Tier III, Infraestructura de Alto Nivel para los datos de Monterrey.
                             </p>
                         </div>
 
