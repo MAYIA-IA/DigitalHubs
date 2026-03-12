@@ -59,7 +59,7 @@ const ETLDataLakeModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#06B6D411)', border: '1px dashed #06B6D433' }}>
-                <img src="/assets/images/productos/contenidoETLDataLake.jpg" alt="ETL DataLake" className="w-full h-full object-contain" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
+                <img src="/assets/images/productos/etlData.jpg" alt="ETL DataLake" className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
                 <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
                     <svg className="w-16 h-16 opacity-20" fill="none" stroke="#06B6D4" viewBox="0 0 24 24" strokeWidth={0.8}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />

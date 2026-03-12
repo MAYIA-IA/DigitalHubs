@@ -19,7 +19,7 @@ const Footer = () => {
     const partners = [
         { name: 'EdgeNet', logo: '/assets/images/edgeNetLogoBlanco.png', isHub: false },
         { name: 'FLAI', logo: '/assets/images/flai.png', isHub: false },
-        { name: 'rebrights', logo: '/assets/images/rebrightsLogoC.png', isHub: false },
+        { name: 'rebrights', logo: '/assets/images/rebrightsLogo.jpeg', isHub: false },
         { name: 'Mayia', logo: '/assets/images/mayiaLogoBlanco.png', isHub: false },
     ];
 
