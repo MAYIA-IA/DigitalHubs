@@ -236,7 +236,7 @@ const About = () => {
                             style={{ transitionDelay: '300ms' }}>
                                 <video 
                                     ref={backgroundVideoRef}
-                                    src="/assets/images/videoHubYucatan.mp4"
+                                    src="/assets/images/videoHubLeon.mp4"
                                     className="w-full h-full object-cover"
                                     autoPlay
                                     loop
@@ -315,7 +315,7 @@ const About = () => {
                     
                     <video 
                         ref={modalVideoRef}
-                        src="/assets/images/videoHubYucatan.mp4"
+                        src="/assets/images/videoHubLeon.mp4"
                         className="w-full h-full object-cover"
                         controls
                         playsInline
