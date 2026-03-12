@@ -98,7 +98,8 @@ const ObrasPublicasModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Image Area */}
-            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden" className="h-[180px] lg:h-[350px]">
+            {/* Image Area */}
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px]">
                 <video 
                     autoPlay
                     loop
