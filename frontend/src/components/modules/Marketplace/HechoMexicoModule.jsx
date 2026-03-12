@@ -91,8 +91,8 @@ const HechoMexicoModule = ({ hoveredModule, moduleId }) => {
             </div>
 
             {/* Image Area */}
-            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden flex items-center justify-center" className="h-[180px] lg:h-[350px]">
-                <img 
+          {/* Image Area */}
+            <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden flex items-center justify-center h-[180px] lg:h-[350px]"><img 
                     src="/assets/images/productos/hechoEnMexico.png" 
                     alt="Hecho en México" 
                     className="w-full h-full object-contain"
