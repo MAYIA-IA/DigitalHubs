@@ -59,7 +59,7 @@ const BIExpressModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#F59E0B11)', border: '1px dashed #F59E0B33' }}>
-                <img src="/assets/images/productos/contenidoBIExpress.jpg" alt="BI Express" className="w-full h-full object-contain" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
+                <img src="/assets/images/productos/biExp.jpg" alt="BI Express" className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
                 <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
                     <svg className="w-16 h-16 opacity-20" fill="none" stroke="#F59E0B" viewBox="0 0 24 24" strokeWidth={0.8}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />

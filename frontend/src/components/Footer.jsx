@@ -19,7 +19,7 @@ const Footer = () => {
     const partners = [
         { name: 'EdgeNet', logo: '/assets/images/edgeNetLogoBlanco.png', isHub: false },
         { name: 'FLAI', logo: '/assets/images/flai.png', isHub: false },
-        { name: 'Monarch', logo: '/assets/images/LogoMonarchBlanco.png', isHub: false },
+        { name: 'despertarDigital', logo: '/assets/images/despertarDigital.png', isHub: false },
         { name: 'Mayia', logo: '/assets/images/mayiaLogoBlanco.png', isHub: false },
     ];
 
@@ -189,7 +189,7 @@ const Footer = () => {
                                                         55 53 31 55 26
                                                     </a>
                                                 </div>
-                                                {/* Monarch Contact */}
+                                                {/* Despertar Digital Contact */}
                                                 <div className="space-y-1">
                                                     <a 
                                                         href="mailto:kivethdelvalle@gmail.com" 
