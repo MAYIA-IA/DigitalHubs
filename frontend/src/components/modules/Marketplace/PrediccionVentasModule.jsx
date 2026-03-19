@@ -59,13 +59,16 @@ const PrediccionVentasModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#10B98111)', border: '1px dashed #10B98133' }}>
-                <img src="/assets/images/productos/prediccionVent.jpg" alt="Predicción de Ventas" className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
-                <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
-                    <svg className="w-16 h-16 opacity-20" fill="none" stroke="#10B981" viewBox="0 0 24 24" strokeWidth={0.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                    </svg>
-                    <span className="text-xs text-gray-600">contenidoPrediccionVentas.jpg</span>
-                </div>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                >
+                    <source src="/assets/images/productos/prediccionVent.mp4" type="video/mp4" />
+                </video>
             </div>
 
             {/* Stats */}
