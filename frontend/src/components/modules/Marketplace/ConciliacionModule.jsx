@@ -59,13 +59,16 @@ const ConciliacionModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#8B5CF611)', border: '1px dashed #8B5CF633' }}>
-                <img src="/assets/images/productos/consoliVent.jpg" alt="Conciliación Auto." className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
-                <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
-                    <svg className="w-16 h-16 opacity-20" fill="none" stroke="#8B5CF6" viewBox="0 0 24 24" strokeWidth={0.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
-                    </svg>
-                    <span className="text-xs text-gray-600">contenidoConciliacion.jpg</span>
-                </div>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                >
+                    <source src="/assets/images/productos/consoliVent.mp4" type="video/mp4" />
+                </video>
             </div>
 
             {/* Stats */}
