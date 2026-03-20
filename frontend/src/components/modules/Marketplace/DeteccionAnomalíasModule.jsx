@@ -59,13 +59,16 @@ const DeteccionAnomalíasModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#EF444411)', border: '1px dashed #EF444433' }}>
-                <img src="/assets/images/productos/deteccionAnomalias.jpg" alt="Detección de Anomalías" className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
-                <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
-                    <svg className="w-16 h-16 opacity-20" fill="none" stroke="#EF4444" viewBox="0 0 24 24" strokeWidth={0.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                    </svg>
-                    <span className="text-xs text-gray-600">contenidoDeteccionAnomalias.jpg</span>
-                </div>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                >
+                    <source src="/assets/images/productos/deteccionAnomalias.mp4" type="video/mp4" />
+                </video>
             </div>
 
             {/* Stats */}

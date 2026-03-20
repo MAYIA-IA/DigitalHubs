@@ -59,13 +59,16 @@ const InventarioInteligentModule = ({ hoveredModule, moduleId }) => {
 
             {/* Image Area */}
             <div className="relative mx-3 lg:mx-6 mb-3 lg:mb-6 rounded-2xl overflow-hidden h-[180px] lg:h-[350px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0A0A14,#F9731611)', border: '1px dashed #F9731633' }}>
-                <img src="/assets/images/productos/inventario.jpg" alt="Inventario Inteligente" className="w-full h-full object-cover" loading="lazy" onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }} />
-                <div style={{display:'none'}} className="w-full h-full items-center justify-center flex-col gap-2">
-                    <svg className="w-16 h-16 opacity-20" fill="none" stroke="#F97316" viewBox="0 0 24 24" strokeWidth={0.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                    </svg>
-                    <span className="text-xs text-gray-600">contenidoInventarioInteligente.jpg</span>
-                </div>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover"
+                >
+                    <source src="/assets/images/productos/inventario.mp4" type="video/mp4" />
+                </video>
             </div>
 
             {/* Stats */}
