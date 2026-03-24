@@ -4,32 +4,29 @@ const About = () => {
     const [hasAnimated, setHasAnimated] = useState(false);
     const sectionRef = useRef(null);
 
+    // 🔧 OPT: [] en lugar de [hasAnimated] → corre una sola vez al montar
+    // 🔧 OPT: observer.disconnect() automático → no sigue corriendo en cada scroll
     useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        setHasAnimated(true);
-                    }
-                });
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setHasAnimated(true);
+                    observer.disconnect();
+                }
             },
             { threshold: 0.2 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, [hasAnimated]);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     return (
-        <section 
-            id="about" 
+        <section
+            id="about"
             ref={sectionRef}
             className="py-24 bg-gradient-to-b from-[var(--fondo-secundario)] to-[var(--fondo-principal)]"
         >
@@ -44,14 +41,14 @@ const About = () => {
                                 ¿Por qué HUB DIGITAL NUEVO LEÓN?
                             </span>
                         </div>
-                        
+
                         <h2 className="text-5xl md:text-6xl font-bold mb-6 text-white">
                             Ubicado en el Corazón <br/>
                             <span className="bg-gradient-to-r from-[var(--secundario)] via-[var(--acento)] to-[var(--secundario)] bg-clip-text text-transparent">
                                 de NUEVO LEÓN
                             </span>
                         </h2>
-                        
+
                         <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-normal">
                             Centro de Datos Tier III, Infraestructura de Alto Nivel para los datos de Nuevo León.
                         </p>

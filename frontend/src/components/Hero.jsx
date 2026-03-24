@@ -8,7 +8,6 @@ const Hero = () => {
 
     return (
         <section id="hero" className="relative min-h-screen flex items-center pt-24 hero-image">
-            {/* Fondo con gradiente usando variables */}
             <div className="absolute inset-0" style={{ background: 'var(--gradiente-primario)' }}></div>
             <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-20 left-20 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: 'var(--secundario)' }}></div>
@@ -18,32 +17,41 @@ const Hero = () => {
             <div className="container mx-auto px-6 py-32 hero-content">
                 <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
                     
-                    {/* Contenido izquierdo */}
                     <div className="max-w-4xl animate-fadeInUp">
-                        {/* Badge con logos en mobile */}
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="inline-block px-4 py-2 rounded-full" style={{ 
-                                backgroundColor: 'var(--fondo-glass)', 
-                                border: '1px solid var(--borde-hover)' 
-                            }}>
+                            <div className="inline-block px-4 py-2 rounded-full" style={{ backgroundColor: 'var(--fondo-glass)', border: '1px solid var(--borde-hover)' }}>
                                 <span className="font-mono text-sm" style={{ color: 'var(--acento)' }}>Nuevo León • Transformación Digital</span>
                             </div>
                             {/* Logos móvil */}
                             <div className="flex items-center gap-4 lg:hidden">
                                 <div className="w-16 h-16 flex items-center justify-center">
+                                    {/*
+                                      🔧 OPT: width/height explícitos → el browser reserva el espacio antes de
+                                      cargar la imagen, eliminando el layout shift (CLS = 0)
+                                      🔧 OPT: fetchpriority="high" → el browser descarga estas imágenes primero
+                                      ya que son visibles en el fold inicial (equivalente a eager + prioritario)
+                                    */}
                                     <img 
                                         src="/assets/images/hechoMexicoRojo.PNG" 
                                         alt="Hecho en México" 
+                                        width={64}
+                                        height={64}
                                         className="max-w-full max-h-full w-auto h-auto object-contain"
                                         loading="eager"
+                                        fetchpriority="high"
+                                        decoding="sync"
                                     />
                                 </div>
                                 <div className="w-16 h-16 flex items-center justify-center">
                                     <img 
                                         src="/assets/images/xcienLogoBlanco.png" 
                                         alt="Xcien" 
+                                        width={64}
+                                        height={64}
                                         className="max-w-full max-h-full w-auto h-auto object-contain"
                                         loading="eager"
+                                        fetchpriority="high"
+                                        decoding="sync"
                                     />
                                 </div>
                             </div>
@@ -57,7 +65,6 @@ const Hero = () => {
                             Un ecosistema digital para operar los datos críticos del estado en un <span className="text-white font-semibold">Centro de Datos</span>, con <span className="font-semibold" style={{ color: 'var(--acento)' }}>Ciberseguridad (SOC 360)</span>, <span className="text-white font-semibold">Nube Soberana</span> e <span className="text-white font-semibold">Inteligencia Artificial</span>.
                         </p>
                         
-                        {/* Botones */}
                         <div className="flex flex-col sm:flex-row gap-4 mb-6 animate-fadeInUp animation-delay-600">
                             <button 
                                 onClick={() => scrollToSection('spaces')} 
@@ -89,19 +96,26 @@ const Hero = () => {
                             <img 
                                 src="/assets/images/hechoMexicoRojo.PNG" 
                                 alt="Hecho en México" 
+                                width={224}
+                                height={112}
                                 className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float"
                                 loading="eager"
+                                fetchpriority="high"
+                                decoding="sync"
                             />
                         </div>
                         <div className="w-56 h-28 flex items-center justify-center">
                             <img 
                                 src="/assets/images/xcienLogoBlanco.png" 
                                 alt="Xcien" 
+                                width={224}
+                                height={112}
                                 className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float animation-delay-1000"
                                 loading="eager"
+                                fetchpriority="high"
+                                decoding="sync"
                             />
                         </div>
-                    
                     </div>
                 </div>
             </div>
@@ -111,15 +125,12 @@ const Hero = () => {
                     from { opacity: 0; transform: translateY(30px); }
                     to   { opacity: 1; transform: translateY(0); }
                 }
-
                 @keyframes float {
                     0%, 100% { transform: translateY(0px); }
                     50%      { transform: translateY(-15px); }
                 }
-
                 .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
                 .animate-float    { animation: float 3s ease-in-out infinite; }
-
                 .animation-delay-200  { animation-delay: 0.2s; }
                 .animation-delay-400  { animation-delay: 0.4s; }
                 .animation-delay-600  { animation-delay: 0.6s; }
