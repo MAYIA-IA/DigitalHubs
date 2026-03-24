@@ -191,8 +191,8 @@ const Footer = () => {
                                                     </a>
                                                 </div>
                                                 <div className="space-y-1">
-                                                    <a href="mailto:kivethdelvalle@gmail.com" className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium break-all">
-                                                        kivethdelvalle@gmail.com
+                                                    <a href="mailto:ivethdelvalle@despertartecdigital-ia.com" className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium break-all">
+                                                        ivethdelvalle@despertartecdigital-ia.com
                                                     </a>
                                                     <a href="tel:+523331878700" className="text-white hover:text-[var(--acento)] block transition-colors duration-200 font-medium flex items-center gap-1">
                                                         <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

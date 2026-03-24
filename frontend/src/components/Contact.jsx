@@ -12,7 +12,7 @@ const contacts = [
     },
     {
         name: 'Karina Del Valle',
-        email: 'kivethdelvalle@gmail.com',
+        email: 'ivethdelvalle@despertartecdigital-ia.com',
         phone: '+52 3331 87870',
         phoneRaw: '523331878700',
         colorRaw: '#6366F1',
