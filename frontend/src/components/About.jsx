@@ -3,55 +3,41 @@ import { useEffect, useState, useRef } from 'react'
 const About = () => {
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const [hasAnimated, setHasAnimated] = useState(false);
-    const [isVideoPreloaded, setIsVideoPreloaded] = useState(false);
+    // 🔧 OPT: el video de fondo NO se carga hasta que la sección es visible
+    const [sectionVisible, setSectionVisible] = useState(false);
     const sectionRef = useRef(null);
     const backgroundVideoRef = useRef(null);
     const modalVideoRef = useRef(null);
 
-    // Intersection Observer para animar cuando sea visible
+    // 🔧 OPT: un solo observer maneja animación + carga del video de fondo
+    // Antes: observer se recreaba cada vez que hasAnimated cambiaba (bug de dependencia)
     useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        setHasAnimated(true);
-                    }
-                });
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setHasAnimated(true);
+                    setSectionVisible(true);
+                    observer.disconnect(); // 🔧 OPT: limpia el observer, ya no se necesita
+                }
             },
-            { threshold: 0.2 }
+            { threshold: 0.1 } // 🔧 OPT: 0.1 en lugar de 0.2 → el video empieza a cargar antes de ser visible
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []); // 🔧 OPT: [] → el effect corre solo una vez
 
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, [hasAnimated]);
-
-    // Precargar el video del modal cuando la sección sea visible
+    // 🔧 OPT: reproducir el video de fondo solo cuando está montado en el DOM
     useEffect(() => {
-        if (hasAnimated && modalVideoRef.current && !isVideoPreloaded) {
-            modalVideoRef.current.load();
-
-            const handleCanPlay = () => {
-                setIsVideoPreloaded(true);
-            };
-
-            modalVideoRef.current.addEventListener('canplaythrough', handleCanPlay);
-
-            return () => {
-                if (modalVideoRef.current) {
-                    modalVideoRef.current.removeEventListener('canplaythrough', handleCanPlay);
-                }
-            };
+        if (sectionVisible && backgroundVideoRef.current) {
+            backgroundVideoRef.current.play().catch(() => {});
         }
-    }, [hasAnimated, isVideoPreloaded]);
+    }, [sectionVisible]);
 
-    // Efecto para cerrar modal con tecla ESC y manejar videos
+    // Manejar apertura/cierre del modal + pausa/reanuda videos
     useEffect(() => {
         if (!isVideoModalOpen) return;
 
@@ -63,7 +49,6 @@ const About = () => {
         document.body.style.overflow = 'hidden';
 
         if (backgroundVideoRef.current) backgroundVideoRef.current.pause();
-
         if (modalVideoRef.current) {
             modalVideoRef.current.play().catch(err => console.log('Error playing modal video:', err));
         }
@@ -71,11 +56,9 @@ const About = () => {
         return () => {
             window.removeEventListener('keydown', handleEscape);
             document.body.style.overflow = 'auto';
-
             if (backgroundVideoRef.current) {
-                backgroundVideoRef.current.play().catch(err => console.log('Error playing background video:', err));
+                backgroundVideoRef.current.play().catch(() => {});
             }
-
             if (modalVideoRef.current) modalVideoRef.current.pause();
         };
     }, [isVideoModalOpen]);
@@ -101,7 +84,6 @@ const About = () => {
                 <div className="container mx-auto px-6">
                     <div className="max-w-6xl mx-auto">
 
-                        {/* Título y descripción */}
                         <div className={`text-center mb-16 transition-all duration-1000 ${
                             hasAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}>
@@ -123,25 +105,34 @@ const About = () => {
                             </p>
                         </div>
 
-                        {/* Video centrado */}
+                        {/* Video de fondo — solo se monta cuando la sección es visible */}
                         <div className={`group relative overflow-hidden rounded-2xl shadow-2xl h-[500px] transition-all duration-1000 ${
                             hasAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`}
                         style={{ transitionDelay: '300ms' }}>
-                            <video
-                                ref={backgroundVideoRef}
-                                src="/assets/images/videoHubLeon.mp4"
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="metadata"
-                            />
+
+                            {sectionVisible ? (
+                                // 🔧 OPT: el <video> de fondo no existe en el DOM hasta que la sección
+                                // es visible — evita que el browser descargue el MP4 al cargar la página
+                                <video
+                                    ref={backgroundVideoRef}
+                                    src="/assets/images/videoHubLeon.mp4"
+                                    className="w-full h-full object-cover"
+                                    loop
+                                    muted
+                                    playsInline
+                                    preload="none"
+                                    // 🔧 OPT: preload="none" → no descarga nada hasta play()
+                                    // El useEffect de arriba llama play() cuando sectionVisible=true
+                                />
+                            ) : (
+                                // 🔧 OPT: placeholder del mismo tamaño mientras el video no carga
+                                // Evita layout shift y da feedback visual inmediato
+                                <div className="w-full h-full bg-[var(--fondo-principal)] animate-pulse rounded-2xl" />
+                            )}
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
 
-                            {/* Botón animado */}
                             <div className="absolute bottom-8 left-8 z-10">
                                 <button
                                     onClick={openVideoModal}
@@ -149,7 +140,6 @@ const About = () => {
                                     className="group/btn relative px-8 py-4 bg-gradient-to-r from-[var(--secundario)] to-[var(--acento)] rounded-full font-bold text-white text-lg tracking-wider uppercase overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[var(--secundario)]/50"
                                 >
                                     <div className="absolute inset-0 rounded-full border-2 border-white/50 animate-pulse"></div>
-
                                     <span className="relative z-10 flex items-center gap-3">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -177,23 +167,19 @@ const About = () => {
                 <div className={`relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl shadow-[var(--secundario)]/30 z-10 transition-transform duration-300 ${
                     isVideoModalOpen ? 'scale-100' : 'scale-75'
                 }`}>
-                    {!isVideoPreloaded && isVideoModalOpen && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
-                            <div className="text-center">
-                                <div className="w-16 h-16 border-4 border-[var(--secundario)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                                <p className="text-white text-lg">Cargando video...</p>
-                            </div>
-                        </div>
+                    {/* 🔧 OPT: el video del modal se monta solo cuando se abre — cero descarga en background */}
+                    {isVideoModalOpen && (
+                        <video
+                            ref={modalVideoRef}
+                            src="/assets/images/videoHubLeon.mp4"
+                            className="w-full h-full object-cover"
+                            controls
+                            playsInline
+                            preload="auto"
+                            // 🔧 OPT: preload="auto" solo aquí (modal abierto) → carga rápido cuando el usuario lo pidió
+                            autoPlay
+                        />
                     )}
-
-                    <video
-                        ref={modalVideoRef}
-                        src="/assets/images/videoHubLeon.mp4"
-                        className="w-full h-full object-cover"
-                        controls
-                        playsInline
-                        preload="auto"
-                    />
 
                     <button
                         onClick={closeVideoModal}

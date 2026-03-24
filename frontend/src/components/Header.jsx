@@ -32,7 +32,7 @@ const Header = () => {
                         <img 
                             src={scrolled ? '/assets/images/hubLeon.png' : '/assets/images/hubLeon.png'}
                             alt="Hub Digital Merida Logo" 
-                            className="h-20 md:h-28 lg:h-32 w-auto transition-all duration-300"
+                            width={128} height={128} className="h-20 md:h-28 lg:h-32 w-auto transition-all duration-300" decoding="async"
                         />
                     </div>
                     <div className="hidden md:flex items-center space-x-2">
