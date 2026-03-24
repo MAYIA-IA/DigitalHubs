@@ -5,27 +5,24 @@ const About = () => {
     const sectionRef = useRef(null);
 
     useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
+        // 🔧 OPT: once:true → desconecta el observer automáticamente después de animar
+        // Evita que el callback siga corriendo en cada scroll
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        setHasAnimated(true);
-                    }
-                });
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setHasAnimated(true);
+                    observer.disconnect(); // 🔧 OPT: limpia el observer, ya no se necesita
+                }
             },
             { threshold: 0.2 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, [hasAnimated]);
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []); // 🔧 OPT: [] en lugar de [hasAnimated] → el effect solo corre una vez al montar
 
     return (
         <section
