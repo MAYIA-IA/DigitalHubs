@@ -11,7 +11,7 @@ const contacts = [
         initials: 'VV',
     },
     {
-        name: 'Kiveth Del Valle',
+        name: 'Karina Del Valle',
         email: 'kivethdelvalle@gmail.com',
         phone: '+52 3331 87870',
         phoneRaw: '523331878700',
