@@ -18,6 +18,10 @@ const PrediccionVentasModule = lazy(() => import('./modules/Marketplace/Predicci
 const InventarioInteligentModule = lazy(() => import('./modules/Marketplace/InventarioInteligentModule.jsx'));
 const DeteccionAnomalíasModule   = lazy(() => import('./modules/Marketplace/DeteccionAnomalíasModule.jsx'));
 const PortalDocumentosModule     = lazy(() => import('./modules/Marketplace/PortalDocumentosModule.jsx'));
+const CerebroCorporativoModule = lazy(() => import('./modules/Marketplace/CerebroCorporativoModule.jsx'));
+const ControllistaModule       = lazy(() => import('./modules/Marketplace/ControlListaModule.jsx'));
+const IntelligenceHubModule    = lazy(() => import('./modules/Marketplace/IntelligenceHubModule.jsx'));
+ 
 
 const MODULE_COLORS = {
     recuperacion:          '#b059b1',
@@ -34,6 +38,9 @@ const MODULE_COLORS = {
     inventariointeligente: '#F97316',
     deteccionanomalias:    '#EF4444',
     portaldocumentos:      '#6366F1',
+    cerebroCorporativo: '#0EA5E9',
+    controllista:       '#F43F5E',
+    intelligenceHub:    '#14B8A6',
 };
 
 // 🔧 OPT: Skeleton placeholder mientras carga cada tarjeta
@@ -138,6 +145,9 @@ const Marketplace = () => {
         { id: 'inventariointeligente', Component: InventarioInteligentModule },
         { id: 'deteccionanomalias',    Component: DeteccionAnomalíasModule },
         { id: 'portaldocumentos',      Component: PortalDocumentosModule },
+        { id: 'cerebroCorporativo', Component: CerebroCorporativoModule },
+        { id: 'controllista',       Component: ControllistaModule       },
+        { id: 'intelligenceHub',    Component: IntelligenceHubModule    },
     ];
 
     return (
