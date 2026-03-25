@@ -1,31 +1,23 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import '../styles/carousel.css'
 
-// 🔧 OPT: lazy() igual que en Marketplace — los 4 módulos se descargan solo cuando son necesarios
-const EdgenetModule = lazy(() => import('./modules/OurEnterpriseModules/EdgenetModule.jsx'));
-const FlaiModule    = lazy(() => import('./modules/OurEnterpriseModules/FlaiModule.jsx'));
-const SocModule     = lazy(() => import('./modules/OurEnterpriseModules/SocModule.jsx'));
-const MayiaModule   = lazy(() => import('./modules/OurEnterpriseModules/MayiaModule.jsx'));
+import EdgenetModule from './modules/OurEnterpriseModules/EdgenetModule.jsx';
+import FlaiModule from './modules/OurEnterpriseModules/FlaiModule.jsx';
+import SocModule from './modules/OurEnterpriseModules/SocModule.jsx';
+import MayiaModule from './modules/OurEnterpriseModules/MayiaModule.jsx';
 
+// Colores del blob por módulo (mismo patrón que Marketplace)
 const MODULE_COLORS = {
     edgenet: 'var(--secundario)',
-    Flai:    null,
+    Flai:    null, // FLAI tiene 3 blobs especiales, se maneja aparte
     mayia:   '#A4D955',
     soc:     'var(--secundario)',
 };
 
-// 🔧 OPT: skeleton mientras cargan los módulos
-const CardSkeleton = () => (
-    <div className="w-full h-72 rounded-2xl bg-white/5 animate-pulse" aria-hidden="true" />
-);
-
 const Spaces = () => {
     const [hoveredModule, setHoveredModule] = useState(null);
     const [activeModule, setActiveModule] = useState(null);
-    // 🔧 OPT: igual que Marketplace, montar solo cuando es visible
-    const [isVisible, setIsVisible] = useState(false);
     const moduleRefs = useRef({});
-    const sectionRef = useRef(null);
     const hoverTimeoutRef = useRef(null);
 
     const handleMouseEnter = (id) => {
@@ -39,24 +31,17 @@ const Spaces = () => {
         hoverTimeoutRef.current = setTimeout(() => setHoveredModule(null), 150);
     };
 
+    // ── IntersectionObserver para mobile (mismo patrón que Marketplace) ──
     useEffect(() => {
-        // 🔧 OPT: montar módulos solo cuando la sección entra al viewport
-        const sectionEl = sectionRef.current;
-        const visibilityObserver = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    visibilityObserver.disconnect();
-                }
-            },
-            { rootMargin: '300px' }
-        );
-        if (sectionEl) visibilityObserver.observe(sectionEl);
-
         const isMobile = window.innerWidth < 1024;
-        if (!isMobile) return () => visibilityObserver.disconnect();
+        if (!isMobile) return;
 
-        const observerOptions = { root: null, rootMargin: '-25% 0px -25% 0px', threshold: 0.1 };
+        const observerOptions = {
+            root: null,
+            rootMargin: '-25% 0px -25% 0px',
+            threshold: 0.1,
+        };
+
         const observerCallback = (entries) => {
             entries.forEach((entry) => {
                 const moduleId = entry.target.dataset.moduleId;
@@ -70,16 +55,9 @@ const Spaces = () => {
             });
         };
 
-        const mobileObserver = new IntersectionObserver(observerCallback, observerOptions);
-        const timeout = setTimeout(() => {
-            Object.values(moduleRefs.current).forEach((ref) => { if (ref) mobileObserver.observe(ref); });
-        }, 500);
-
-        return () => {
-            visibilityObserver.disconnect();
-            mobileObserver.disconnect();
-            clearTimeout(timeout);
-        };
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        Object.values(moduleRefs.current).forEach((ref) => { if (ref) observer.observe(ref); });
+        return () => observer.disconnect();
     }, []);
 
     const currentModule = hoveredModule ?? activeModule;
@@ -88,18 +66,16 @@ const Spaces = () => {
 
     const cardClass = "module-card relative transition-all duration-500 lg:hover:scale-105 hover:z-10 min-w-[75vw] lg:min-w-0 lg:w-[calc(50%-16px)] max-w-[400px] snap-center";
 
-    const modules = [
-        { id: 'edgenet', Component: EdgenetModule },
-        { id: 'Flai',    Component: FlaiModule },
-        { id: 'mayia',   Component: MayiaModule },
-        { id: 'soc',     Component: SocModule },
-    ];
-
     return (
-        <section id="spaces" ref={sectionRef} className="py-24 bg-[var(--fondo-secundario)] relative lg:overflow-hidden">
+        <section id="spaces" className="py-24 bg-[var(--fondo-secundario)] relative lg:overflow-hidden">
 
-            {/* 🔧 OPT: blob con will-change:opacity — mínimo impacto en GPU */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }} aria-hidden="true">
+            {/* ── BLOB GLOW (patrón Marketplace: absolute, no fixed) ── */}
+            <div
+                className="absolute inset-0 pointer-events-none overflow-hidden"
+                style={{ zIndex: 0 }}
+                aria-hidden="true"
+            >
+                {/* Blob normal para edgenet / mayia / soc */}
                 <div
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full"
                     style={{
@@ -110,13 +86,38 @@ const Spaces = () => {
                         willChange: 'opacity',
                     }}
                 />
-                {/* Blobs tricolor FLAI */}
-                <div className="absolute left-[30%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
-                    style={{ background: '#006847', opacity: isFlai ? 0.6 : 0, filter: 'blur(120px)', transition: 'opacity 700ms ease', willChange: 'opacity' }} />
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
-                    style={{ background: 'white', opacity: isFlai ? 0.5 : 0, filter: 'blur(120px)', transition: 'opacity 700ms ease', willChange: 'opacity' }} />
-                <div className="absolute left-[70%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
-                    style={{ background: '#CE1126', opacity: isFlai ? 0.6 : 0, filter: 'blur(120px)', transition: 'opacity 700ms ease', willChange: 'opacity' }} />
+
+                {/* Blobs tricolor para FLAI (bandera México) */}
+                <div
+                    className="absolute left-[30%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
+                    style={{
+                        background: '#006847',
+                        opacity: isFlai ? 0.6 : 0,
+                        filter: 'blur(120px)',
+                        transition: 'opacity 700ms ease',
+                        willChange: 'opacity',
+                    }}
+                />
+                <div
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
+                    style={{
+                        background: 'white',
+                        opacity: isFlai ? 0.5 : 0,
+                        filter: 'blur(120px)',
+                        transition: 'opacity 700ms ease',
+                        willChange: 'opacity',
+                    }}
+                />
+                <div
+                    className="absolute left-[70%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[700px] rounded-full"
+                    style={{
+                        background: '#CE1126',
+                        opacity: isFlai ? 0.6 : 0,
+                        filter: 'blur(120px)',
+                        transition: 'opacity 700ms ease',
+                        willChange: 'opacity',
+                    }}
+                />
             </div>
 
             <div className="container mx-auto lg:px-6" style={{ position: 'relative', zIndex: 1 }}>
@@ -134,28 +135,51 @@ const Spaces = () => {
                     className="lg:flex lg:flex-wrap lg:justify-center lg:gap-8 lg:max-w-6xl lg:mx-auto overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none flex gap-4 lg:px-0 scrollbar-hide pb-4"
                     style={{ paddingLeft: '5vw', paddingRight: '5vw', WebkitOverflowScrolling: 'touch' }}
                 >
-                    <Suspense fallback={
-                        <>
-                            {modules.map(({ id }) => (
-                                <div key={id} className={cardClass}>
-                                    <CardSkeleton />
-                                </div>
-                            ))}
-                        </>
-                    }>
-                        {isVisible && modules.map(({ id, Component }) => (
-                            <div
-                                key={id}
-                                ref={(el) => (moduleRefs.current[id] = el)}
-                                data-module-id={id}
-                                className={cardClass}
-                                onMouseEnter={() => handleMouseEnter(id)}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                <Component hoveredModule={hoveredModule} moduleId={id} />
-                            </div>
-                        ))}
-                    </Suspense>
+
+                    {/* EdgeNet */}
+                    <div
+                        ref={(el) => (moduleRefs.current['edgenet'] = el)}
+                        data-module-id="edgenet"
+                        className={cardClass}
+                        onMouseEnter={() => handleMouseEnter('edgenet')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <EdgenetModule hoveredModule={hoveredModule} moduleId="edgenet" />
+                    </div>
+
+                    {/* FLAI */}
+                    <div
+                        ref={(el) => (moduleRefs.current['Flai'] = el)}
+                        data-module-id="Flai"
+                        className={cardClass}
+                        onMouseEnter={() => handleMouseEnter('Flai')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <FlaiModule hoveredModule={hoveredModule} moduleId="Flai" />
+                    </div>
+
+                    {/* MAYIA */}
+                    <div
+                        ref={(el) => (moduleRefs.current['mayia'] = el)}
+                        data-module-id="mayia"
+                        className={cardClass}
+                        onMouseEnter={() => handleMouseEnter('mayia')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <MayiaModule hoveredModule={hoveredModule} moduleId="mayia" />
+                    </div>
+
+                    {/* SOC */}
+                    <div
+                        ref={(el) => (moduleRefs.current['soc'] = el)}
+                        data-module-id="soc"
+                        className={cardClass}
+                        onMouseEnter={() => handleMouseEnter('soc')}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <SocModule hoveredModule={hoveredModule} moduleId="soc" />
+                    </div>
+
                 </div>
             </div>
         </section>
