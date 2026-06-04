@@ -10,15 +10,6 @@ const contacts = [
         glow: 'rgba(72,129,235,0.18)',
         initials: 'AN',
     },
-    {
-        name: 'Soporte Monarch',
-        email: 'soporte@monarch.com.mx',
-        phone: '999 757 3891',
-        phoneRaw: '9997573891',
-        colorRaw: '#6366F1',
-        glow: 'rgba(99,102,241,0.18)',
-        initials: 'SM',
-    },
 ];
 
 const CopyButton = ({ value, label }) => {

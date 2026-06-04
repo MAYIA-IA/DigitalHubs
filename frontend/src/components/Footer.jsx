@@ -19,7 +19,6 @@ const Footer = () => {
     const partners = [
         { name: 'EdgeNet', logo: '/assets/images/edgeNetLogoBlanco.png', isHub: false },
         { name: 'FLAI', logo: '/assets/images/flai.png', isHub: false },
-        { name: 'Monarch', logo: '/assets/images/LogoMonarchBlanco.png', isHub: false },
         { name: 'Mayia', logo: '/assets/images/mayiaLogoBlanco.png', isHub: false },
     ];
 
@@ -187,24 +186,6 @@ const Footer = () => {
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                                         </svg>
                                                         999 115 1263
-                                                    </a>
-                                                </div>
-                                                {/* Monarch Contact */}
-                                                <div className="space-y-1">
-                                                    <a 
-                                                        href="mailto:soporte@monarch.com.mx" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium break-all"
-                                                    >
-                                                        soporte@monarch.com.mx
-                                                    </a>
-                                                    <a 
-                                                        href="tel:+529997573891" 
-                                                        className="text-white hover:text-[#7FD1FF] block transition-colors duration-200 font-medium flex items-center gap-1"
-                                                    >
-                                                        <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                                        </svg>
-                                                        999 757 3891
                                                     </a>
                                                 </div>
                                             </div>

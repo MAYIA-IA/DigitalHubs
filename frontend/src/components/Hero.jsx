@@ -1,5 +1,4 @@
 import CONFIG from '../config/constants.js';
-import { useEffect } from 'react'
 
 const Hero = () => {
     const scrollToSection = (id) => {
@@ -34,14 +33,6 @@ const Hero = () => {
                                         loading="eager"
                                     />
                                 </div>
-                                <div className="w-16 h-16 flex items-center justify-center">
-                                    <img 
-                                        src="/assets/images/LogoMonarchBlanco.png" 
-                                        alt="Monarch" 
-                                        className="max-w-full max-h-full w-auto h-auto object-contain"
-                                        loading="eager"
-                                    />
-                                </div>
                             </div>
                         </div>
                         
@@ -70,7 +61,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Logos Hecho en México y Monarch - desktop con animación float */}
+                    {/* Logo Hecho en México - desktop con animación float */}
                     <div className="lg:flex flex-col justify-center items-center gap-6 hidden pt-8 animate-fadeInUp animation-delay-800">
                         {/* Contenedor para "Hecho en México" con proporción fija */}
                         <div className="w-56 h-28 flex items-center justify-center">
@@ -78,15 +69,6 @@ const Hero = () => {
                                 src="/assets/images/hechoMexicoRojo.PNG" 
                                 alt="Hecho en México" 
                                 className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float"
-                                loading="eager"
-                            />
-                        </div>
-                        {/* Contenedor para "Monarch" con proporción fija */}
-                        <div className="w-56 h-28 flex items-center justify-center">
-                            <img 
-                                src="/assets/images/LogoMonarchBlanco.png" 
-                                alt="Monarch" 
-                                className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-2xl animate-float animation-delay-1000"
                                 loading="eager"
                             />
                         </div>

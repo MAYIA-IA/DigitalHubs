@@ -69,10 +69,6 @@ const CONFIG = {
       {
         src: '/assets/images/mayiaLogoBlanco.png',
         alt: 'Mayia Logo'
-      },
-      {
-        src: '/assets/images/LogoMonarchBlanco.png',
-        alt: 'Monarch Logo'
       }
     ]
   },
