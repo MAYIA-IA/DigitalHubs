@@ -66,16 +66,16 @@ const SocModule = ({ hoveredModule, moduleId }) => {
             {/* Header */}
             <div className="flex items-center justify-between p-4 md:p-6 pb-3 md:pb-4 relative z-20">
                 <div className="flex items-center gap-3">
-                    <div className="rounded-xl bg-white flex items-center justify-center p-2.5">
-                        <img 
-                            src="/assets/images/productos/cyberpeaceLogo.png" 
-                            alt="CyberPeace SOC" 
-                            className="w-7 h-7 object-contain"
+                    <div className="rounded-xl bg-white flex items-center justify-center p-0.5">
+                        <img
+                            src="/assets/images/logos/autecno.png"
+                            alt="Autecno SOC"
+                            className="w-11 h-11 object-contain scale-125"
                             loading="lazy"
                         />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">CyberPeace SOC</h3>
+                        <h3 className="text-xl font-bold text-white">Autecno SOC</h3>
                         <p className="text-sm text-gray-400">Ciberseguridad 360°</p>
                     </div>
                 </div>
@@ -223,14 +223,14 @@ const SocModule = ({ hoveredModule, moduleId }) => {
                         <div className="sticky top-0 bg-gradient-to-r from-[#4881EB] to-[#7FD1FF] p-6 flex items-center justify-between z-10">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center p-2">
-                                    <img 
-                                        src="/assets/images/productos/cyberpeaceLogo.png" 
-                                        alt="CyberPeace SOC" 
+                                    <img
+                                        src="/assets/images/logos/autecno.png"
+                                        alt="Autecno SOC"
                                         className="w-full h-full object-contain"
                                         loading="lazy"
                                     />
                                 </div>
-                                <h2 className="text-2xl font-bold text-white">CyberPeace SOC</h2>
+                                <h2 className="text-2xl font-bold text-white">Autecno SOC</h2>
                             </div>
                             <button 
                                 onClick={closeModal}
