@@ -3,9 +3,9 @@ import { useState, useEffect, useRef } from 'react';
 const contacts = [
     {
         name: 'A. Nasser',
-        email: 'anasser@edgenet.mx',
-        phone: '999 115 1263',
-        phoneRaw: '9991151263',
+        email: 'Vviniegra@m2corporativo.com',
+        phone: '55 53 31 55 26',
+        phoneRaw: '5553315526',
         colorRaw: '#4881EB',
         glow: 'rgba(72,129,235,0.18)',
         initials: 'AN',
